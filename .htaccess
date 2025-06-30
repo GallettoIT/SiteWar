@@ -1,0 +1,77 @@
+# Configurazione Apache per Site War
+
+# Abilita il motore di riscrittura
+RewriteEngine On
+
+# Impostazioni di sicurezza
+# Protegge da directory traversal
+Options -Indexes
+# Disabilita la visualizzazione delle informazioni sul server
+ServerSignature Off
+
+# Reindirizza tutte le richieste a HTTPS se non lo sono già
+# Decommentare le righe seguenti in produzione
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Reindirizza tutte le richieste a /api/* e /server/api/* al backend
+RewriteRule ^api/(.*)$ server/api/index.php?endpoint=$1 [QSA,L]
+RewriteRule ^server/api/(.*)$ server/api/index.php?endpoint=$1 [QSA,L]
+
+# Proteggi le directory sensibili
+<FilesMatch "^(\.htaccess|\.htpasswd|\.git|\.env)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Impedisci l'accesso diretto ai file PHP nella directory server
+<FilesMatch "\.php$">
+    <If "%{REQUEST_URI} =~ m#^/server/#">
+        <If "%{REQUEST_URI} !~ m#^/server/api/#">
+            Order Allow,Deny
+            Deny from all
+        </If>
+    </If>
+</FilesMatch>
+
+# Imposta content types corretti
+AddType application/javascript .js
+AddType text/css .css
+AddType image/svg+xml .svg
+
+# Compressione GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+</IfModule>
+
+# Cache control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# PHP settings
+php_value max_execution_time 60
+php_value memory_limit 256M
+php_value post_max_size 8M
+php_value upload_max_filesize 2M
+
+# Content Security Policy
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net;"
+</IfModule>
+
+# Proteggi da XSS
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>

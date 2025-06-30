@@ -1,0 +1,9 @@
+.git
+.gitignore
+docker/logs
+documentation_latex
+*.md
+server/cache/data/*
+server/cache/ratelimit/*
+!server/cache/data/.gitkeep
+!server/cache/ratelimit/.gitkeep

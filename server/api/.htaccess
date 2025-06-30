@@ -1,0 +1,22 @@
+# Directory server/api/.htaccess
+
+# Assicura che PHP sia eseguito
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Forza l'elaborazione di index.php
+<IfModule mod_dir.c>
+    DirectoryIndex index.php
+</IfModule>
+
+# Rewrite per indirizzare tutto a index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Abilita l'output come JSON
+AddType application/json .json

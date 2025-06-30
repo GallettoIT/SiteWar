@@ -1,0 +1,479 @@
+\chapter{Componente Backend}
+
+\section{Panoramica del Backend}
+Il componente backend di Site War è responsabile dell'elaborazione delle richieste, dell'orchestrazione delle analisi avanzate, della comunicazione con le API esterne e della generazione dei risultati finali. Implementato in PHP puro senza framework architetturali, questo componente segue un'architettura modulare con pattern di design ben definiti per garantire manutenibilità, sicurezza e performance.
+
+Il backend non solo elabora le richieste dal frontend, ma svolge anche un ruolo cruciale nelle analisi che non possono essere eseguite direttamente nel browser, come le verifiche di sicurezza avanzate, l'integrazione con API che richiedono chiavi private e la validazione della pertinenza del confronto tramite AI.
+
+\section{Architettura del Backend}
+
+\subsection{Diagramma delle Classi}
+L'organizzazione del codice backend segue i principi della programmazione orientata agli oggetti, con una chiara separazione delle responsabilità tra le diverse classi. Di seguito è riportato il diagramma delle classi che illustra l'architettura del componente backend:
+
+```mermaid
+classDiagram
+    class APIController {
+        -controllers: Map<string, Controller>
+        +__construct()
+        +processRequest() void
+        -sendResponse(statusCode, data) void
+    }
+    
+    class Controller {
+        <<interface>>
+        +handleRequest(method, params) array
+    }
+    
+    class AnalyzeCtrl {
+        -validator
+        -aiService
+        -resultService
+        +__construct()
+        +handleRequest(method, params) array
+        -analyzeSite() array
+    }
+    
+    class ValidateCtrl {
+        -validator
+        -aiService
+        +__construct()
+        +handleRequest(method, params) array
+        -validateUrls() bool
+    }
+    
+    class ReportCtrl {
+        -cache
+        +__construct()
+        +handleRequest(method, params) array
+        -getProgress() array
+    }
+    
+    class ServiceFactory {
+        +createService(type) Service
+    }
+    
+    class BaseAnalyzer {
+        #url: string
+        #results: array
+        +__construct(url)
+        +analyze() array
+        +getResults() array
+        +isComplete() bool
+    }
+    
+    class BaseService {
+        #config: array
+        #result: mixed
+        +__construct(config)
+        +execute() mixed
+        +getResult() mixed
+        +hasError() bool
+    }
+    
+    class SEO {
+        +analyze() array
+    }
+    
+    class Security {
+        +analyze() array
+    }
+    
+    class Performance {
+        +analyze() array
+    }
+    
+    class Proxy {
+        +execute() mixed
+    }
+    
+    class AI {
+        +execute() mixed
+    }
+    
+    APIController --> Controller : manages
+    Controller <|.. AnalyzeCtrl : implements
+    Controller <|.. ValidateCtrl : implements
+    Controller <|.. ReportCtrl : implements
+    
+    ServiceFactory --> BaseAnalyzer : creates
+    ServiceFactory --> BaseService : creates
+    
+    BaseAnalyzer <|-- SEO : extends
+    BaseAnalyzer <|-- Security : extends
+    BaseAnalyzer <|-- Performance : extends
+    
+    BaseService <|-- Proxy : extends
+    BaseService <|-- AI : extends
+```
+
+\subsection{Componenti Principali}
+
+\subsubsection{APIController}
+Classe principale che gestisce tutte le richieste HTTP in entrata, le indirizza al controller appropriato e formatta le risposte. Funge da punto di ingresso per tutte le richieste API e implementa un meccanismo di routing semplice ma efficace.
+
+\subsubsection{Controller}
+Interfaccia che definisce il contratto per tutti i controller specifici. Ogni controller è responsabile della gestione di un tipo specifico di richiesta e dell'implementazione della logica di business corrispondente.
+
+\subsubsection{AnalyzeController}
+Gestisce le richieste di analisi dei siti web, coordinando il processo di analisi e aggregando i risultati. Si occupa di creare i vari analizzatori tramite il ServiceFactory, eseguire le analisi e processare i risultati per il confronto finale.
+
+\subsubsection{ValidateController}
+Gestisce la validazione preliminare degli URL inseriti dall'utente e la verifica della pertinenza del confronto tramite l'AIService. Fornisce un feedback immediato sulla validità e rilevanza del confronto richiesto.
+
+\subsubsection{ServiceFactory}
+Implementa il pattern Factory Method per creare istanze di servizi e analizzatori. Centralizza la creazione di oggetti e facilita l'estensibilità del sistema.
+
+\subsubsection{BaseAnalyzer}
+Classe base astratta per tutti gli analizzatori specifici. Definisce l'interfaccia comune e implementa funzionalità condivise, come la gestione dello stato di completamento e il recupero dei risultati.
+
+\subsubsection{BaseService}
+Classe base astratta per tutti i servizi specifici. Simile a BaseAnalyzer, ma focalizzata sui servizi che non eseguono analisi dirette, come il proxy per API esterne.
+
+\subsubsection{ProxyService}
+Gestisce le comunicazioni con API esterne in modo sicuro, nascondendo le chiavi API e implementando strategie di cache e rate limiting. Agisce come intermediario tra l'applicazione e i servizi esterni.
+
+\subsubsection{AIService}
+Utilizza l'intelligenza artificiale (OpenAI API) per valutare la pertinenza del confronto tra i siti web inseriti dall'utente. Fornisce un livello di validazione semantica che va oltre la semplice validazione sintattica degli URL.
+
+\section{Diagramma di Stato - Richiesta API}
+Il seguente diagramma illustra il ciclo di vita di una richiesta API, dai vari stati che attraversa fino alla risposta finale:
+
+```mermaid
+stateDiagram-v2
+    InitialRequest --> ValidatedRequest: validateRequest
+    ValidatedRequest --> InitialRequest: validation failed
+    
+    InitialRequest --> ErrorResponse: invalid
+    ValidatedRequest --> ProcessingRequest: valid
+    
+    ProcessingRequest --> AnalysisProgress
+    AnalysisProgress --> ErrorResponse: error during
+    AnalysisProgress --> ResultsProcess: done
+    
+    ResultsProcess --> FinalResponse
+```
+
+
+\section{Diagramma di Sequenza - Processo di Analisi Backend}
+Il diagramma di sequenza seguente illustra il flusso di interazioni tra i vari componenti durante il processo di analisi lato server:
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant API_Ctrl as API-Ctrl
+    participant Analyze
+    participant Factory
+    participant Analyzer
+    participant ExtAPI
+    
+    Client->>API_Ctrl: Request
+    API_Ctrl->>Analyze: Route
+    Analyze->>Factory: Create
+    Factory->>Analyzer: Create
+    Analyzer-->>Factory: Return
+    Factory-->>Analyze: Return
+    
+    Analyze->>Analyzer: Analyze
+    Analyzer->>ExtAPI: Request
+    ExtAPI-->>Analyzer: Response
+    Analyzer-->>Analyze: Results
+    Analyze->>Analyze: Process
+    Analyze-->>API_Ctrl: Response
+    API_Ctrl-->>Client: Response
+```
+
+\section{Struttura dei File Server}
+Il codice backend è organizzato in una struttura di directory che riflette le responsabilità e le relazioni tra i componenti. Questa organizzazione favorisce la manutenibilità e la scalabilità del codice:
+
+\begin{verbatim}
+server/
+|
++-- api/
+|   +-- index.php                 # Entry point per tutte le richieste API
+|   +-- controllers/              # Controller per diversi endpoint
+|   |   +-- AnalyzeController.php
+|   |   +-- ValidateController.php
+|   |   +-- ReportController.php
+|   +-- config/                   # Configurazioni API
+|       +-- api_keys.php          # Chiavi API (protette)
+|       +-- services.php          # Configurazione servizi
+|
++-- core/                         # Core del sistema
+|   +-- APIController.php         # Controller API principale
+|   +-- Controller.php            # Interfaccia controller
+|   +-- ServiceFactory.php        # Factory per servizi e analizzatori
+|   +-- ConfigManager.php         # Gestione configurazione
+|
++-- services/                     # Servizi business logic
+|   +-- analyzers/                # Analizzatori specifici
+|   |   +-- BaseAnalyzer.php      # Classe base analizzatore
+|   |   +-- SEOAnalyzer.php
+|   |   +-- SecurityAnalyzer.php
+|   |   +-- PerformanceAnalyzer.php
+|   |   +-- TechnologyAnalyzer.php
+|   +-- AIService.php             # Servizio AI
+|   +-- ProxyService.php          # Proxy API
+|   +-- ResultService.php         # Elaborazione risultati
+|
++-- utils/                        # Utility
+|   +-- Cache.php                 # Sistema di cache
+|   +-- HttpClient.php            # Client HTTP
+|   +-- Logger.php                # Sistema di logging
+|   +-- RateLimiter.php           # Limitatore di frequenza
+|   +-- Validator.php             # Validazione input
+|   +-- Security.php              # Funzioni sicurezza
+|
++-- cache/                        # Directory per file di cache
+    +-- data/                     # Cache dei dati
+    +-- ratelimit/                # Cache per rate limiting
+\end{verbatim}
+
+\section{Integrazione con API Esterne}
+Il backend di Site War si integra con diverse API esterne per ottenere dati specializzati e completi sui siti web analizzati. La gestione di queste integrazioni è centralizzata attraverso il ProxyService che garantisce sicurezza, efficienza e resilienza.
+
+```mermaid
+flowchart TD
+    APIConnector --> PageSpeed["PageSpeed API"]
+    APIConnector --> MozAPI["Moz API"]
+    APIConnector --> SecurityHeaders["Security Headers"]
+    APIConnector --> WHOISAPI["WHOIS API"]
+    APIConnector --> OpenAIAPI["OpenAI API"]
+```
+
+\subsection{API e Servizi Utilizzati}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{API} & \textbf{Scopo} & \textbf{Endpoint} \\
+\hline
+Google PageSpeed Insights & Analisi performance & /pagespeedonline/v5/runPagespeed \\
+\hline
+Moz API & Metriche SEO & /links/api \\
+\hline
+Security Headers & Analisi sicurezza & /api/v1/analyze \\
+\hline
+WHOIS API & Informazioni domini & /whoisdata \\
+\hline
+W3C Validator & Validazione HTML/CSS & /check \\
+\hline
+\hline
+OpenAI API & Validazione pertinenza & /v1/completions \\
+\hline
+\end{tabular}
+\caption{API esterne utilizzate}
+\label{table:api-services}
+\end{table}
+
+\subsection{Diagramma di Collaborazione - API Integration}
+Il seguente diagramma illustra il flusso di collaborazione tra i componenti durante l'integrazione con API esterne:
+
+```mermaid
+flowchart TD
+    Analyzer -- "1. request API" --> ProxyService
+    ProxyService -- "2. return result" --> Analyzer
+    
+    Analyzer -- "4. process results" --> ResultProcess
+    ProxyService -- "3. proxy request" --> ExtAPI["Ext. API"]
+    
+    ResultProcess -- "5. final result" --> APIResponse
+```
+
+
+\section{Sistema di Cache}
+Per ottimizzare le prestazioni e ridurre il carico sulle API esterne, il backend implementa un sistema di cache efficiente che memorizza temporaneamente i risultati delle analisi e delle chiamate API.
+
+\subsection{Implementazione}
+Il sistema di cache è implementato nella classe Cache, che fornisce un'interfaccia semplice per memorizzare e recuperare dati in base a chiavi univoche. La cache è basata su file per garantire persistenza anche in caso di riavvio del server.
+
+\subsection{Strategia di Caching}
+\begin{itemize}
+    \item \textbf{Risultati di analisi}: Cache di 24 ore
+    \item \textbf{Verifiche di pertinenza AI}: Cache di 7 giorni
+    \item \textbf{Chiamate API esterne}: Tempo variabile in base al servizio (da 1 ora a 24 ore)
+    \item \textbf{Pulizia automatica}: I file scaduti vengono eliminati quando vengono richiesti
+\end{itemize}
+
+\section{Rate Limiting}
+Per prevenire l'abuso delle API esterne e garantire il rispetto delle quote di utilizzo, il backend implementa un sistema di rate limiting che controlla il numero di richieste effettuate a ciascun servizio in un determinato periodo di tempo.
+
+\subsection{Strategia di Rate Limiting}
+Il sistema di rate limiting è implementato nella classe RateLimiter, che tiene traccia delle richieste effettuate per ciascun servizio e blocca le richieste eccessive. Le quote sono configurabili e variano in base al servizio.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Servizio} & \textbf{Limite} & \textbf{Periodo} \\
+\hline
+PageSpeed API & 100 & 24 ore \\
+\hline
+Moz API & 10 & 1 ora \\
+\hline
+Security Headers & 50 & 1 ora \\
+\hline
+WHOIS API & 100 & 24 ore \\
+\hline
+Wappalyzer API & 100 & 24 ore \\
+\hline
+OpenAI API & 20 & 1 ora \\
+\hline
+\end{tabular}
+\caption{Limiti di rate per servizio}
+\label{table:rate-limits}
+\end{table}
+
+\section{Sicurezza}
+La sicurezza è un aspetto fondamentale del backend di Site War, implementata a diversi livelli per proteggere sia i dati degli utenti che le risorse del sistema.
+
+\subsection{Sanitizzazione Input}
+Tutti gli input degli utenti sono sanitizzati prima di essere utilizzati, per prevenire attacchi come SQL Injection, XSS e altri. La classe Security fornisce metodi per sanitizzare diversi tipi di input.
+
+\subsection{Protezione Chiavi API}
+Le chiavi API utilizzate per accedere ai servizi esterni sono memorizzate in modo sicuro fuori dalla directory pubblica, per evitare l'accesso non autorizzato. Il ProxyService si occupa di gestire queste chiavi in modo sicuro durante le richieste.
+
+\subsection{Content Security Policy}
+L'applicazione implementa una robusta Content Security Policy per prevenire attacchi XSS e altri tipi di attacchi basati sull'iniezione di contenuti.
+
+\subsection{HTTPS}
+Tutte le comunicazioni tra client e server avvengono tramite HTTPS per garantire la crittografia dei dati in transito e prevenire attacchi man-in-the-middle.
+
+\section{Logging e Monitoraggio}
+Il backend implementa un sistema di logging completo per tenere traccia delle attività del sistema, degli errori e delle prestazioni. Questo facilita il debugging e il monitoraggio del sistema in produzione.
+
+\subsection{Sistema di Logging}
+Il sistema di logging è implementato nella classe Logger, che fornisce diversi livelli di logging (debug, info, warning, error) e scrive i log in file organizzati per data.
+
+\subsection{Monitoraggio delle API}
+Il sistema implementa un monitoraggio delle API esterne per:
+\begin{itemize}
+    \item Tracciare i tempi di risposta
+    \item Registrare gli errori
+    \item Monitorare il rate limiting
+    \item Verificare la disponibilità dei servizi
+\end{itemize}
+
+\section{Gestione degli Errori}
+Il backend implementa una gestione robusta degli errori per garantire che il sistema continui a funzionare anche in presenza di problemi e fornisca feedback utili agli utenti.
+
+```mermaid
+flowchart TD
+    ClientDetection["Client Detection"] --> ErrorClassify["Error Classify"] --> UserFeedback["User Feedback"]
+    ServerDetection["Server Detection"] --> ErrorLogging["Error Logging"] --> FallbackMechanism["Fallback Mechanism"]
+```
+
+
+\subsection{Tipi di Errore Gestiti}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Tipo di Errore} & \textbf{Strategia di Gestione} \\
+\hline
+URL non valido & Validazione client-side con feedback immediato \\
+\hline
+API non disponibile & Utilizzo di cache o alternativa client-side \\
+\hline
+Timeout analisi & Risultati parziali con notifica all'utente \\
+\hline
+Errore JS client & Catch globale con logging e riavvio modulo \\
+\hline
+Errore server & Risposta di errore con suggerimento alternativo \\
+\hline
+Accesso negato API & Fallback a funzionalità limitate senza API \\
+\hline
+\end{tabular}
+\caption{Tipi di errore e strategie di gestione}
+\label{table:error-handling}
+\end{table}
+
+\section{Diagramma di Attività - Analisi Backend}
+Il seguente diagramma illustra il flusso di attività completo durante il processo di analisi lato server:
+
+```mermaid
+flowchart TD
+    Start --> ValidateRequest
+    ValidateRequest --> Valid{"Valid?"}
+    
+    Valid -- No --> ReturnError
+    Valid -- Yes --> CheckRelevance
+    
+    CheckRelevance --> Relevant{"Relevant?"}
+    Relevant -- No --> ReturnWarning
+    Relevant -- Yes --> CheckCache
+    
+    ReturnWarning --> ProcessResults
+    
+    CheckCache --> Cached{"Cached?"}
+    Cached -- Yes --> GetCacheResults
+    Cached -- No --> CreateAnalyzers
+    
+    CreateAnalyzers --> PerformAnalysis
+    PerformAnalysis --> ProcessResults
+    
+    GetCacheResults --> ProcessResults
+    
+    ProcessResults --> CompareSites
+    CompareSites --> DetermineWinner
+    DetermineWinner --> CacheResults
+    CacheResults --> ReturnResponse
+    ReturnResponse --> End
+```
+
+\section{Estensibilità}
+Il backend di Site War è progettato per essere facilmente estensibile, consentendo l'aggiunta di nuovi analizzatori, servizi e API esterne senza modificare la struttura complessiva del sistema.
+
+\subsection{Aggiunta di Nuove API}
+Per aggiungere una nuova API esterna, è sufficiente:
+\begin{enumerate}
+    \item Aggiungere la configurazione del servizio in \texttt{ProxyService::getServiceConfig()}
+    \item Aggiungere la chiave API in \texttt{config/api\_keys.php}
+    \item Implementare eventuali logiche di fallback in \texttt{ProxyService::implementFallback()}
+    \item Aggiungere il rate limiting in \texttt{RateLimiter::getServiceLimits()}
+\end{enumerate}
+
+\subsection{Creazione di Nuovi Analizzatori}
+Per aggiungere un nuovo tipo di analisi:
+\begin{enumerate}
+    \item Creare una nuova classe che estende \texttt{BaseAnalyzer}
+    \item Implementare i metodi richiesti (\texttt{analyze}, \texttt{calculateScore})
+    \item Aggiungere il nuovo analizzatore in \texttt{AnalyzeController}
+    \item Aggiornare il sistema di punteggio in \texttt{ResultService}
+\end{enumerate}
+
+\section{Interfacce API}
+
+\subsection{API Endpoints}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Endpoint} & \textbf{Metodo} & \textbf{Descrizione} & \textbf{Parametri} \\
+\hline
+/api/analyze & POST & Esegue l'analisi completa & site1, site2 \\
+\hline
+/api/validate & POST & Valida gli URL e la pertinenza & site1, site2 \\
+\hline
+/api/progress & GET & Controlla lo stato di avanzamento & session\_id \\
+\hline
+/api/export & GET & Esporta i risultati in diversi formati & session\_id, format \\
+\hline
+\end{tabular}
+\caption{Endpoint API}
+\label{table:api-endpoints}
+\end{table}
+
+\subsection{Formato della Risposta}
+Tutte le risposte API utilizzano JSON con la seguente struttura base:
+
+\begin{verbatim}
+{
+  "status": "success|error",
+  "data": {
+    // Dati specifici della risposta
+  },
+  "message": "Messaggio informativo (opzionale)"
+}
+\end{verbatim}
+
+Per le analisi complete, la struttura dei dati è più complessa e include i risultati dettagliati per entrambi i siti, insieme al confronto e alla determinazione del vincitore.

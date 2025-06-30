@@ -1,0 +1,11 @@
+{
+    "hits": 1,
+    "misses": 0,
+    "memory_hits": 0,
+    "file_hits": 1,
+    "memory_items": 1,
+    "file_items": 63,
+    "memory_size": 49,
+    "file_size": 60469,
+    "hit_ratio": 100
+}

@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt]{report}
+
+% Pacchetti necessari
+\usepackage[utf8]{inputenc}
+\usepackage{newunicodechar}
+\newunicodechar{│}{$\vert$}
+\newunicodechar{─}{-}
+\newunicodechar{└}{$\llcorner$}
+\newunicodechar{├}{$\vdash$}
+
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pgf-umlsd}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{dirtree}
+\usepackage{forest}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{microtype}
+
+% Impostazione margini
+\geometry{margin=2.5cm}
+
+% Configurazione per diagrammi ASCII
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{asciiart}{Verbatim}
+{fontsize=\small, frame=single, commandchars=\\\{\}, fontfamily=cmtt, 
+baselinestretch=0.85, xleftmargin=1em}
+
+% Definire un ambiente per JSON
+\lstdefinestyle{json}{
+    language={},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    showstringspaces=false,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    morekeywords={true, false, null},
+    sensitive=true,
+    morestring=[b]",
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/}
+}
+
+% Definire un ambiente per TypeScript Interface
+\lstdefinestyle{typescript}{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    showstringspaces=false,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    morekeywords={interface, extends, string, number, boolean, any, void, null, undefined},
+    sensitive=true
+}
+
+% Configurazione listati di codice
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    showstringspaces=false,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!70!black},
+    stringstyle=\color{red!70!black},
+}
+
+% Configurazione tabelle
+\definecolor{tablerowcolor}{rgb}{0.95, 0.95, 0.95}
+\newcommand{\altrowcolor}{\rowcolor{tablerowcolor}}
+
+% Configurazione collegamenti (da caricare quasi per ultimo)
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% Informazioni del documento
+\title{Site War - Documentazione Tecnica}
+\author{Documentazione Completa Progetto}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    {\huge\bfseries Site War\\}
+    \vspace{1.5cm}
+    {\Large Documentazione Tecnica Dettagliata\\}
+    \vspace{2cm}
+    %\includegraphics[width=0.6\textwidth]{placeholder.png}  Sostituire con un logo appropriato
+    \vspace{2cm}
+    {\large \today\\}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+% Include i vari capitoli
+\include{chapters/01_introduzione}
+\include{chapters/02_architettura_sistema}
+\include{chapters/03_componente_frontend}
+\include{chapters/04_componente_backend}
+\include{chapters/05_componente_analisi}
+\include{chapters/06_modello_dati}
+\include{chapters/07_casi_uso}
+\include{chapters/08_sviluppo_deployment}
+\include{chapters/09_sicurezza}
+\include{chapters/10_conclusioni}
+
+\end{document}

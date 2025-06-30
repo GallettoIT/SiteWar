@@ -1,0 +1,330 @@
+
+\chapter{Componente Frontend}
+
+\section{Panoramica del Frontend}
+Il componente frontend gestisce l'interfaccia utente, orchestrando la visualizzazione dei dati, le animazioni e l'interazione con il backend. Vengono impiegate tecnologie quali HTML, CSS, JavaScript e librerie specifiche per animazioni e grafici.
+
+\section{Architettura del Frontend}
+
+\subsection{Diagramma delle Classi}
+Il diagramma seguente rappresenta la struttura delle classi del componente frontend.
+
+```mermaid
+classDiagram
+    SiteWarApp <|-- FormUI
+    SiteWarApp <|-- BattleUI
+    SiteWarApp <|-- AnimationEngine
+    FormUI <|-- AnalysisUI
+    BattleUI <|-- ResultsUI
+    AnimationEngine <|-- ChartManager
+    
+    class SiteWarApp {
+        +initialize()
+        +handleRouting()
+    }
+    
+    class FormUI {
+        +validateURLs()
+        +submitForm()
+    }
+    
+    class BattleUI {
+        +showBattle()
+        +updateProgress()
+    }
+    
+    class AnimationEngine {
+        +createAnimation()
+        +updateAnimationState()
+    }
+    
+    class AnalysisUI {
+        +showProgress()
+        +updateAnalysisState()
+    }
+    
+    class ResultsUI {
+        +displayResults()
+        +showWinner()
+    }
+    
+    class ChartManager {
+        +createCharts()
+        +updateChartData()
+    }
+```
+
+\subsection{Moduli Principali}
+
+\subsubsection{SiteWarApplication}
+Modulo principale che gestisce l'applicazione, il routing e l'orchestrazione dei componenti. Funge da punto di ingresso per l'applicazione e coordina l'interazione tra i diversi moduli.
+
+\subsubsection{EventBus}
+Implementa il pattern Observer per la comunicazione tra i diversi moduli. Consente ai componenti di sottoscriversi a eventi specifici e di ricevere notifiche quando questi eventi si verificano.
+
+\subsubsection{FormUI}
+Gestisce il form di inserimento degli URL, inclusa la validazione e la sottomissione. Verifica che gli URL inseriti siano in un formato valido prima di avviare l'analisi.
+
+\subsubsection{BattleUI}
+Responsabile delle animazioni che rappresentano la ``guerra'' tra i siti durante l'analisi. Utilizza Anime.js e Particles.js per creare effetti visivi coinvolgenti.
+
+\subsubsection{ResultsUI}
+Visualizza i risultati del confronto in modo chiaro e intuitivo, con grafici e tabelle. Utilizza Chart.js per creare visualizzazioni comparative dei dati.
+
+\subsubsection{AnalysisUI}
+Mostra l'avanzamento dell'analisi e fornisce feedback in tempo reale all'utente. Aggiorna la barra di progresso e visualizza lo stato corrente dell'analisi.
+
+\subsubsection{AnimationEngine}
+Motore per la creazione e gestione delle animazioni, basato su Anime.js e Particles.js. Implementa le diverse fasi dell'animazione della battaglia.
+
+\subsubsection{ChartManager}
+Gestisce la creazione e l'aggiornamento dei grafici utilizzati per visualizzare i risultati dell'analisi. Utilizza Chart.js per renderizzare i dati in modo visivamente efficace.
+
+\section{Diagramma di Stato dell'Interfaccia Utente}
+L'interfaccia utente di Site War passa attraverso diversi stati durante l'interazione con l'utente. Di seguito è riportato il diagramma di stato:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Initial
+    Initial --> Form: showForm
+    Form --> Initial: resetApp
+    Form --> Loading: submitForm
+    Loading --> Battle: validationComplete
+    Battle --> Results: analysisComplete
+    Results --> Details: viewCategory
+    Details --> Results: backToResults
+    Results --> Export: exportResults
+    Export --> Initial: resetApp
+    Results --> Initial: resetApp
+```
+
+\section{Diagramma delle Animazioni}
+Le animazioni sono un aspetto fondamentale dell'esperienza utente in Site War. Il diagramma seguente illustra il flusso di stati delle animazioni durante il processo di analisi:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Approach: initAnimation
+    Approach --> Idle: reset
+    Approach --> Clash: progress > 25%
+    Clash --> Battle: progress > 50%
+    Clash --> Victory: reset
+    Battle --> Victory: progress > 90%
+    Victory --> Reset: reset
+    Reset --> [*]
+```
+
+\section{Diagramma di Sequenza - Processo di Analisi Frontend}
+Il diagramma di sequenza seguente illustra il flusso di interazioni tra i vari componenti durante il processo di analisi:
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant FormUI
+    participant SiteWarApp
+    participant BattleUI
+    participant Analyzers
+    participant Backend
+    
+    User->>FormUI: Submit Form
+    FormUI->>SiteWarApp: Validate URLs
+    SiteWarApp->>BattleUI: Show Battle UI
+    BattleUI->>BattleUI: Start Animation
+    SiteWarApp->>Analyzers: Create Analyzers
+    SiteWarApp->>Backend: Request Server Analysis
+    Backend-->>SiteWarApp: Response
+    Analyzers-->>SiteWarApp: Analysis Progress
+    SiteWarApp->>BattleUI: Update Progress
+    BattleUI->>BattleUI: Update Animation
+    BattleUI->>User: See Animation
+    Analyzers-->>SiteWarApp: Analysis Complete
+    SiteWarApp->>User: Show Results
+```
+
+\section{Struttura dell'Interfaccia Utente}
+
+\subsection{UI Components Hierarchy}
+L'interfaccia utente di Site War è organizzata in una gerarchia di componenti che facilita la manutenzione e l'estensibilità. Di seguito la rappresentazione:
+
+```mermaid
+flowchart TD
+    MainLayout["Main Layout"] --> FormSection["Form Section"]
+    MainLayout --> BattleSection["Battle Section"]
+    MainLayout --> ResultsSection["Results Section"]
+    
+    FormSection --> URLInput["URL Input Fields"]
+    BattleSection --> BattleArena["Battle Arena"]
+    ResultsSection --> WinnerDisplay["Winner Display"]
+    ResultsSection --> DetailTabs["Detail Tabs"]
+    
+    WinnerDisplay --> ComparisonCharts["Comparison Charts"]
+    WinnerDisplay --> CategoryData["Category Data"]
+```
+
+\subsection{Sezioni Principali}
+L'interfaccia utente è suddivisa in tre sezioni principali:
+\begin{itemize}
+    \item \textbf{Form Section}: contiene il form per l'inserimento degli URL.
+    \item \textbf{Battle Section}: visualizza le animazioni della battaglia.
+    \item \textbf{Results Section}: mostra i risultati dell'analisi.
+\end{itemize}
+
+\section{Implementazione dell'Animazione}
+
+\subsection{Concetto ``Guerra tra Siti''}
+Le animazioni rappresentano visivamente la "guerra" tra i siti web, utilizzando effetti che riflettono la qualità tecnica dei siti analizzati.
+
+\subsection{Fasi della Battaglia}
+\begin{enumerate}
+    \item \textbf{Approccio (0-25\%)}: I siti si avvicinano, con effetti particellari iniziali.
+    \item \textbf{Scontro (25-50\%)}: Primo impatto e intensificazione degli effetti.
+    \item \textbf{Combattimento (50-90\%)}: Scambio di "colpi" ed effetti intensi.
+    \item \textbf{Vittoria (90-100\%)}: Il sito vincitore emerge e si passa alla schermata dei risultati.
+\end{enumerate}
+
+\subsection{Tecnologie di Animazione}
+\begin{itemize}
+    \item Anime.js
+    \item Particles.js
+    \item CSS Animations
+    \item Canvas
+\end{itemize}
+
+\section{Interfaccia di Visualizzazione Risultati}
+
+\subsection{Dashboard Principale}
+La dashboard principale dei risultati presenta:
+\begin{itemize}
+    \item Il vincitore della battaglia, con un badge distintivo.
+    \item Punteggi complessivi per entrambi i siti.
+    \item Grafici comparativi delle principali categorie.
+    \item Opzioni per visualizzare dettagli specifici.
+\end{itemize}
+
+\subsection{Visualizzazione per Categoria}
+Ogni categoria (Performance, SEO, Sicurezza, Aspetti tecnici) ha una visualizzazione dedicata con:
+\begin{itemize}
+    \item Tabella comparativa dei valori specifici.
+    \item Grafici che evidenziano le differenze.
+    \item Indicatori visivi del vincitore per ogni metrica.
+    \item Suggerimenti per miglioramenti.
+\end{itemize}
+
+\subsection{Sistema di Punteggio Visivo}
+\begin{itemize}
+    \item Utilizzo di colori (verde per buone e rosso per cattive metriche).
+    \item Badge per il vincitore di ogni categoria.
+    \item Visualizzazione proporzionale dei punteggi.
+\end{itemize}
+
+\section{Responsive Design}
+
+\subsection{Principi di Design}
+\begin{itemize}
+    \item Layout fluido basato su Bootstrap.
+    \item Media queries per adattare l'interfaccia a diverse dimensioni di schermo.
+    \item Approccio mobile-first per garantire una buona esperienza su dispositivi mobili.
+\end{itemize}
+
+\subsection{Ottimizzazioni per Mobile}
+\begin{itemize}
+    \item Visualizzazione semplificata delle animazioni su dispositivi mobili.
+    \item Grafici adattivi che si ridimensionano in base allo schermo.
+    \item Navigazione touch-friendly.
+    \item Loading ottimizzato per connessioni più lente.
+\end{itemize}
+
+\section{Accessibilità}
+
+\subsection{Conformità WCAG 2.1 AA}
+\begin{itemize}
+    \item Contrasto adeguato per testo ed elementi UI.
+    \item Etichette ARIA per componenti interattivi.
+    \item Focus visibile per la navigazione da tastiera.
+    \item Testo alternativo per elementi visivi.
+\end{itemize}
+
+\subsection{Compatibilità con Screen Reader}
+\begin{itemize}
+    \item Markup semantico.
+    \item Annunci dinamici per aggiornamenti UI.
+    \item Ordine logico di tabulazione.
+    \item Descrizioni per grafici e visualizzazioni.
+\end{itemize}
+
+\section{Performance Client-Side}
+
+\subsection{Ottimizzazioni}
+\begin{itemize}
+    \item Lazy loading per componenti non essenziali.
+    \item Minimizzazione e compressione di CSS e JavaScript.
+    \item Caricamento asincrono delle librerie.
+    \item Utilizzo di sprites CSS per icone.
+\end{itemize}
+
+\subsection{Monitoraggio Performance}
+\begin{itemize}
+    \item Tracciamento dei tempi di rendering.
+    \item Ottimizzazione delle animazioni per dispositivi meno potenti.
+    \item Rilevamento automatico delle capacità del dispositivo.
+\end{itemize}
+
+\section{Comunicazione con il Backend}
+
+\subsection{Modello di Comunicazione}
+Il frontend comunica con il backend tramite chiamate AJAX utilizzando jQuery. Le richieste sono strutturate per minimizzare il numero di chiamate e ottimizzare le prestazioni.
+
+\subsection{Gestione degli Errori}
+Il frontend implementa una gestione robusta degli errori per garantire una buona esperienza utente anche in caso di problemi di comunicazione:
+\begin{itemize}
+    \item Timeout per richieste non risposte.
+    \item Retry automatici per errori temporanei.
+    \item Feedback visivo in caso di errori.
+    \item Modalità degradata in caso di indisponibilità del backend.
+\end{itemize}
+
+\section{Diagramma di Comunicazione UI-Eventi}
+Il diagramma seguente illustra il flusso di comunicazione basato su eventi tra i vari componenti dell'interfaccia utente:
+
+```mermaid
+flowchart TD
+    FormUI -- "form.submit" --> EventBus
+    FormUI -- "form.validated" --> ValidationService
+    EventBus --> SiteWarApp
+    
+    SiteWarApp -- "analysis.start\nanalysis.progress\nanalysis.complete" --> BattleUI
+    BattleUI --> AnalysisUI
+    AnalysisUI --> ResultsUI
+    
+    ResultsUI -- "export.request" --> ExportUI
+```
+
+\section{Gestione dei Dati sul Client}
+
+\subsection{Modello di Dati Client-Side}
+Il frontend gestisce i dati delle analisi tramite un modello strutturato che facilita l'elaborazione e la visualizzazione dei risultati.
+
+\subsection{Persistenza Temporanea}
+\begin{itemize}
+    \item Utilizzo di \texttt{localStorage} per mantenere i risultati recenti.
+    \item Cache in memoria per ottimizzare le performance.
+    \item Reset dei dati al lancio di una nuova analisi.
+\end{itemize}
+
+\section{Testing del Frontend}
+
+\subsection{Strategie di Testing}
+\begin{itemize}
+    \item Test unitari per i moduli principali.
+    \item Test di integrazione per le interazioni tra moduli.
+    \item Test di compatibilità cross-browser.
+    \item Test di performance per garantire la fluidità delle animazioni.
+    \item Test di accessibilità WCAG.
+\end{itemize}
+
+\subsection{Automazione dei Test}
+\begin{itemize}
+    \item Utilizzo di strumenti come Lighthouse per test di performance.
+    \item Test automatizzati di accessibilità.
+    \item Test di regressione per garantire la stabilità durante lo sviluppo.
+\end{itemize}

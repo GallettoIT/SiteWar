@@ -1,0 +1,252 @@
+\chapter{Architettura del Sistema}
+
+\section{Visione d'Insieme dell'Architettura}
+Site War implementa un'architettura client-server con elaborazione distribuita, dove la maggior parte dell'analisi viene eseguita lato client per ottimizzare le prestazioni e ridurre il carico sul server, rispettando il vincolo di completare le analisi entro 25 secondi.
+
+L'architettura è progettata per bilanciare il carico di lavoro tra client e server, assegnando al browser client le analisi che possono essere eseguite direttamente sul DOM e sull'interfaccia utente, mentre il server gestisce le analisi più complesse, l'integrazione con API esterne e la gestione delle chiavi API in modo sicuro.
+
+```mermaid
+flowchart TD
+    subgraph CLIENT["CLIENT BROWSER"]
+        HTML_CSS_JS["- HTML/CSS/JS\n- jQuery\n- Bootstrap\n- Anime.js\n- Chart.js\n- Client Analyzers"]
+    end
+    
+    subgraph SERVER["PHP SERVER"]
+        API_Controller["- API Controller\n- Proxy Service\n- AI Validator\n- Advanced Analyzers\n- Result Generator"]
+    end
+    
+    subgraph EXTERNAL["EXTERNAL SERVICES"]
+        Google["Google PageSpeed Insights"]
+        Moz["Moz API"]
+        Security["Security Headers"]
+        WHOIS["WHOIS API"]
+        HTML["HTML Validator"]
+        CSS["CSS Validator"]
+        OpenAI["OpenAI API"]
+    end
+    
+    CLIENT <--> SERVER
+    CLIENT <--> EXTERNAL
+    SERVER <--> EXTERNAL
+```
+
+\section{Componenti del Sistema}
+
+\subsection{Componenti Principali}
+Il sistema Site War è strutturato in tre componenti principali:
+
+\begin{itemize}
+    \item \textbf{Frontend Component}: Gestisce l'interfaccia utente, le animazioni e l'interazione con l'utente. Implementa anche l'analisi lato client e la visualizzazione dei risultati.
+    
+    \item \textbf{Backend Component}: Gestisce le richieste API, coordina le analisi avanzate e integra i servizi esterni. Include la logica di business lato server, la validazione dei dati e la sicurezza.
+    
+    \item \textbf{Analysis Component}: Implementa gli algoritmi di analisi, confronto e punteggio. Include componenti sia lato client che lato server, coordinati per fornire un'analisi completa e affidabile.
+\end{itemize}
+
+\subsection{Componenti di Supporto}
+Oltre ai componenti principali, il sistema include i seguenti componenti di supporto:
+
+\begin{itemize}
+    \item \textbf{UI Layer Component}: Gestisce specificamente la rappresentazione visiva dell'interfaccia utente e le animazioni della ``guerra'' tra siti.
+    
+    \item \textbf{API Layer Component}: Gestisce l'interfaccia tra frontend e backend, l'autenticazione e la validazione delle richieste.
+    
+    \item \textbf{Data Layer Component}: Gestisce l'elaborazione, l'aggregazione e la formattazione dei dati di analisi.
+\end{itemize}
+
+```mermaid
+flowchart TD
+    subgraph SiteWar["Site War System"]
+        Frontend["Frontend\nComponent"] <--> Backend["Backend\nComponent"] <--> Analysis["Analysis\nComponent"]
+        Frontend --> UILayer["UI Layer\nComponent"]
+        Backend --> APILayer["API Layer\nComponent"]
+        Analysis --> DataLayer["Data Layer\nComponent"]
+    end
+```
+
+\section{Interazioni tra Componenti}
+I componenti del sistema interagiscono tra loro seguendo un modello di comunicazione ben definito:
+
+\begin{enumerate}
+    \item \textbf{Utente $\rightarrow$ Frontend}: L'utente inserisce gli URL dei due siti da confrontare nell'interfaccia utente.
+    
+    \item \textbf{Frontend $\rightarrow$ Backend}: Il frontend invia una richiesta di validazione degli URL al backend.
+    
+    \item \textbf{Backend $\rightarrow$ AI Validator}: Il backend utilizza un servizio AI per verificare la pertinenza del confronto tra i due siti.
+    
+    \item \textbf{Frontend $\rightarrow$ Analysis (Client-side)}: Il frontend avvia le analisi eseguibili lato browser, visualizzando animazioni durante l'elaborazione.
+    
+    \item \textbf{Backend $\rightarrow$ Analysis (Server-side)}: Il server esegue parallelamente le analisi più complesse e quelle che richiedono API esterne.
+    
+    \item \textbf{Analysis $\rightarrow$ Frontend}: I risultati delle analisi vengono progressivamente visualizzati nella UI come ``battaglie'' tra i siti.
+    
+    \item \textbf{Backend $\rightarrow$ Frontend}: Al termine di tutte le analisi, il sistema calcola il punteggio complessivo e proclama il vincitore.
+\end{enumerate}
+
+```mermaid
+sequenceDiagram
+    participant Browser as Browser Client
+    participant Frontend as Frontend Analysis
+    participant Backend as Backend Analysis
+    participant External as External APIs
+    participant Results as Results Processing
+    
+    Browser->>Frontend: Request
+    Note right of Browser: User input
+    Frontend-->>Browser: Return
+    Frontend->>Backend: Process
+    Backend->>External: Request
+    External-->>Backend: Return
+    Backend->>Results: Process
+    Results-->>Browser: Return results
+```
+
+\section{Flusso dei Dati}
+Il flusso dei dati all'interno del sistema segue un percorso lineare dall'input dell'utente fino alla visualizzazione dei risultati:
+
+```mermaid
+flowchart LR
+    UserInput["User Input"] --> URLInput["URL Input"] 
+    URLInput --> ValidationService["Validation Service"]
+    ValidationService --> ClientSideAnalysis["Client-side Analysis"]
+    ClientSideAnalysis --> APIIntegration["API Integration"]
+    APIIntegration --> ServerSideAnalysis["Server-side Analysis"]
+    ServerSideAnalysis --> ResultProcess["Result Process"]
+    ResultProcess --> ResultsDisplay["Results Display"]
+```
+
+\section{Pattern Architetturali}
+L'architettura di Site War implementa diversi pattern di design per garantire modularità, estensibilità e manutenibilità del codice.
+
+\subsection{Pattern Utilizzati}
+
+\begin{itemize}
+    \item \textbf{Module Pattern}: Organizzazione del codice JavaScript in moduli autonomi con responsabilità ben definite, migliorando la manutenibilità e prevenendo conflitti di namespace.
+    
+    \item \textbf{Factory Method}: Creazione di analizzatori specifici per ciascun tipo di test senza accoppiare il codice a classi concrete.
+    
+    \item \textbf{Observer Pattern}: Notifica dei risultati di analisi completati ai vari componenti dell'UI, permettendo aggiornamenti in tempo reale.
+    
+    \item \textbf{Strategy Pattern}: Implementazione di diverse strategie di analisi e confronto, permettendo di cambiarle dinamicamente in base alle necessità.
+    
+    \item \textbf{Adapter Pattern}: Integrazione uniforme con diverse API esterne attraverso un'interfaccia standardizzata.
+    
+    \item \textbf{Facade Pattern}: Interfaccia semplificata per il complesso sistema di analisi sottostante.
+    
+    \item \textbf{MVC Pattern Adattato}: Separazione tra dati (Model), logica (Controller) e presentazione (View) anche senza framework MVC.
+    
+    \item \textbf{Proxy Pattern}: Protezione delle API key e intermediazione con API esterne.
+\end{itemize}
+
+```mermaid
+flowchart TD
+    subgraph SystemArchitecture["System Architecture"]
+        Module["Module Pattern"] 
+        Observer["Observer Pattern"]
+        Factory["Factory Pattern"]
+        Facade["Facade Pattern"]
+        Strategy["Strategy Pattern"]
+        Adapter["Adapter Pattern"]
+        MVC["MVC Pattern"] 
+        Proxy["Proxy Pattern"]
+    end
+```
+
+\section{Integrazione con Servizi Esterni}
+Site War si integra con diversi servizi API esterni per ottenere dati specializzati che arricchiscono l'analisi dei siti web.
+
+\subsection{API e Servizi Utilizzati}
+\begin{itemize}
+    \item \textbf{Google PageSpeed Insights}: Analisi delle performance del sito
+    \item \textbf{Moz API}: Metriche SEO avanzate
+    \item \textbf{Security Headers}: Analisi della sicurezza degli header HTTP
+    \item \textbf{WHOIS API}: Informazioni sulla registrazione dei domini
+    \item \textbf{HTML Validator W3C}: Validazione degli standard HTML
+    \item \textbf{CSS Validator W3C}: Validazione CSS
+    \item \textbf{OpenAI API}: Validazione della pertinenza del confronto
+\end{itemize}
+
+```mermaid
+flowchart TD
+    subgraph ExternalAPI["External API Integration"]
+        SiteWar["Site War System"] --> ProxyLayer["Proxy Layer"]
+        
+        ProxyLayer --> PerformanceServices["Performance Services"]
+        ProxyLayer --> SEOServices["SEO Services"]
+        ProxyLayer --> SecurityServices["Security Services"]
+        
+        PerformanceServices --> PageSpeed["PageSpeed API"]
+        SEOServices --> Moz["Moz API"]
+        SecurityServices --> SecurityHeaders["Security Headers"]
+    end
+```
+
+\subsection{Strategie di Resilienza}
+Per garantire robustezza nell'integrazione con API esterne, il sistema implementa diverse strategie di resilienza:
+
+```mermaid
+flowchart TD
+    PrimaryAPI["Primary API Call"] --> APIResponse["API Response Handler"] --> CacheLayer["Cache Layer"]
+    
+    PrimaryAPI -- "Failure" --> SecondaryAPI["Secondary API Call"]
+    SecondaryAPI --> AlternativeProcessing["Alternative Processing"] --> DegradedExperience["Degraded Experience"]
+    
+    SecondaryAPI -- "Failure" --> ClientSideAlternative["Client-side Alternative"] --> FallbackResults["Fallback Results"]
+```
+
+\section{Sicurezza dell'Architettura}
+La sicurezza è un aspetto fondamentale dell'architettura di Site War, implementata a diversi livelli per proteggere sia i dati degli utenti che le risorse del sistema.
+
+```mermaid
+flowchart TD
+    subgraph SecurityArch["Security Architecture"]
+        ClientSide["Client-side Security"] 
+        APILayer["API Layer Security"] 
+        ServerSide["Server-side Security"]
+        
+        ClientSide --> InputValidation["Input Valid. XSS Prevention CSP Implement. Obfuscation"]
+        APILayer --> RequestValidation["Request Valid. CSRF Protection Rate Limiting Authentication"]
+        ServerSide --> APIKeyProtection["API Key Protect Input Sanitiz. Error Handling HTTPS Enforce."]
+    end
+```
+
+\section{Distribuzione del Carico}
+Per rispettare il vincolo di tempo di 25 secondi per l'analisi completa, il sistema distribuisce strategicamente il carico di lavoro tra client e server:
+
+```mermaid
+flowchart TD
+    subgraph Workload["Workload Division"]
+        ClientSide["Client-side (65%)"] 
+        ServerSide["Server-side (25%)"] 
+        ExternalAPIs["External APIs (10%)"]
+        
+        ClientSide --> ClientAnalysis["- DOM Analysis\n- Basic SEO\n- Performance\n- Visual Metrics"]
+        ServerSide --> ServerAnalysis["- Security Checks\n- Advanced Tech Detection\n- Result Process"]
+        ExternalAPIs --> ExternalAnalysis["- SEO Advanced\n- WHOIS Data\n- SSL Certificate\n- Ext. Validation"]
+    end
+```
+
+\section{Principi di Progettazione}
+L'architettura di Site War è guidata dai seguenti principi di progettazione:
+
+\begin{itemize}
+    \item \textbf{Separation of Concerns}: Separazione netta tra diversi aspetti del sistema
+    \item \textbf{Loose Coupling}: Accoppiamento debole tra i componenti per facilitare modifiche e manutenzione
+    \item \textbf{High Cohesion}: Alta coesione all'interno dei moduli per garantire focalizzazione su responsabilità specifiche
+    \item \textbf{Progressive Enhancement}: Funzionalità di base garantite a tutti gli utenti, con miglioramenti progressivi
+    \item \textbf{Responsivity}: Design adattivo per diverse dimensioni di schermo e dispositivi
+    \item \textbf{Fallback Strategies}: Strategie di fallback per gestire errori e situazioni impreviste
+    \item \textbf{Performance by Design}: Ottimizzazione delle performance come principio di progettazione fondamentale
+\end{itemize}
+
+\section{Deployment e Ambiente}
+L'architettura di deployment del sistema prevede tre ambienti distinti: sviluppo, test e produzione, con strategie specifiche per ciascun ambiente.
+
+```mermaid
+flowchart LR
+    Development["Development Environment"] --> Testing["Testing Environment"] --> Production["Production Environment"]
+    
+    Development --> DevTools["- Local Dev\n- Docker Env\n- Mock APIs\n- Live Reload"]
+    Testing --> TestTools["- Integration\n- Tests\n- Performance\n- Security"]
+    Production --> ProdTools["- Prod Hosting\n- CDN\n- Monitoring\n- Load Balance"]
+```

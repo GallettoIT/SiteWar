@@ -1,0 +1,86 @@
+\chapter{Introduzione}
+
+\section{Overview del Progetto}
+Site War è uno strumento avanzato di web testing che analizza in modo comparativo due siti web, presentando la valutazione tecnica come una ``guerra'' tra siti con la proclamazione finale di un vincitore. Questo approccio creativo è ideato per rendere il web testing tecnico più coinvolgente e accessibile.
+
+L'applicazione è progettata per analizzare in modo approfondito due siti web forniti dall'utente tramite URL, offrendo un confronto dettagliato basato su molteplici parametri tecnici. Al termine dell'analisi, oltre ai risultati dettagliati, verrà dichiarato un vincitore tra i due siti in base a un sistema di punteggio ponderato.
+
+Il tester è in grado di validare tutte le componenti dei due siti, avendo una visione completa degli elementi costitutivi attraverso strutture e grafi di supporto. Durante il tempo di elaborazione, un sistema di animazioni coinvolgenti intrattiene l'utente rappresentando visivamente la ``guerra'' tra i siti basata sui risultati in tempo reale.
+
+\section{Obiettivi}
+Gli obiettivi principali del progetto Site War sono:
+
+\begin{itemize}
+    \item Rendere coinvolgente, giocoso e più accessibile il processo tecnico di web testing attraverso il concetto della ``guerra tra siti''
+    \item Fornire uno strumento di analisi comparativa approfondita per molteplici aspetti tecnici dei siti web
+    \item Offrire risultati completi e dettagliati, presentati in modo visivamente efficace e comprensibile
+    \item Garantire un'esperienza utente fluida e interattiva attraverso animazioni durante il processo di analisi
+    \item Fornire una solida base di dati per valutazioni oggettive sulla qualità e l'efficienza di un sito web rispetto alla concorrenza
+\end{itemize}
+
+\section{Target di Utenza}
+L'applicazione è pensata per rivolgersi a diverse categorie di utenti:
+
+\begin{itemize}
+    \item \textbf{Creatori e sviluppatori web} che desiderano confrontare il proprio sito con siti concorrenti per identificare punti di forza e debolezza
+    \item \textbf{Utenti curiosi} interessati a ottenere informazioni tecniche riguardo due siti per valutarne l'efficienza, l'efficacia e la sicurezza dal punto di vista tecnico
+    \item \textbf{Penetration tester} alla ricerca di vulnerabilità e differenze tecniche o similitudini tra siti
+\end{itemize}
+
+\section{Requisiti Funzionali}
+I requisiti funzionali principali dell'applicazione includono:
+
+\begin{itemize}
+    \item Inserimento degli URL dei due siti da confrontare
+    \item Utilizzo dell'AI per valutare se i due URL appartengono a siti dei quali ha senso eseguire il confronto
+    \item \textbf{Analisi generica} (linguaggi frontend, framework, CMS, versioni, IP, ecc.)
+    \item \textbf{Analisi dei fattori SEO}
+    \item \textbf{Analisi delle vulnerabilità} di sicurezza
+    \item \textbf{Analisi delle prestazioni}
+    \item Confronto basato sulle analisi per decretare il vincitore della ``guerra tra siti''
+\end{itemize}
+
+\section{Requisiti Non Funzionali}
+
+\subsection{Performance e UI}
+Durante il tempo di risposta per l'esecuzione di ogni test, l'utente viene intrattenuto tramite animazioni che illustrano in modo creativo la ``guerra tra i siti'' basata sui risultati real-time delle analisi e dei relativi confronti. Ogni test completo non dovrebbe superare i 25 secondi di tempo di risposta.
+
+\subsection{Scalabilità}
+La maggior parte delle analisi e dei confronti avviene tramite scraping e algoritmi lato client, garantendo una buona scalabilità del sistema.
+
+\subsection{Sicurezza}
+Tutte le comunicazioni devono avvenire tramite protocolli sicuri come HTTPS. Gli algoritmi lato client devono rimanere il più possibile protetti e non iniettabili, mentre le API key utilizzate per i servizi esterni devono essere mantenute sicure.
+
+\subsection{Usabilità}
+L'interfaccia utente è progettata per essere intuitiva e accessibile, con layout responsive che garantiscono una buona esperienza sia su desktop che su dispositivi mobile. La UI è concepita per rendere il processo divertente pur mostrando tutti i dettagli tecnici delle analisi e dei confronti.
+
+\subsection{Manutenibilità}
+Il codice è strutturato in maniera modulare seguendo le linee guida dell'ingegneria del software, implementando i relativi design pattern e con una documentazione completa.
+
+\subsection{Compatibilità}
+L'applicativo deve funzionare correttamente sui principali browser (Chrome, Firefox, Safari, Edge) e su diverse piattaforme/ambienti operativi.
+
+\section{Vincoli Progettuali}
+Lo sviluppo del progetto Site War è soggetto ai seguenti vincoli tecnici:
+
+\begin{itemize}
+    \item \textbf{Lato server}: Utilizzo esclusivo di PHP
+    \item \textbf{Lato client}: HTML5, CSS3, JavaScript
+    \item \textbf{Framework}: Non è consentito l'uso di framework architetturali (es. TypeScript, Angular, React, Node.js, Laravel) ad eccezione di jQuery
+    \item È consentito l'uso di framework con licenza gratuita per scopi non commerciali per l'implementazione di particolari componenti grafiche, come Bootstrap
+\end{itemize}
+
+\section{Struttura del Documento}
+Questa documentazione tecnica è organizzata seguendo un approccio top-down, partendo dalla visione architetturale complessiva fino ad arrivare ai dettagli implementativi dei singoli componenti. La documentazione è strutturata nei seguenti capitoli:
+
+\begin{itemize}
+    \item \textbf{Architettura del Sistema}: Visione d'insieme dell'architettura, componenti principali e loro interazioni
+    \item \textbf{Componente Frontend}: Descrizione dettagliata dell'interfaccia utente, delle animazioni e della visualizzazione dei risultati
+    \item \textbf{Componente Backend}: Dettagli sul funzionamento del backend, delle API e dell'integrazione con servizi esterni
+    \item \textbf{Componente di Analisi}: Spiegazione dei diversi analizzatori e del sistema di confronto e punteggio
+    \item \textbf{Modello dei Dati}: Struttura dei dati utilizzati, metriche e loro elaborazione
+    \item \textbf{Casi d'Uso}: Descrizione dettagliata dei casi d'uso principali del sistema
+    \item \textbf{Sviluppo e Deployment}: Linee guida per lo sviluppo, testing e deployment
+    \item \textbf{Sicurezza}: Considerazioni sulla sicurezza dell'applicazione
+    \item \textbf{Conclusioni}: Riepilogo e considerazioni finali
+\end{itemize}

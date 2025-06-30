@@ -1,0 +1,377 @@
+\chapter{Sviluppo e Deployment}
+
+\section{Ambiente di Sviluppo}
+L'ambiente di sviluppo di Site War è configurato per garantire efficienza, coerenza e qualità durante tutto il processo di sviluppo. Questo capitolo descrive in dettaglio gli strumenti, le configurazioni e le pratiche da seguire durante lo sviluppo del progetto.
+
+\subsection{Requisiti Software}
+Per lo sviluppo di Site War sono necessari i seguenti strumenti:
+
+\begin{itemize}
+    \item Editor di testo o IDE (es. Visual Studio Code, Sublime Text)
+    \item Browser moderni (Chrome, Firefox, Safari, Edge)
+    \item PHP 7.4 o superiore
+    \item Server web (es. Apache, Nginx)
+    \item MySQL o altro database compatibile
+    \item Node.js e npm per la gestione delle dipendenze frontend
+    \item Strumenti di versionamento (es. Git)
+\end{itemize}
+
+\subsection{Configurazione dell'Ambiente}
+Di seguito sono riportate le istruzioni per configurare l'ambiente di sviluppo:
+
+\begin{enumerate}
+    \item \textbf{Installazione del server locale}:
+    \begin{itemize}
+        \item Installare XAMPP/WAMP/MAMP con PHP 7.4 o superiore
+        \item Configurare un virtual host per il progetto
+        \item Impostare i permessi corretti sulle directory
+    \end{itemize}
+    
+    \item \textbf{Configurazione del repository Git}:
+    \begin{itemize}
+        \item Clonare il repository da GitHub
+        \item Configurare i git hooks per lint pre-commit
+        \item Impostare .gitignore per escludere file di configurazione locali e cache
+    \end{itemize}
+    
+    \item \textbf{Installazione delle dipendenze}:
+    \begin{itemize}
+        \item Eseguire \texttt{npm install} per le dipendenze frontend
+        \item Eseguire \texttt{composer install} per eventuali dipendenze PHP
+    \end{itemize}
+    
+    \item \textbf{Configurazione delle API Key}:
+    \begin{itemize}
+        \item Copiare il file \texttt{config/api\_keys.sample.php} in \texttt{config/api\_keys.php}
+        \item Ottenere le chiavi API per i servizi richiesti e inserirle nel file
+    \end{itemize}
+\end{enumerate}
+
+%\subsection{Struttura di Directory}
+%Il progetto segue la seguente struttura di directory:
+%
+%\begin{verbatim}
+%site-war/
+%│
+%├── assets/                   # Risorse statiche
+%│   ├── css/                  # Fogli di stile
+%│   │   ├── main.css          # Stile principale
+%│   │   ├── animations.css    # Animazioni della "guerra"
+%│   │   ├── components/       # Stili per componenti specifici
+%│   │   └── vendors/          # CSS di terze parti (Bootstrap)
+%│   │
+%│   ├── js/                   # JavaScript
+%│   │   ├── main.js           # Entry point
+%│   │   ├── modules/          # Moduli funzionali
+%│   │   │   ├── analyzers/    # Moduli di analisi
+%│   │   │   ├── ui/           # Componenti UI
+%│   │   │   ├── core/         # Funzionalità core
+%│   │   │   └── comparison/   # Logica di confronto
+%│   │   │
+%│   │   └── vendors/          # Librerie di terze parti
+%│   │
+%│   └── images/               # Immagini e icone
+%│
+%├── server/                   # Backend PHP
+%│   ├── api/                  # Endpoint API
+%│   ├── config/               # Configurazioni
+%│   ├── core/                 # Funzionalità core
+%│   ├── services/             # Servizi di business logic
+%│   └── utils/                # Utility functions
+%│
+%├── templates/                # Template HTML modulari
+%│   ├── components/           # Componenti riutilizzabili
+%│   └── pages/                # Template pagine
+%│
+%├── tests/                    # Test unitari e funzionali
+%│
+%├── index.php                 # Entry point applicazione
+%├── .htaccess                 # Configurazione Apache
+%└── README.md                 # Documentazione
+%\end{verbatim}
+
+\section{Linee Guida per lo Sviluppo}
+
+\subsection{Standard di Codifica}
+Per garantire la manutenibilità e la leggibilità del codice, tutti gli sviluppatori devono seguire questi standard:
+
+\subsubsection{PHP}
+\begin{itemize}
+    \item Seguire le PSR-1 e PSR-12 per lo stile del codice
+    \item Utilizzare la documentazione PHPDoc per tutte le classi e i metodi
+    \item Evitare l'uso di variabili globali
+    \item Limitare l'uso di costrutti basati su stringhe come \texttt{eval()}
+    \item Usare costanti per valori fissi
+\end{itemize}
+
+\subsubsection{JavaScript}
+\begin{itemize}
+    \item Seguire lo standard Airbnb JavaScript Style Guide
+    \item Usare il Module Pattern per organizzare il codice
+    \item Documentare le funzioni con JSDoc
+    \item Preferire l'uso di funzioni anonime con arrow functions
+    \item Usare sempre \texttt{'use strict'}
+\end{itemize}
+
+\subsubsection{HTML/CSS}
+\begin{itemize}
+    \item Seguire le linee guida HTML5
+    \item Usare la convenzione BEM per i nomi delle classi CSS
+    \item Strutturare i fogli di stile in modo modulare
+    \item Garantire la validazione W3C
+    \item Mantenere la separazione tra struttura (HTML), presentazione (CSS) e comportamento (JS)
+\end{itemize}
+
+\subsection{Best Practices}
+\begin{itemize}
+    \item \textbf{Security by Design}: Implementare misure di sicurezza fin dall'inizio
+    \item \textbf{Defensive Programming}: Validare tutti gli input e gestire tutti i possibili errori
+    \item \textbf{DRY (Don't Repeat Yourself)}: Evitare la duplicazione del codice
+    \item \textbf{KISS (Keep It Simple, Stupid)}: Preferire soluzioni semplici e chiare
+    \item \textbf{Progressive Enhancement}: Garantire funzionalità di base per tutti gli utenti
+\end{itemize}
+
+\subsection{Processo di Revisione del Codice}
+Tutto il codice deve passare attraverso un processo di revisione prima di essere integrato nel branch principale:
+
+\begin{enumerate}
+    \item Lo sviluppatore crea un branch feature/fix
+    \item Lo sviluppatore implementa le modifiche e esegue i test locali
+    \item Viene creata una Pull Request
+    \item Almeno un altro sviluppatore revisiona il codice
+    \item I test automatici vengono eseguiti sulla Pull Request
+    \item Dopo l'approvazione e il passaggio dei test, il codice viene integrato
+\end{enumerate}
+
+\section{Testing}
+
+\subsection{Tipi di Test}
+Il progetto prevede diversi livelli di testing per garantire la qualità del software:
+
+\begin{itemize}
+    \item \textbf{Test Unitari}: Verifica delle singole unità di codice
+    \item \textbf{Test di Integrazione}: Verifica dell'interazione tra diversi moduli
+    \item \textbf{Test Funzionali}: Verifica del comportamento dell'applicazione dal punto di vista dell'utente
+    \item \textbf{Test di Performance}: Verifica delle prestazioni del sistema
+    \item \textbf{Test di Compatibilità}: Verifica del funzionamento sui diversi browser e dispositivi
+    \item \textbf{Test di Accessibilità}: Verifica della conformità agli standard WCAG 2.1 AA
+    \item \textbf{Test di Sicurezza}: Verifica della resistenza a vulnerabilità comuni
+\end{itemize}
+
+\subsection{Strumenti di Testing}
+\begin{itemize}
+    \item \textbf{PHPUnit}: Per i test unitari PHP
+    \item \textbf{Jest}: Per i test unitari JavaScript
+    \item \textbf{Cypress}: Per i test funzionali end-to-end
+    \item \textbf{Lighthouse}: Per i test di performance
+    \item \textbf{BrowserStack}: Per i test di compatibilità cross-browser
+    \item \textbf{WAVE}: Per i test di accessibilità
+    \item \textbf{OWASP ZAP}: Per i test di sicurezza automatizzati
+\end{itemize}
+
+\subsection{Strategia di Testing}
+\begin{itemize}
+    \item \textbf{Test-Driven Development (TDD)}: Per componenti critici
+    \item \textbf{Continuous Testing}: Test automatici eseguiti ad ogni commit
+    \item \textbf{Test Coverage}: Mirare a una copertura di test del 80\% per il codice core
+    \item \textbf{Smoke Testing}: Verifiche rapide sui principali flussi utente
+    \item \textbf{Regression Testing}: Verifica che le nuove modifiche non rompano funzionalità esistenti
+\end{itemize}
+
+\section{Continuous Integration e Continuous Deployment}
+
+\subsection{Workflow CI/CD}
+Il progetto utilizza un workflow CI/CD completo per automatizzare il processo di integrazione e deployment:
+
+```mermaid
+flowchart LR
+    DeveloperChange["Developer Change"] --> GitCommit["Git Commit"]
+    GitCommit --> AutomatedTests["Automated Tests"]
+    AutomatedTests --> CodeReview["Code Review"]
+    CodeReview --> MergeToMainBranch["Merge to Main Branch"]
+    MergeToMainBranch --> StagingDeployment["Staging Deployment"]
+    StagingDeployment --> LiveTesting["Live Testing"]
+    LiveTesting --> ProductionDeployment["Production Deployment"]
+```
+
+\subsection{Configurazione CI/CD}
+\begin{itemize}
+    \item \textbf{Jenkins}: Per l'automazione dei processi CI/CD
+    \item \textbf{GitHub Actions}: Per l'integrazione con il repository
+    \item \textbf{Docker}: Per la creazione di ambienti di test e deployment consistenti
+    \item \textbf{Automated Testing}: Esecuzione automatica di tutti i test ad ogni commit
+    \item \textbf{Deployment Automatico}: Deployment automatico agli ambienti di staging e produzione dopo il passaggio dei test
+\end{itemize}
+
+\section{Gestione delle Release}
+
+\subsection{Versionamento}
+Il progetto segue il versionamento semantico (SemVer):
+
+\begin{itemize}
+    \item \textbf{Major}: Cambiamenti incompatibili con le versioni precedenti
+    \item \textbf{Minor}: Nuove funzionalità compatibili con le versioni precedenti
+    \item \textbf{Patch}: Correzioni di bug compatibili con le versioni precedenti
+\end{itemize}
+
+\subsection{Processo di Release}
+\begin{enumerate}
+    \item Creazione di un branch \texttt{release/X.Y.Z}
+    \item Esecuzione di test completi sul branch di release
+    \item Aggiornamento di changelog e documentazione
+    \item Merge nel branch \texttt{main} e tagging con la versione
+    \item Deployment in produzione
+    \item Comunicazione della release agli stakeholder
+\end{enumerate}
+
+\subsection{Hotfix}
+Per correzioni urgenti in produzione:
+\begin{enumerate}
+    \item Creazione di un branch \texttt{hotfix/X.Y.Z+1}
+    \item Implementazione e test della correzione
+    \item Merge nei branch \texttt{main} e \texttt{develop}
+    \item Deployment in produzione
+\end{enumerate}
+
+\section{Ambienti di Deployment}
+
+\subsection{Ambienti Disponibili}
+\begin{itemize}
+    \item \textbf{Development}: Ambiente di sviluppo locale per ogni sviluppatore
+    \item \textbf{Integration}: Ambiente condiviso per l'integrazione delle modifiche
+    \item \textbf{Staging}: Ambiente di pre-produzione per test finali
+    \item \textbf{Production}: Ambiente di produzione visibile agli utenti finali
+\end{itemize}
+
+\subsection{Requisiti Infrastrutturali}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Risorsa} & \textbf{Sviluppo} & \textbf{Staging} & \textbf{Produzione} \\
+\hline
+Server Web & Apache/Nginx & Nginx & Nginx \\
+\hline
+PHP & 7.4+ & 7.4+ & 7.4+ \\
+\hline
+CPU & 2 core & 4 core & 8+ core \\
+\hline
+RAM & 4 GB & 8 GB & 16+ GB \\
+\hline
+Storage & 20 GB SSD & 50 GB SSD & 100+ GB SSD \\
+\hline
+Caching & Opzionale & Redis & Redis \\
+\hline
+CDN & No & Opzionale & Sì \\
+\hline
+SSL & Opzionale & Sì & Sì \\
+\hline
+\end{tabular}
+\caption{Requisiti infrastrutturali per ambiente}
+\label{table:infrastructure-requirements}
+\end{table}
+
+\subsection{Configurazione di Deployment}
+
+```mermaid
+flowchart TD
+    subgraph ProductionDeployment["Production Deployment"]
+        Frontend["Frontend (Nginx)"] <--> Backend["Backend (PHP-FPM)"]
+        Backend <--> RedisCache["Redis Cache"]
+        
+        Frontend --> CDNAssets["CDN (Assets)"]
+        Backend --> ExternalAPIs["External APIs"]
+    end
+```
+
+\subsection{Gestione delle Configurazioni}
+\begin{itemize}
+    \item \textbf{Environment Variables}: Configurazioni specifiche per ambiente
+    \item \textbf{Configuration Files}: File di configurazione per impostazioni non sensibili
+    \item \textbf{Secret Management}: Gestione sicura di chiavi API e credenziali
+    \item \textbf{Feature Flags}: Abilita/disabilita funzionalità per ambiente
+\end{itemize}
+
+\section{Monitoraggio e Logging}
+
+\subsection{Sistema di Logging}
+\begin{itemize}
+    \item \textbf{Application Logs}: Log delle attività dell'applicazione
+    \item \textbf{Error Logs}: Log degli errori e delle eccezioni
+    \item \textbf{Access Logs}: Log degli accessi al sistema
+    \item \textbf{Performance Logs}: Log delle metriche di performance
+    \item \textbf{API Logs}: Log delle chiamate alle API esterne
+\end{itemize}
+
+\subsection{Monitoraggio}
+\begin{itemize}
+    \item \textbf{Uptime Monitoring}: Controllo della disponibilità del servizio
+    \item \textbf{Performance Monitoring}: Monitoraggio delle prestazioni
+    \item \textbf{Error Tracking}: Rilevamento e tracciamento degli errori
+    \item \textbf{Resource Monitoring}: Monitoraggio dell'utilizzo delle risorse
+    \item \textbf{User Analytics}: Analisi del comportamento degli utenti
+\end{itemize}
+
+\subsection{Alerting}
+\begin{itemize}
+    \item \textbf{Threshold Alerts}: Avvisi basati su soglie predefinite
+    \item \textbf{Anomaly Detection}: Rilevamento di comportamenti anomali
+    \item \textbf{Incident Management}: Processo di gestione degli incidenti
+    \item \textbf{On-Call Rotation}: Rotazione del personale di supporto
+\end{itemize}
+
+\section{Documentazione}
+
+\subsection{Tipi di Documentazione}
+\begin{itemize}
+    \item \textbf{Documentazione Tecnica}: Descrizione dettagliata dell'architettura e dei componenti
+    \item \textbf{API Documentation}: Documentazione delle API esposte
+    \item \textbf{Code Documentation}: Documentazione del codice sorgente
+    \item \textbf{User Documentation}: Guide per gli utenti finali
+    \item \textbf{Operations Documentation}: Procedure operative e di manutenzione
+\end{itemize}
+
+\subsection{Gestione della Documentazione}
+\begin{itemize}
+    \item \textbf{Documentation as Code}: La documentazione è trattata come codice e versionata
+    \item \textbf{Automated Generation}: Generazione automatica della documentazione dall'API e dal codice
+    \item \textbf{Review Process}: Processo di revisione per la documentazione
+    \item \textbf{Update on Release}: Aggiornamento della documentazione ad ogni release
+\end{itemize}
+
+\section{Backup e Disaster Recovery}
+
+\subsection{Strategia di Backup}
+\begin{itemize}
+    \item \textbf{Code Repository}: Il codice è versionato e disponibile nel repository Git
+    \item \textbf{Configuration Backup}: Backup regolari delle configurazioni
+    \item \textbf{Data Backup}: Backup dei dati generati dall'applicazione
+    \item \textbf{Log Backup}: Archiviazione dei log per analisi future
+\end{itemize}
+
+\subsection{Disaster Recovery}
+\begin{itemize}
+    \item \textbf{Recovery Plan}: Piano dettagliato per il ripristino del servizio
+    \item \textbf{Recovery Time Objective (RTO)}: Tempo massimo accettabile per il ripristino
+    \item \textbf{Recovery Point Objective (RPO)}: Massima perdita di dati accettabile
+    \item \textbf{Failover Mechanism}: Meccanismi di failover per garantire la continuità del servizio
+    \item \textbf{Regular Testing}: Test regolari del piano di disaster recovery
+\end{itemize}
+
+\section{Manutenzione e Supporto}
+
+\subsection{Manutenzione Regolare}
+\begin{itemize}
+    \item \textbf{Security Updates}: Aggiornamenti regolari per questioni di sicurezza
+    \item \textbf{Dependency Updates}: Aggiornamento delle dipendenze
+    \item \textbf{Performance Optimization}: Ottimizzazione continua delle performance
+    \item \textbf{Code Refactoring}: Refactoring del codice per migliorarne la qualità
+\end{itemize}
+
+\subsection{Supporto}
+\begin{itemize}
+    \item \textbf{Issue Tracking}: Sistema di tracciamento dei problemi
+    \item \textbf{Support Tiers}: Livelli di supporto in base alla criticità
+    \item \textbf{Response Time}: Tempi di risposta garantiti per ciascun livello
+    \item \textbf{User Feedback}: Raccolta e analisi del feedback degli utenti
+\end{itemize}

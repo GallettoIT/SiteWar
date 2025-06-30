@@ -1,0 +1,513 @@
+\chapter{Componente di Analisi}
+
+\section{Panoramica del Componente}
+Il componente di analisi rappresenta il cuore funzionale di Site War, responsabile dell'esecuzione dei test sui siti web, della raccolta dei dati e della preparazione dei risultati per il confronto. È suddiviso in moduli di analisi client-side e server-side che operano in parallelo per garantire un'analisi completa entro il limite di 25 secondi.
+
+Questo componente implementa una strategia di distribuzione del carico, sfruttando le capacità del browser per le analisi che possono essere eseguite direttamente sul DOM e sul rendering, mentre delega al server le analisi più complesse o quelle che richiedono l'integrazione con API esterne. Il risultato è un sistema ibrido che ottimizza l'uso delle risorse e minimizza i tempi di attesa.
+
+\section{Architettura del Componente}
+
+\subsection{Diagramma delle Classi}
+Il componente di analisi è strutturato seguendo i principi della programmazione orientata agli oggetti, con una chiara separazione delle responsabilità e un'architettura estensibile. Il diagramma seguente illustra le principali classi e le loro relazioni:
+
+```mermaid
+classDiagram
+    class AnalysisManager {
+        -site1Url: string
+        -site2Url: string
+        -analyzers: Map<string, BaseAnalyzer>
+        -progress: number
+        -results: object
+        +constructor(site1Url, site2Url)
+        +runAnalysis() Promise<object>
+        +trackProgress() number
+        +getResults() object
+        -initAnalyzers() void
+        -analyzeOneSite(url) Promise<object>
+        -compareResults(site1Results, site2Results) object
+    }
+    
+    class AnalyzerFactory {
+        +createAnalyzer(type, url) BaseAnalyzer
+        +getAvailableAnalyzers() string[]
+    }
+    
+    class BaseAnalyzer {
+        #url: string
+        #results: object
+        #progress: number
+        #isCompleted: boolean
+        +constructor(url)
+        +analyze() Promise<object>
+        +getResults() object
+        +getProgress() number
+        +isComplete() boolean
+        #calculateScore() number
+        #updateProgress(value) void
+    }
+    
+    class DOMAnalyzer {
+        -dom: Document
+        +analyze() Promise
+        -parseDOM() void
+        -analyzeStructure()
+        -checkSemantics()
+    }
+    
+    class SEOAnalyzer {
+        -headElements
+        +analyze() Promise
+        -checkMetaTags()
+        -analyzeHeadings()
+        -checkLinks()
+    }
+    
+    class PerformanceAnalyzer {
+        -metrics: object
+        +analyze() Promise
+        -measureFCP()
+        -measureLCP()
+        -calculateCLS()
+    }
+    
+    class SecurityAnalyzer {
+        -headers: object
+        +analyze() Promise
+        -checkSSL() object
+        -checkHeaders() object
+        -scanVulnerabilities()
+    }
+    
+    AnalysisManager --> AnalyzerFactory: creates
+    AnalyzerFactory --> BaseAnalyzer: creates
+    BaseAnalyzer <|-- DOMAnalyzer
+    BaseAnalyzer <|-- SEOAnalyzer
+    BaseAnalyzer <|-- PerformanceAnalyzer
+    BaseAnalyzer <|-- SecurityAnalyzer
+```
+
+\subsection{Componenti Principali}
+
+\subsubsection{AnalysisManager}
+Classe centrale che coordina l'intero processo di analisi. Si occupa di inizializzare gli analizzatori, eseguire le analisi per entrambi i siti, monitorare lo stato di avanzamento e aggregare i risultati finali.
+
+\subsubsection{AnalyzerFactory}
+Implementa il pattern Factory Method per creare istanze di analizzatori specifici in base al tipo richiesto. Centralizza la creazione di oggetti e facilita l'estensibilità del sistema.
+
+\subsubsection{BaseAnalyzer}
+Classe base astratta per tutti gli analizzatori specifici. Definisce l'interfaccia comune e implementa funzionalità condivise, come la gestione dello stato di completamento, il monitoraggio del progresso e la restituzione dei risultati.
+
+\subsubsection{Analizzatori Concreti}
+Classi specializzate che estendono BaseAnalyzer e implementano analisi specifiche:
+\begin{itemize}
+    \item \textbf{DOMAnalyzer}: Analizza la struttura del DOM, la gerarchia degli elementi e la qualità del markup.
+    \item \textbf{SEOAnalyzer}: Valuta l'ottimizzazione per i motori di ricerca, analizzando meta tag, struttura URL, alt text per immagini, ecc.
+    \item \textbf{PerformanceAnalyzer}: Misura le performance del sito, inclusi tempi di caricamento, reattività e fluidità.
+    \item \textbf{SecurityAnalyzer}: Verifica la sicurezza del sito, analizzando configurazione SSL, header di sicurezza, vulnerabilità, ecc.
+    \item \textbf{TechnologyAnalyzer}: Identifica le tecnologie utilizzate dal sito, come framework, librerie e CMS.
+\end{itemize}
+
+\subsubsection{APIConnector}
+Gestisce le comunicazioni con le API esterne, fornendo un'interfaccia uniforme per le richieste HTTP e la gestione delle risposte.
+
+\subsubsection{ResultComparator}
+Si occupa di confrontare i risultati delle analisi per i due siti e di determinare il vincitore in base ai punteggi ottenuti nelle diverse categorie.
+
+\section{Diagramma di Stato - Processo di Analisi}
+Il processo di analisi attraversa diversi stati, dall'inizializzazione fino al completamento. Il diagramma seguente illustra questa transizione di stati:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Initiated: initAnalysis
+    Initiated --> Idle: reset
+    Initiated --> Analyzing: startAnalysis
+    Analyzing --> Timeout: setTimeout
+    Analyzing --> Completed: analysisComplete
+    Timeout --> Completed: reset
+    Completed --> Reset: reset
+    Reset --> [*]
+```
+
+\section{Diagramma di Sequenza - Processo di Analisi}
+Il diagramma di sequenza seguente illustra l'interazione tra i vari componenti durante un processo di analisi completo:
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant AnalysisManager
+    participant AnalyzerFactory
+    participant BaseAnalyzer
+    participant APIConnector
+    participant ResultComparator
+    
+    User->>AnalysisManager: StartAnalysis
+    AnalysisManager->>AnalyzerFactory: Create Analyzers
+    AnalyzerFactory->>BaseAnalyzer: Create Analyzers
+    BaseAnalyzer-->>AnalyzerFactory: Return Analyzers
+    AnalyzerFactory-->>AnalysisManager: Return Analyzers
+    AnalysisManager->>BaseAnalyzer: Run Analysis
+    BaseAnalyzer->>APIConnector: API Request
+    APIConnector-->>BaseAnalyzer: API Response
+    BaseAnalyzer->>ResultComparator: Process Data
+    ResultComparator-->>BaseAnalyzer: Return Results
+    AnalysisManager->>User: Progress Update
+    AnalysisManager->>User: Analysis Complete
+```
+
+\section{Diagramma dei Casi d'Uso - Analisi}
+Il componente di analisi implementa diversi casi d'uso specifici relativi all'analisi e al confronto dei siti web:
+
+```mermaid
+flowchart TD
+    User(["User"])
+    
+    User --> InitiateSiteComparison["Initiate Site Comparison"]
+    
+    InitiateSiteComparison --> AnalyzeSite1["Analyze Site 1"]
+    InitiateSiteComparison --> AnalyzeSite2["Analyze Site 2"]
+    
+    AnalyzeSite1 --> PerformDOM["Perform DOM Analysis"]
+    AnalyzeSite1 --> PerformSEO["Perform SEO Analysis"]
+    AnalyzeSite2 --> PerformDOM
+    AnalyzeSite2 --> PerformSEO
+    
+    PerformDOM --> PerformSecurity["Perform Security Analysis"]
+    PerformSEO --> PerformPerformance["Perform Performance Analysis"]
+    
+    PerformSecurity --> CompareResults["Compare Results"]
+    PerformPerformance --> CompareResults
+    
+    CompareResults --> DetermineWinner["Determine Winner"]
+```
+
+\section{Moduli di Analisi}
+Il componente di analisi è suddiviso in diversi moduli specializzati, ciascuno responsabile di un aspetto specifico dell'analisi di un sito web.
+
+\subsection{Analisi DOM e Struttura (Client-side)}
+\begin{itemize}
+    \item \textbf{Responsabilità}: Analizzare la struttura del documento HTML, la gerarchia degli elementi e la qualità del markup
+    \item \textbf{Metriche chiave}:
+    \begin{itemize}
+        \item Struttura dei heading (H1-H6)
+        \item Rapporto testo/codice
+        \item Uso corretto di elementi semantici
+        \item Accessibilità della struttura
+    \end{itemize}
+\end{itemize}
+
+\subsection{Analisi SEO (Client+Server)}
+\begin{itemize}
+    \item \textbf{Responsabilità}: Valutare l'ottimizzazione per i motori di ricerca
+    \item \textbf{Metriche chiave}:
+    \begin{itemize}
+        \item Meta tag (title, description)
+        \item URL structure
+        \item Alt text per immagini
+        \item Schema markup
+        \item Sitemap e robots.txt
+        \item Canonical URLs
+    \end{itemize}
+\end{itemize}
+
+\subsection{Analisi Performance (Client-side)}
+\begin{itemize}
+    \item \textbf{Responsabilità}: Misurare la velocità e l'efficienza del caricamento
+    \item \textbf{Metriche chiave}:
+    \begin{itemize}
+        \item First Contentful Paint (FCP)
+        \item Largest Contentful Paint (LCP)
+        \item Time to Interactive (TTI)
+        \item Cumulative Layout Shift (CLS)
+        \item First Input Delay (FID)
+        \item Resource loading times
+    \end{itemize}
+\end{itemize}
+
+\subsection{Analisi Sicurezza (Server-side)}
+\begin{itemize}
+    \item \textbf{Responsabilità}: Verificare la sicurezza del sito web
+    \item \textbf{Metriche chiave}:
+    \begin{itemize}
+        \item HTTP security headers
+        \item SSL/TLS configuration
+        \item Content Security Policy
+        \item Cross-site scripting vulnerabilities
+        \item HSTS implementation
+        \item Cookie security
+    \end{itemize}
+\end{itemize}
+
+\subsection{Analisi Tecnologica (Client+Server)}
+\begin{itemize}
+    \item \textbf{Responsabilità}: Identificare tecnologie, framework e librerie utilizzate
+    \item \textbf{Metriche chiave}:
+    \begin{itemize}
+        \item Framework frontend
+        \item CMS in uso
+        \item Server-side technologies
+        \item JavaScript libraries
+        \item Versioni del software
+        \item API utilizzate
+    \end{itemize}
+\end{itemize}
+
+\section{Sistema di Punteggio}
+
+\subsection{Diagramma del Calcolo del Punteggio}
+Il sistema di punteggio è una componente essenziale per la determinazione del vincitore. Il diagramma seguente illustra il processo di calcolo del punteggio:
+
+```mermaid
+flowchart LR
+    RawData["Raw Data"] --> Validation["Validation"]
+    Validation --> TypeConversion["Type Conversion"]
+    TypeConversion --> ScaleAdjustment["Scale Adjustment"]
+    ScaleAdjustment --> FinalProcessing["Final Processing"]
+    FinalProcessing --> NormalizedData["Normalized Data"]
+```
+
+\subsection{Formula di Punteggio}
+Il punteggio finale viene calcolato come una media ponderata dei punteggi nelle singole categorie:
+
+\textbf{Punteggio Categoria}:
+\begin{verbatim}
+CategoryScore = (Metric1 * Weight1) + (Metric2 * Weight2) + ... + (MetricN * WeightN)
+\end{verbatim}
+
+\textbf{Punteggio Finale}:
+\begin{verbatim}
+FinalScore = (PerformanceScore * 0.3) + (SEOScore * 0.25) + 
+             (SecurityScore * 0.25) + (TechnicalScore * 0.2)
+\end{verbatim}
+
+\subsection{Pesi delle Categorie}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Categoria} & \textbf{Peso} & \textbf{Descrizione} \\
+\hline
+Performance & 30\% & Velocità e reattività del sito \\
+\hline
+SEO & 25\% & Ottimizzazione per motori di ricerca \\
+\hline
+Sicurezza & 25\% & Protezione e conformità \\
+\hline
+Aspetti Tecnici & 20\% & Qualità del codice e tecnologie \\
+\hline
+\end{tabular}
+\caption{Pesi delle categorie nel calcolo del punteggio finale}
+\label{table:category-weights}
+\end{table}
+
+\subsection{Normalizzazione delle Metriche}
+Per garantire una valutazione equa e significativa, le metriche raw vengono normalizzate in un punteggio da 0 a 100 utilizzando scale e soglie specifiche per ciascuna metrica.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|c|}
+\hline
+\textbf{Metrica} & \textbf{Valore Raw} & \textbf{Valutazione} & \textbf{Punteggio} \\
+\hline
+FCP & < 1000ms & Eccellente & 90-100 \\
+\hline
+FCP & 1000-2500ms & Buono & 60-89 \\
+\hline
+FCP & 2500-4000ms & Migliorabile & 30-59 \\
+\hline
+FCP & > 4000ms & Scarso & 0-29 \\
+\hline
+LCP & < 2500ms & Eccellente & 90-100 \\
+\hline
+LCP & 2500-4000ms & Buono & 60-89 \\
+\hline
+LCP & 4000-6000ms & Migliorabile & 30-59 \\
+\hline
+LCP & > 6000ms & Scarso & 0-29 \\
+\hline
+CLS & < 0.1 & Eccellente & 90-100 \\
+\hline
+CLS & 0.1-0.25 & Buono & 60-89 \\
+\hline
+CLS & 0.25-0.4 & Migliorabile & 30-59 \\
+\hline
+CLS & > 0.4 & Scarso & 0-29 \\
+\hline
+SSL Grade & A+ & Eccellente & 90-100 \\
+\hline
+SSL Grade & A & Molto Buono & 80-89 \\
+\hline
+SSL Grade & B & Buono & 70-79 \\
+\hline
+SSL Grade & C & Migliorabile & 50-69 \\
+\hline
+SSL Grade & F & Scarso & 0-49 \\
+\hline
+\end{tabular}
+\caption{Normalizzazione delle metriche principali}
+\label{table:metric-normalization}
+\end{table}
+
+\section{Integrazione con API Esterne}
+Il componente di analisi si integra con diverse API esterne per ottenere dati specializzati sui siti web analizzati.
+
+\subsection{Diagramma di Integrazione API}
+
+```mermaid
+flowchart TD
+    APIConnector[("APIConnector")]
+    
+    APIConnector --> PageSpeed["PageSpeed API"]
+    APIConnector --> MozSEO["Moz SEO API"]
+    APIConnector --> SecurityHeaders["Security Headers"]
+    APIConnector --> WHOIS["WHOIS API"]
+    APIConnector --> W3CValidator["W3C Validator"]
+    APIConnector --> OpenAI["OpenAI API"]
+```
+
+\subsection{API Utilizzate}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{API} & \textbf{Scopo} \\
+\hline
+Google PageSpeed Insights & Metriche di performance \\
+\hline
+Moz API & Metriche SEO \\
+\hline
+Security Headers & Analisi header di sicurezza \\
+\hline
+WHOIS API & Informazioni sul dominio \\
+\hline
+W3C Validator & Validazione HTML/CSS \\
+\hline
+\hline
+OpenAI API & Validazione pertinenza \\
+\hline
+\end{tabular}
+\caption{API esterne utilizzate}
+\label{table:external-apis}
+\end{table}
+
+\section{Gestione del Parallelismo}
+
+\subsection{Diagramma di Esecuzione Parallela}
+Per ottimizzare i tempi di esecuzione, il componente di analisi implementa diverse strategie di parallelizzazione:
+
+```mermaid
+flowchart TD
+    StartAnalysis["Start Analysis"] --> Site1Analysis["Site 1 Analysis"] & Site2Analysis["Site 2 Analysis"]
+    
+    Site1Analysis & Site2Analysis --> ParallelAnalysis["Parallel Analysis Execution"]
+    
+    ParallelAnalysis --> DOM["DOM"] & SEO["SEO"] & Perf["Perf"] & Sec["Sec"]
+    
+    DOM & SEO & Perf & Sec --> ResultsAggregation["Results Aggregation"]
+    
+    ResultsAggregation --> Comparison["Comparison"]
+```
+
+\subsection{Strategie di Parallelizzazione}
+\begin{enumerate}
+    \item \textbf{Parallelizzazione Inter-sito}: Analisi parallela dei due siti web
+    \item \textbf{Parallelizzazione Intra-sito}: Esecuzione parallela dei diversi analizzatori per lo stesso sito
+    \item \textbf{Esecuzione Asincrona API}: Richieste API asincrone per minimizzare i tempi di attesa
+    \item \textbf{Prioritizzazione Task}: Priorità alle analisi con minor tempo di esecuzione
+    \item \textbf{Pooling Risorse}: Limitazione del numero di richieste parallele per evitare sovraccarichi
+\end{enumerate}
+
+\section{Gestione degli Errori}
+
+\subsection{Diagramma di Gestione Errori}
+
+```mermaid
+flowchart TD
+    AnalysisRequest["Analysis Request"] --> APIRequest["API Request"]
+    
+    APIRequest -- Success --> DataProcessing["Data Processing"]
+    APIRequest -- Error --> ErrorDetection["Error Detection"]
+    
+    DataProcessing --> SuccessResult["Success Result"]
+    ErrorDetection --> ErrorClassification["Error Classification"]
+    
+    SuccessResult --> ReturnFullResult["Return Full Result"]
+    ErrorClassification --> ErrorRecovery["Error Recovery"]
+    
+    ErrorRecovery --> ReturnPartialResult["Return Partial Result"]
+```
+
+\subsection{Tipi di Errore e Strategie di Recupero}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Tipo di Errore} & \textbf{Strategia di Recupero} \\
+\hline
+Timeout API & Utilizzare valori predefiniti con penalità \\
+\hline
+API non disponibile & Usare analisi client-side alternativa \\
+\hline
+Dati parziali & Continuare con i dati disponibili \\
+\hline
+Errore di parsing & Utilizzare una struttura di pagina predefinita \\
+\hline
+Errore di rete & Ritentare con backoff esponenziale \\
+\hline
+Errore di autenticazione API & Passare a modalità limitata \\
+\hline
+\end{tabular}
+\caption{Tipi di errore e strategie di recupero}
+\label{table:error-recovery}
+\end{table}
+
+\section{Estensibilità del Sistema}
+
+\subsection{Diagramma di Estensibilità}
+
+```mermaid
+flowchart TD
+    BaseAnalyzerInterface["Base Analyzer Interface"] --> CustomAnalyzer["Custom Analyzer"]
+    CustomAnalyzer --> AnalyzerRegistry["Analyzer Registry"]
+    AnalyzerRegistry --> AnalysisManager["Analysis Manager"]
+```    
+
+\subsection{Passi per Aggiungere un Nuovo Analizzatore}
+\begin{enumerate}
+    \item Creare una nuova classe che estende \texttt{BaseAnalyzer}
+    \item Implementare i metodi richiesti (\texttt{analyze}, \texttt{getResults}, \texttt{isComplete})
+    \item Registrare il nuovo analizzatore nel \texttt{AnalyzerFactory}
+    \item Aggiornare il sistema di punteggio per includere i nuovi risultati
+\end{enumerate}
+
+\subsection{Interfaccia Plug-in}
+Il sistema supporta l'aggiunta di nuovi analizzatori tramite un'interfaccia plug-in ben definita:
+
+\begin{verbatim}
+interface AnalyzerPlugin {
+  name: string;
+  description: string;
+  version: string;
+  category: string;
+  weight: number;
+  
+  // Metodi richiesti
+  initialize(config: object): void;
+  analyze(url: string): Promise<object>;
+  getResults(): object;
+  getScore(): number;
+}
+\end{verbatim}
+
+\section{Diagramma dei Componenti di Sistema}
+
+```mermaid
+flowchart TD
+    AnalysisManager["Analysis Manager"] --> AnalysisFactory["Analysis Factory"]
+    AnalysisFactory --> |creates| AnalyzerComponent["Analyzer Component"]
+    AnalyzerComponent --> AnalysisResults["Analysis Results"]
+    AnalysisManager --> AnalysisResults
+    AnalyzerComponent --> ExternalAPIAccess["External API Access"]
+    AnalysisResults --> ResultComparator["Result Comparator"]
+    ExternalAPIAccess --> ResultComparator
+```

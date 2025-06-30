@@ -1,0 +1,569 @@
+\chapter{Casi d'Uso}
+
+\section{Panoramica dei Casi d'Uso}
+In questo capitolo vengono descritti in dettaglio i casi d'uso principali del sistema Site War, illustrando le interazioni tra gli utenti e il sistema per le varie funzionalità offerte dall'applicazione. Attraverso questi casi d'uso, si ottiene una visione completa e dettagliata del funzionamento del sistema dal punto di vista dell'utente.
+
+\section{Attori del Sistema}
+Il sistema Site War interagisce con diversi tipi di utenti, ciascuno con esigenze e obiettivi specifici:
+
+\begin{itemize}
+    \item \textbf{Utente Generico}: Qualsiasi visitatore del sito Web War che desidera confrontare due siti web per curiosità o per scopi informativi.
+    
+    \item \textbf{Sviluppatore Web}: Utente che utilizza il sistema per confrontare il proprio sito con siti concorrenti, con l'obiettivo di identificare punti di forza e debolezza e migliorare il proprio lavoro.
+    
+    \item \textbf{Analista SEO/Performance}: Utente specializzato che utilizza il sistema per ottenere dati tecnici comparativi dettagliati su aspetti specifici dei siti web.
+    
+    \item \textbf{Penetration Tester}: Utente interessato agli aspetti di sicurezza dei siti web, che utilizza il sistema per identificare vulnerabilità e problemi di sicurezza.
+\end{itemize}
+
+\section{Diagramma dei Casi d'Uso}
+Il diagramma seguente illustra i principali casi d'uso del sistema Site War e le loro relazioni:
+
+```mermaid
+flowchart TD
+    UC1["UC1: Inserire URL"] --> UC2["UC2: Validare URL"]
+    UC2 --> UC3["UC3: Avviare Analisi"]
+    UC3 --> UC4["UC4: Visualizzare Animazioni"]
+    UC4 --> UC5["UC5: Visualizzare Risultati"]
+    UC5 --> UC6["UC6: Esplorare Dettagli"]
+    UC6 --> UC7["UC7: Esportare Risultati"]
+    UC5 --> UC8["UC8: Analizzare Vincitore"]
+```
+
+\section{Descrizioni Dettagliate dei Casi d'Uso}
+
+\subsection{UC1: Inserire URL}
+
+\subsubsection{Attori Principali}
+Tutti gli utenti
+
+\subsubsection{Pre-condizioni}
+L'utente ha aperto il sito Site War
+
+\subsubsection{Trigger}
+L'utente desidera confrontare due siti web
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item L'utente accede alla homepage di Site War
+    \item Il sistema presenta un form con due campi per l'inserimento degli URL
+    \item L'utente inserisce l'URL del primo sito nel campo ``Sito 1''
+    \item L'utente inserisce l'URL del secondo sito nel campo ``Sito 2''
+    \item L'utente fa clic sul pulsante ``Inizia la battaglia!''
+    \item Il sistema procede con la validazione degli URL (UC2)
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 3-4a. L'utente inserisce un URL in formato non valido
+    \begin{enumerate}
+        \item Il sistema evidenzia il campo con errore
+        \item Il sistema mostra un messaggio di errore specifico
+        \item L'utente corregge l'input e riprova
+    \end{enumerate}
+    
+    \item 5a. L'utente decide di cambiare uno degli URL inseriti
+    \begin{enumerate}
+        \item L'utente modifica uno o entrambi i campi URL
+        \item L'utente fa clic sul pulsante ``Inizia la battaglia!''
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item Tempo di risposta: la validazione del formato URL deve essere immediata (client-side)
+    \item I campi del form devono essere accessibili da tastiera
+    \item Il form deve essere responsive per diversi dispositivi
+\end{itemize}
+
+\subsubsection{Frequenza}
+Molto frequente (ogni analisi inizia da qui)
+
+\subsection{UC2: Validare URL}
+
+\subsubsection{Attori Principali}
+Sistema
+
+\subsubsection{Pre-condizioni}
+L'utente ha inserito due URL e inviato il form
+
+\subsubsection{Trigger}
+Invio del form di input URL
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item Il sistema verifica che entrambi gli URL siano in formato valido
+    \item Il sistema verifica che entrambi i siti siano accessibili
+    \item Il sistema utilizza l'AI per valutare la pertinenza del confronto tra i due siti
+    \item L'AI conferma che i siti sono confrontabili
+    \item Il sistema procede con l'avvio dell'analisi (UC3)
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 2a. Uno o entrambi i siti non sono accessibili
+    \begin{enumerate}
+        \item Il sistema mostra un messaggio di errore specifico
+        \item L'utente viene invitato a verificare gli URL e riprovare
+    \end{enumerate}
+    
+    \item 4a. L'AI determina che i siti non sono confrontabili
+    \begin{enumerate}
+        \item Il sistema mostra un messaggio che spiega perché i siti non sono confrontabili
+        \item L'utente può scegliere di procedere comunque con l'analisi o modificare gli URL
+    \end{enumerate}
+    
+    \item 4b. Il servizio AI non è disponibile
+    \begin{enumerate}
+        \item Il sistema procede con l'analisi senza la validazione di pertinenza
+        \item Il sistema mostra un avviso che la validazione di pertinenza non è stata eseguita
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item Timeout: la validazione completa non deve superare i 5 secondi
+    \item In caso di problemi con l'API AI, il sistema deve degradare in modo elegante
+\end{itemize}
+
+\subsubsection{Frequenza}
+Molto frequente (ogni analisi richiede validazione)
+
+\subsection{UC3: Avviare Analisi}
+
+\subsubsection{Attori Principali}
+Sistema
+
+\subsubsection{Pre-condizioni}
+Gli URL sono stati validati e sono confrontabili
+
+\subsubsection{Trigger}
+Completamento della validazione URL
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item Il sistema mostra l'interfaccia di ``battaglia'' con i due siti
+    \item Il sistema avvia le analisi lato client (DOM, Performance base, SEO base)
+    \item Il sistema invia richieste al backend per le analisi più avanzate
+    \item Il sistema aggiorna la visualizzazione dell'avanzamento dell'analisi
+    \item Il backend elabora le richieste e comunica con API esterne quando necessario
+    \item Il sistema riceve progressivamente i risultati e aggiorna l'interfaccia
+    \item Al completamento di tutte le analisi, il sistema procede alla visualizzazione dei risultati (UC5)
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 3a. Errore di comunicazione con il backend
+    \begin{enumerate}
+        \item Il sistema mostra un messaggio di errore
+        \item L'utente può riprovare l'analisi
+    \end{enumerate}
+    
+    \item 5a. Errore di comunicazione con API esterne
+    \begin{enumerate}
+        \item Il sistema utilizza dati parziali o strategie di fallback
+        \item Il sistema continua con analisi alternative disponibili
+        \item I risultati saranno marcati come parziali
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item Performance: l'analisi completa deve essere completata entro 25 secondi
+    \item Il sistema deve mostrare un indicatore di avanzamento accurato
+    \item Le analisi devono avvenire in parallelo quando possibile
+\end{itemize}
+
+\subsubsection{Frequenza}
+Molto frequente (ogni analisi passa per questa fase)
+
+\subsection{UC4: Visualizzare Animazioni}
+
+\subsubsection{Attori Principali}
+Utente
+
+\subsubsection{Pre-condizioni}
+L'analisi è stata avviata
+
+\subsubsection{Trigger}
+Avanzamento dell'analisi
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item Il sistema visualizza un'animazione iniziale che rappresenta i due siti come ``guerrieri''
+    \item Man mano che l'analisi procede, il sistema aggiorna l'animazione con effetti visivi
+    \item Le prestazioni relative dei siti influenzano l'animazione (es. il sito più veloce sembra ``attaccare'' l'altro)
+    \item Al raggiungimento di soglie di progresso (25\%, 50\%, 75\%), l'animazione cambia fase
+    \item Quando l'analisi è completa, l'animazione mostra l'effetto finale di ``vittoria''
+    \item Il sistema passa alla visualizzazione dei risultati (UC5)
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 2a. L'utente usa un dispositivo a basse prestazioni
+    \begin{enumerate}
+        \item Il sistema rileva le capacità del dispositivo
+        \item Il sistema mostra animazioni semplificate per garantire performance adeguate
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item Le animazioni devono essere fluide (60 fps)
+    \item Il sistema deve adattare le animazioni in base alle capacità del dispositivo
+    \item L'accessibilità deve essere garantita anche con animazioni attive
+\end{itemize}
+
+\subsubsection{Frequenza}
+Molto frequente (ogni analisi include animazioni)
+
+\subsection{UC5: Visualizzare Risultati}
+
+\subsubsection{Attori Principali}
+Utente
+
+\subsubsection{Pre-condizioni}
+L'analisi è stata completata
+
+\subsubsection{Trigger}
+Completamento dell'analisi
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item Il sistema mostra una dashboard con la proclamazione del vincitore
+    \item Il sistema visualizza i punteggi complessivi per entrambi i siti
+    \item Il sistema mostra un confronto visivo delle principali categorie di analisi
+    \item L'utente può visualizzare i dettagli di ogni categoria tramite tab
+    \item L'utente può decidere di esplorare i dettagli specifici (UC6)
+    \item L'utente può esportare i risultati (UC7)
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 1a. L'analisi ha prodotto risultati parziali
+    \begin{enumerate}
+        \item Il sistema mostra un avviso che alcuni dati potrebbero essere incompleti
+        \item Il sistema indica quali analisi sono state completate con successo
+    \end{enumerate}
+    
+    \item 4a. L'utente desidera confrontare una metrica specifica
+    \begin{enumerate}
+        \item L'utente seleziona la categoria desiderata
+        \item Il sistema mostra una visualizzazione dettagliata per quella categoria
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item I risultati devono essere visualizzati in modo chiaro e intuitivo
+    \item I grafici comparativi devono essere accessibili e comprensibili
+    \item La dashboard deve essere responsive per diversi dispositivi
+\end{itemize}
+
+\subsubsection{Frequenza}
+Molto frequente (ogni analisi completata)
+
+\subsection{UC6: Esplorare Dettagli}
+
+\subsubsection{Attori Principali}
+Utente
+
+\subsubsection{Pre-condizioni}
+I risultati dell'analisi sono stati visualizzati
+
+\subsubsection{Trigger}
+L'utente desidera esplorare dettagli specifici
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item L'utente fa clic su una categoria specifica (Performance, SEO, Sicurezza, Tecnica)
+    \item Il sistema mostra una vista dettagliata con metriche specifiche per quella categoria
+    \item Il sistema visualizza grafici comparativi per le metriche della categoria
+    \item Il sistema evidenzia i punti di forza e debolezza di ciascun sito
+    \item L'utente può navigare tra le diverse categorie utilizzando i tab
+    \item L'utente può tornare alla vista generale dei risultati
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 2a. Dati insufficienti per la categoria selezionata
+    \begin{enumerate}
+        \item Il sistema mostra un messaggio che indica la mancanza di dati sufficienti
+        \item Il sistema offre suggerimenti per analisi alternative
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item La navigazione tra categorie deve essere intuitiva
+    \item I dettagli tecnici devono essere presentati in modo comprensibile
+    \item Devono essere forniti suggerimenti per il miglioramento
+\end{itemize}
+
+\subsubsection{Frequenza}
+Frequente (la maggior parte degli utenti esplora i dettagli)
+
+\subsection{UC7: Esportare Risultati}
+
+\subsubsection{Attori Principali}
+Utente
+
+\subsubsection{Pre-condizioni}
+I risultati dell'analisi sono stati visualizzati
+
+\subsubsection{Trigger}
+L'utente desidera salvare o condividere i risultati
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item L'utente fa clic sul pulsante ``Esporta risultati''
+    \item Il sistema mostra un menu con opzioni di esportazione (CSV, PDF, Stampa)
+    \item L'utente seleziona il formato desiderato
+    \item Il sistema genera il file nel formato scelto
+    \item Il browser avvia il download del file o apre l'anteprima di stampa
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 3a. L'utente sceglie l'opzione ``Stampa''
+    \begin{enumerate}
+        \item Il sistema prepara una versione ottimizzata per la stampa
+        \item Il browser apre l'anteprima di stampa
+    \end{enumerate}
+    
+    \item 4a. Errore nella generazione del file
+    \begin{enumerate}
+        \item Il sistema mostra un messaggio di errore
+        \item L'utente può riprovare o scegliere un formato alternativo
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item I file esportati devono includere tutti i dati rilevanti
+    \item I formati di esportazione devono essere standard e compatibili
+    \item La versione stampabile deve essere ottimizzata per la carta
+\end{itemize}
+
+\subsubsection{Frequenza}
+Occasionale (alcuni utenti esportano i risultati)
+
+\subsection{UC8: Analizzare Vincitore}
+
+\subsubsection{Attori Principali}
+Utente
+
+\subsubsection{Pre-condizioni}
+I risultati dell'analisi sono stati visualizzati
+
+\subsubsection{Trigger}
+L'utente desidera comprendere i fattori che hanno determinato il vincitore
+
+\subsubsection{Scenario Principale di Successo}
+\begin{enumerate}
+    \item L'utente fa clic sul badge del vincitore o su un pulsante ``Perché ha vinto?''
+    \item Il sistema mostra una spiegazione dettagliata dei fattori chiave che hanno contribuito alla vittoria
+    \item Il sistema evidenzia le principali differenze tra i due siti
+    \item Il sistema fornisce suggerimenti su come il sito perdente potrebbe migliorare
+    \item L'utente può navigare tra diverse aree di confronto
+    \item L'utente può tornare alla vista principale dei risultati
+\end{enumerate}
+
+\subsubsection{Estensioni}
+\begin{itemize}
+    \item 2a. Il confronto è stato molto equilibrato
+    \begin{enumerate}
+        \item Il sistema spiega i fattori di desempate utilizzati
+        \item Il sistema mostra quanto è stato ravvicinato il confronto
+    \end{enumerate}
+\end{itemize}
+
+\subsubsection{Requisiti Speciali}
+\begin{itemize}
+    \item Le spiegazioni devono essere comprensibili anche per utenti non tecnici
+    \item I suggerimenti di miglioramento devono essere pratici e attuabili
+    \item La visualizzazione deve evidenziare chiaramente i punti di forza e debolezza
+\end{itemize}
+
+\subsubsection{Frequenza}
+Frequente (molti utenti vogliono capire il risultato)
+
+\section{Flussi di Interazione Principali}
+
+\subsection{Flusso Base}
+\begin{enumerate}
+    \item L'utente inserisce gli URL dei due siti (UC1)
+    \item Il sistema valida gli URL (UC2)
+    \item Il sistema avvia l'analisi (UC3)
+    \item L'utente visualizza le animazioni durante l'analisi (UC4)
+    \item Il sistema mostra i risultati (UC5)
+    \item L'utente esplora i dettagli (UC6)
+    \item L'utente esporta i risultati (UC7)
+\end{enumerate}
+
+\subsection{Flusso Alternativo - Validazione Fallita}
+\begin{enumerate}
+    \item L'utente inserisce gli URL dei due siti (UC1)
+    \item Il sistema determina che i siti non sono confrontabili (UC2)
+    \item L'utente sceglie di procedere comunque
+    \item Il sistema avvia l'analisi con avviso (UC3)
+    \item Il flusso continua come nel flusso base
+\end{enumerate}
+
+\subsection{Flusso Alternativo - Analisi Parziale}
+\begin{enumerate}
+    \item L'utente inserisce gli URL dei due siti (UC1)
+    \item Il sistema valida gli URL (UC2)
+    \item Il sistema avvia l'analisi (UC3)
+    \item Alcune analisi esterne falliscono
+    \item Il sistema mostra risultati parziali con avviso (UC5)
+    \item L'utente può esplorare i dati disponibili (UC6)
+\end{enumerate}
+
+\section{Requisiti Non Funzionali dei Casi d'Uso}
+
+\subsection{Performance}
+\begin{itemize}
+    \item UC3 (Avviare Analisi): Completamento entro 25 secondi per l'analisi completa
+    \item UC4 (Visualizzare Animazioni): 60 fps per le animazioni, degradando su dispositivi meno potenti
+    \item UC2 (Validare URL): Validazione completa entro 5 secondi
+\end{itemize}
+
+\subsection{Usabilità}
+\begin{itemize}
+    \item UC1 (Inserire URL): Form semplice e intuitivo, accessibile da tastiera
+    \item UC5 (Visualizzare Risultati): Visualizzazione chiara e comprensibile dei dati tecnici
+    \item UC6 (Esplorare Dettagli): Navigazione intuitiva tra le categorie
+\end{itemize}
+
+\subsection{Sicurezza}
+\begin{itemize}
+    \item UC2 (Validare URL): Sanitizzazione degli input per prevenire attacchi
+    \item UC3 (Avviare Analisi): Protezione delle chiavi API dai client
+    \item UC7 (Esportare Risultati): Prevenzione di data leakage nei file esportati
+\end{itemize}
+
+\subsection{Scalabilità}
+\begin{itemize}
+    \item UC3 (Avviare Analisi): Gestione parallela di multiple richieste di analisi
+    \item UC2 (Validare URL): Cache dei risultati di validazione per URL frequenti
+\end{itemize}
+
+\section{Diagramma di Stato del Processo di Analisi}
+Il diagramma seguente illustra gli stati attraverso cui passa il sistema durante il processo di analisi:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Iniziale
+    Iniziale --> URLInseriti: inserimento
+    URLInseriti --> Validazione: invio
+    Validazione --> AnalisiInCorso: validazione riuscita
+    AnalisiInCorso --> RisultatiVisualizzati: analisi completata
+    RisultatiVisualizzati --> NuovaAnalisi: reset
+    NuovaAnalisi --> Iniziale: nuova operazione
+    Validazione --> URLInseriti: errore validazione
+```
+
+Il diagramma di stato mostra come il sistema passa attraverso diversi stati durante il processo di analisi:
+
+\begin{enumerate}
+    \item \textbf{Iniziale}: Lo stato di partenza quando l'utente accede al sistema
+    \item \textbf{URL Inseriti}: L'utente ha inserito gli URL ma non ha ancora avviato l'analisi
+    \item \textbf{Validazione}: Il sistema sta verificando la validità e la pertinenza degli URL
+    \item \textbf{Analisi In Corso}: Il sistema sta eseguendo le analisi sui siti web
+    \item \textbf{Risultati Visualizzati}: Il sistema mostra i risultati all'utente
+    \item \textbf{Nuova Analisi}: L'utente decide di avviare una nuova analisi
+\end{enumerate}
+
+\section{Diagramma di Attività - Analisi Completa}
+Il diagramma seguente illustra il flusso di attività complete durante un processo di analisi:
+
+```mermaid
+flowchart TD
+    InserireURL["Inserire URL"] --> ValidareURL["Validare URL"]
+    ValidareURL --> VerificarePertinenza["Verificare Pertinenza"]
+    VerificarePertinenza --> AvviareAnalisi["Avviare Analisi"]
+    
+    VerificarePertinenza --> EPertinente{"È Pertinente?"}
+    EPertinente -- "No" --> MostrareAvviso["Mostrare Avviso"]
+    EPertinente -- "Sì" --> EseguireAnalisiClient["Eseguire Analisi Lato Client"]
+    
+    MostrareAvviso --> ContinuaComunque["Continua Comunque"]
+    ContinuaComunque --> EseguireAnalisiClient
+    
+    EseguireAnalisiClient --> EseguireAnalisiServer["Eseguire Analisi Lato Server"]
+    EseguireAnalisiServer --> CombinareRisultati["Combinare Risultati"]
+    CombinareRisultati --> DeterminareVincitore["Determinare Vincitore"]
+    DeterminareVincitore --> MostrareRisultati["Mostrare Risultati"]
+```
+
+\section{Matrice Casi d'Uso-Requisiti}
+La tabella seguente mappa i casi d'uso ai requisiti funzionali e non funzionali del sistema, mostrando quali requisiti sono soddisfatti da ciascun caso d'uso:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Caso d'Uso} & \textbf{Performance} & \textbf{Usabilità} & \textbf{Accessibilità} & \textbf{Sicurezza} & \textbf{Accuratezza} & \textbf{Responsività} \\
+\hline
+UC1: Inserire URL & & \checkmark & \checkmark & \checkmark & & \checkmark \\
+\hline
+UC2: Validare URL & \checkmark & & & \checkmark & \checkmark & \\
+\hline
+UC3: Avviare Analisi & \checkmark & & & \checkmark & \checkmark & \\
+\hline
+UC4: Visualizzare Animazioni & \checkmark & \checkmark & \checkmark & & & \checkmark \\
+\hline
+UC5: Visualizzare Risultati & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+\hline
+UC6: Esplorare Dettagli & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+\hline
+UC7: Esportare Risultati & & \checkmark & & \checkmark & \checkmark & \\
+\hline
+UC8: Analizzare Vincitore & & \checkmark & \checkmark & & \checkmark & \\
+\hline
+\end{tabular}
+\caption{Matrice Casi d'Uso-Requisiti}
+\label{table:use-case-requirements}
+\end{table}
+
+\section{Analisi dei Rischi per i Casi d'Uso}
+L'analisi dei rischi identifica i potenziali problemi che potrebbero verificarsi durante l'esecuzione dei casi d'uso e le strategie per mitigarli:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Caso d'Uso} & \textbf{Rischio} & \textbf{Impatto} & \textbf{Strategia di Mitigazione} \\
+\hline
+UC2: Validare URL & API AI non disponibile & Medio & Procedere senza validazione di pertinenza \\
+\hline
+UC3: Avviare Analisi & Timeout API esterne & Alto & Implementare strategie di fallback e cache \\
+\hline
+UC3: Avviare Analisi & Rate limiting API & Alto & Implementare code e prioritizzazione \\
+\hline
+UC4: Visualizzare Animazioni & Performance browser limitata & Medio & Degrado graceful delle animazioni \\
+\hline
+UC5: Visualizzare Risultati & Dati incompleti & Alto & Mostrare avvisi e risultati parziali \\
+\hline
+UC7: Esportare Risultati & Errore generazione file & Basso & Offrire formati alternativi e retry \\
+\hline
+\end{tabular}
+\caption{Analisi dei Rischi per i Casi d'Uso}
+\label{table:use-case-risks}
+\end{table}
+
+\section{Considerazioni sull'Esperienza Utente}
+I casi d'uso sono stati progettati per garantire un'esperienza utente ottimale, considerando diversi aspetti:
+
+\begin{itemize}
+    \item \textbf{Feedback Continuo}: Durante il processo di analisi, l'utente riceve feedback costante attraverso animazioni e indicatori di avanzamento.
+    
+    \item \textbf{Degradazione Elegante}: In caso di errori o limitazioni, il sistema offre alternative e continua a funzionare con capacità ridotte invece di fallire completamente.
+    
+    \item \textbf{Chiarezza dei Risultati}: I risultati sono presentati in modo chiaro e comprensibile, con diversi livelli di dettaglio per soddisfare utenti con diverse esigenze.
+    
+    \item \textbf{Accessibilità}: Tutti i casi d'uso considerano le esigenze di accessibilità, garantendo che l'applicazione sia utilizzabile da utenti con diverse capacità.
+    
+    \item \textbf{Apprendimento Progressivo}: L'interfaccia è progettata per consentire un apprendimento progressivo, con informazioni di base immediatamente comprensibili e dettagli tecnici accessibili su richiesta.
+\end{itemize}

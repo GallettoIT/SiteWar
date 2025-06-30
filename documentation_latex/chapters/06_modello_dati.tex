@@ -1,0 +1,735 @@
+\chapter{Modello dei Dati}
+
+\section{Panoramica del Modello dei Dati}
+Il modello dei dati di Site War è progettato per gestire efficacemente i dati relativi all'analisi e al confronto dei siti web. Questo modello è strutturato per supportare l'acquisizione, l'elaborazione, la comparazione e la visualizzazione dei dati in modo coerente e performante.
+
+Il sistema si basa su un modello orientato agli oggetti che rappresenta i risultati delle analisi attraverso classi ben definite, con una chiara gerarchia e relazioni tra le diverse entità. Questo approccio facilita l'estensibilità del sistema e la manutenzione del codice, consentendo l'aggiunta di nuove metriche e categorie di analisi senza impattare la struttura esistente.
+
+\section{Diagramma delle Classi - Modello dei Dati}
+
+Il diagramma seguente illustra la struttura principale del modello dei dati di Site War, mostrando le classi principali e le loro relazioni:
+
+```mermaid
+classDiagram
+    class AnalysisResult {
+        +site1: SiteAnalysis
+        +site2: SiteAnalysis
+        +winner: string
+        +comparison: ComparisonResult
+        +timestamp: number
+        +determineWinner() string
+        +getWinningCategories(site) string[]
+        +toJSON() object
+    }
+    
+    class SiteAnalysis {
+        +url: string
+        +performance: PerformanceMetrics
+        +seo: SEOMetrics
+        +security: SecurityMetrics
+        +technical: TechnicalMetrics
+        +finalScore: number
+        +calculateFinalScore() number
+        +getHighestScoringCategory() string
+        +getLowestScoringCategory() string
+    }
+    
+    class ComparisonResult {
+        +performance: string
+        +seo: string
+        +security: string
+        +technical: string
+        +overallScore: string
+        +scoreGap: number
+        +getWinningCategories(site) string[]
+        +isCloseDuel() boolean
+    }
+    
+    class BaseMetrics {
+        +score: number
+        +metrics: object
+        +details: object
+        +getScore() number
+        +getMetrics() object
+        +getDetails() object
+    }
+    
+    class PerformanceMetrics {
+        +fcp: number
+        +lcp: number
+        +tti: number
+        +cls: number
+        +totalSize: number
+        +getTiming() obj
+    }
+    
+    class SEOMetrics {
+        +title: string
+        +meta: object
+        +headings: object
+        +links: object
+        +images: object
+        +getSEOIssues()
+    }
+    
+    class SecurityMetrics {
+        +ssl: object
+        +headers: object
+        +vulnerabilities
+        +cookiesSecurity
+        +csp: object
+        +getVulnCount()
+    }
+    
+    class TechnicalMetrics {
+        +html: object
+        +css: object
+        +javascript: obj
+        +responsive: bool
+        +technologies: []
+        +getTechStack()
+    }
+    
+    class DomainInfo {
+        +registrar: string
+        +creationDate: date
+        +expiryDate: date
+        +nameservers: []
+        +ipAddress: string
+        +getAge() number
+    }
+    
+    AnalysisResult --> SiteAnalysis
+    AnalysisResult --> ComparisonResult
+    BaseMetrics <|-- PerformanceMetrics
+    BaseMetrics <|-- SEOMetrics
+    BaseMetrics <|-- SecurityMetrics
+    BaseMetrics <|-- TechnicalMetrics
+```
+
+\section{Struttura Dati - Formato JSON}
+
+\subsection{Formato Completo}
+Il sistema utilizza JSON come formato principale per la rappresentazione e lo scambio di dati. Di seguito è riportato un esempio di struttura JSON completa per i risultati di un'analisi:
+
+\begin{asciiart}
+{
+  "site1": {
+    "url": "https://example1.com",
+    "performance": {
+      "score": 85,
+      "metrics": {
+        "fcp": 1200,
+        "lcp": 2500,
+        "tti": 3500,
+        "cls": 0.05,
+        "totalSize": 1500000
+      },
+      "details": {
+        "resources": {
+          "js": 450000,
+          "css": 120000,
+          "images": 850000,
+          "fonts": 80000
+        },
+        "resourceCount": 32,
+        "renderBlocking": 3
+      }
+    },
+    "seo": {
+      "score": 78,
+      "metrics": {
+        "title": "Good",
+        "meta": "Average",
+        "headings": "Good",
+        "images": "Average",
+        "links": "Good"
+      },
+      "details": {
+        "titleLength": 55,
+        "metaDescription": 140,
+        "hasCanonical": true,
+        "imgAltTags": 85,
+        "headingStructure": "Well structured",
+        "linkQuality": "Good"
+      }
+    },
+    "security": {
+      "score": 92,
+      "metrics": {
+        "ssl": "A+",
+        "headers": "Good",
+        "vulnerabilities": 0,
+        "cookies": "Secure",
+        "csp": "Implemented"
+      },
+      "details": {
+        "sslDetails": {
+          "grade": "A+",
+          "protocol": "TLS 1.3",
+          "expiry": "2024-05-15"
+        },
+        "securityHeaders": {
+          "strictTransportSecurity": true,
+          "contentSecurityPolicy": true,
+          "xFrameOptions": true,
+          "xContentTypeOptions": true,
+          "referrerPolicy": true
+        },
+        "cookiesDetails": {
+          "secure": true,
+          "httpOnly": true,
+          "sameSite": "Strict"
+        }
+      }
+    },
+    "technical": {
+      "score": 88,
+      "metrics": {
+        "html": "Valid",
+        "css": "Valid",
+        "javascript": "Modern",
+        "responsive": true,
+        "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery"]
+      },
+      "details": {
+        "htmlVersion": "HTML5",
+        "cssVersion": "CSS3",
+        "jsFeatures": ["ES6", "Modules"],
+        "frameworks": ["jQuery 3.6.0"],
+        "libraries": ["Animate.js", "Chart.js"],
+        "serverInfo": {
+          "server": "Nginx",
+          "platform": "Linux"
+        }
+      }
+    },
+    "finalScore": 85.8
+  },
+  "site2": {
+    // Struttura simile a site1
+  },
+  "winner": "site1",
+  "comparison": {
+    "performance": "site1",
+    "seo": "site2",
+    "security": "site1",
+    "technical": "site1",
+    "overallScore": "site1",
+    "scoreGap": 7.3
+  },
+  "timestamp": 1633276850000
+}
+\end{asciiart}
+
+\subsection{Formato Semplificato per UI}
+Per ottimizzare la visualizzazione nell'interfaccia utente, viene utilizzata una versione semplificata del formato JSON:
+
+\begin{asciiart}
+{
+  "site1": {
+    "url": "https://example1.com",
+    "scores": {
+      "performance": 85,
+      "seo": 78,
+      "security": 92,
+      "technical": 88,
+      "final": 85.8
+    },
+    "highlights": {
+      "strengths": ["Fast loading time", "Excellent security", "Modern technologies"],
+      "weaknesses": ["Meta descriptions", "Image optimization"]
+    }
+  },
+  "site2": {
+    // Struttura simile a site1
+  },
+  "winner": {
+    "site": "site1",
+    "name": "example1.com",
+    "margin": "Clear win (7.3 points)"
+  },
+  "categoryWinners": {
+    "performance": "site1",
+    "seo": "site2",
+    "security": "site1",
+    "technical": "site1"
+  }
+}
+\end{asciiart}
+
+\section{Diagramma delle Interazioni con i Dati}
+Il diagramma seguente illustra il flusso di interazioni con i dati durante il processo di analisi:
+
+```mermaid
+flowchart LR
+    Analyzers["Analyzers"] --> RawData["Raw Data"]
+    RawData --> NormalizedData["Normalized Data"]
+    NormalizedData --> CategoryScores["Category Scores"]
+    CategoryScores --> ResultsProcessor["Results Processor"]
+    ResultsProcessor --> UIDisplay["UI Display"]
+```
+
+
+\section{Diagramma ER per Risultati dell'Analisi}
+Il diagramma Entity-Relationship (ER) seguente illustra le relazioni tra le entità del modello dei dati:
+
+```mermaid
+erDiagram
+    AnalysisResult ||--|| ComparisonResult : has
+    AnalysisResult ||--|{ SiteAnalysis : contains
+    SiteAnalysis ||--|| DomainInfo : has
+    DomainInfo ||--|{ CategoryMetrics : has
+    CategoryMetrics ||--|| CategoryScore : scores
+    CategoryMetrics ||--o{ PerformanceMetrics : "specializes to"
+    CategoryMetrics ||--o{ SEOMetrics : "specializes to"
+    CategoryMetrics ||--o{ SecurityMetrics : "specializes to"
+    CategoryMetrics ||--o{ TechnicalMetrics : "specializes to"
+    CategoryMetrics ||--o{ AccessibilityMetrics : "specializes to"
+```
+
+\section{Diagramma di Aggregazione dei Dati}
+Il processo di aggregazione dei dati grezzi in risultati significativi è illustrato nel seguente diagramma:
+
+```mermaid
+flowchart TD
+    RawMetrics["Raw Metrics"] -- "aggregated into" --> CategoryMetrics["Category Metrics"]
+    CategoryMetrics -- "aggregated into" --> SiteAnalysis["Site Analysis"]
+    SiteAnalysis -- "compared to create" --> AnalysisResult["Analysis Result"]
+```
+
+\section{Dettaglio delle Entità di Dati Principali}
+
+\subsection{AnalysisResult}
+\textbf{Responsabilità}: Rappresenta i risultati completi dell'analisi e del confronto tra due siti web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{site1}: Risultati completi dell'analisi del primo sito
+    \item \texttt{site2}: Risultati completi dell'analisi del secondo sito
+    \item \texttt{winner}: Indicatore del sito vincitore (``site1'', ``site2'' o ``tie'')
+    \item \texttt{comparison}: Risultati dettagliati del confronto
+    \item \texttt{timestamp}: Data e ora dell'analisi
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{determineWinner()}: Determina il vincitore in base ai punteggi finali
+    \item \texttt{getWinningCategories(site)}: Ottiene le categorie in cui un sito ha ottenuto i punteggi più alti
+    \item \texttt{toJSON()}: Serializza i risultati in formato JSON
+\end{itemize}
+
+\subsection{SiteAnalysis}
+\textbf{Responsabilità}: Contiene i dati di analisi completi per un singolo sito web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{url}: URL del sito analizzato
+    \item \texttt{performance}: Metriche di performance
+    \item \texttt{seo}: Metriche SEO
+    \item \texttt{security}: Metriche di sicurezza
+    \item \texttt{technical}: Metriche tecniche
+    \item \texttt{finalScore}: Punteggio finale ponderato
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{calculateFinalScore()}: Calcola il punteggio finale ponderato
+    \item \texttt{getHighestScoringCategory()}: Restituisce la categoria con il punteggio più alto
+    \item \texttt{getLowestScoringCategory()}: Restituisce la categoria con il punteggio più basso
+\end{itemize}
+
+\subsection{PerformanceMetrics}
+\textbf{Responsabilità}: Contiene le metriche di performance di un sito web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{score}: Punteggio complessivo di performance (0-100)
+    \item \texttt{metrics}: Valori specifici delle metriche
+    \begin{itemize}
+        \item \texttt{fcp}: First Contentful Paint (ms)
+        \item \texttt{lcp}: Largest Contentful Paint (ms)
+        \item \texttt{tti}: Time to Interactive (ms)
+        \item \texttt{cls}: Cumulative Layout Shift
+        \item \texttt{totalSize}: Dimensione totale della pagina (bytes)
+    \end{itemize}
+    \item \texttt{details}: Dettagli aggiuntivi sulla performance
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{getScore()}: Restituisce il punteggio complessivo
+    \item \texttt{getMetrics()}: Restituisce le metriche specifiche
+    \item \texttt{getTiming()}: Restituisce i tempi di caricamento aggregati
+\end{itemize}
+
+\subsection{SEOMetrics}
+\textbf{Responsabilità}: Contiene le metriche SEO di un sito web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{score}: Punteggio complessivo SEO (0-100)
+    \item \texttt{metrics}: Valori specifici delle metriche
+    \begin{itemize}
+        \item \texttt{title}: Valutazione del titolo
+        \item \texttt{meta}: Valutazione dei meta tag
+        \item \texttt{headings}: Valutazione della struttura dei titoli
+        \item \texttt{images}: Valutazione delle immagini
+        \item \texttt{links}: Valutazione dei link
+    \end{itemize}
+    \item \texttt{details}: Dettagli aggiuntivi SEO
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{getScore()}: Restituisce il punteggio complessivo
+    \item \texttt{getMetrics()}: Restituisce le metriche specifiche
+    \item \texttt{getSEOIssues()}: Restituisce i problemi SEO rilevati
+\end{itemize}
+
+\subsection{SecurityMetrics}
+\textbf{Responsabilità}: Contiene le metriche di sicurezza di un sito web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{score}: Punteggio complessivo di sicurezza (0-100)
+    \item \texttt{metrics}: Valori specifici delle metriche
+    \begin{itemize}
+        \item \texttt{ssl}: Valutazione SSL/TLS
+        \item \texttt{headers}: Valutazione degli header di sicurezza
+        \item \texttt{vulnerabilities}: Numero di vulnerabilità rilevate
+        \item \texttt{cookies}: Valutazione della sicurezza dei cookies
+        \item \texttt{csp}: Valutazione della Content Security Policy
+    \end{itemize}
+    \item \texttt{details}: Dettagli aggiuntivi sulla sicurezza
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{getScore()}: Restituisce il punteggio complessivo
+    \item \texttt{getMetrics()}: Restituisce le metriche specifiche
+    \item \texttt{getVulnCount()}: Restituisce il numero di vulnerabilità
+\end{itemize}
+
+\subsection{TechnicalMetrics}
+\textbf{Responsabilità}: Contiene le metriche tecniche di un sito web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{score}: Punteggio complessivo tecnico (0-100)
+    \item \texttt{metrics}: Valori specifici delle metriche
+    \begin{itemize}
+        \item \texttt{html}: Valutazione HTML
+        \item \texttt{css}: Valutazione CSS
+        \item \texttt{javascript}: Valutazione JavaScript
+        \item \texttt{responsive}: Flag di responsività
+        \item \texttt{technologies}: Array di tecnologie rilevate
+    \end{itemize}
+    \item \texttt{details}: Dettagli aggiuntivi tecnici
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{getScore()}: Restituisce il punteggio complessivo
+    \item \texttt{getMetrics()}: Restituisce le metriche specifiche
+    \item \texttt{getTechStack()}: Restituisce lo stack tecnologico completo
+\end{itemize}
+
+\subsection{ComparisonResult}
+\textbf{Responsabilità}: Contiene i risultati del confronto tra i due siti web.
+
+\textbf{Attributi}:
+\begin{itemize}
+    \item \texttt{performance}: Vincitore per la categoria performance
+    \item \texttt{seo}: Vincitore per la categoria SEO
+    \item \texttt{security}: Vincitore per la categoria sicurezza
+    \item \texttt{technical}: Vincitore per la categoria tecnica
+    \item \texttt{overallScore}: Vincitore complessivo
+    \item \texttt{scoreGap}: Differenza tra i punteggi finali
+\end{itemize}
+
+\textbf{Metodi}:
+\begin{itemize}
+    \item \texttt{getWinningCategories(site)}: Restituisce le categorie vinte da un sito
+    \item \texttt{isCloseDuel()}: Determina se il confronto è stato equilibrato
+\end{itemize}
+
+\section{Diagramma di Ereditarietà - Metriche}
+Il sistema utilizza l'ereditarietà per organizzare le diverse metriche in una gerarchia coerente:
+
+```mermaid
+classDiagram
+    BaseMetrics <|-- PerformanceMetrics
+    BaseMetrics <|-- SEOMetrics
+    BaseMetrics <|-- SecurityMetrics
+    BaseMetrics <|-- TechnicalMetrics
+    BaseMetrics <|-- AccessibilityMetrics
+    
+    class BaseMetrics {
+        +score: number
+        +metrics: object
+        +details: object
+        +getScore() number
+        +getMetrics() object
+        +getDetails() object
+    }
+```
+
+\section{Diagramma dei Punteggi}
+Il calcolo dei punteggi finali si basa su una ponderazione delle diverse categorie di analisi:
+
+```mermaid
+flowchart TD
+    Performance["Performance Score"] -- "30%" --> FinalScore["Final Score"]
+    SEO["SEO Score"] -- "25%" --> FinalScore
+    Security["Security Score"] -- "25%" --> FinalScore
+    Technical["Technical Score"] -- "20%" --> FinalScore
+    Additional["Additional Metrics"] --> FinalScore
+```
+
+\section{Diagramma di Persistenza}
+I dati generati dal sistema possono essere persistiti in diversi formati:
+
+```mermaid
+flowchart TD
+    AnalysisResults["Analysis Results"] -- "stored as" --> JSONFiles["JSON Files"]
+    JSONFiles <-- "cached in" --> MemoryCache["Memory Cache"]
+    JSONFiles -- "exported as" --> CSVReports["CSV Reports"]
+    JSONFiles -- "exported as" --> PDFReports["PDF Reports"]
+```
+
+\section{Specifica delle Interfacce dei Dati}
+
+\subsection{Interfaccia AnalysisResult}
+\begin{asciiart}
+interface AnalysisResult {
+  site1: SiteAnalysis;
+  site2: SiteAnalysis;
+  winner: 'site1' | 'site2' | 'tie';
+  comparison: ComparisonResult;
+  timestamp: number;
+}
+\end{asciiart}
+
+\subsection{Interfaccia SiteAnalysis}
+\begin{asciiart}
+interface SiteAnalysis {
+  url: string;
+  performance: PerformanceMetrics;
+  seo: SEOMetrics;
+  security: SecurityMetrics;
+  technical: TechnicalMetrics;
+  finalScore: number;
+}
+\end{asciiart}
+
+\subsection{Interfaccia BaseMetrics}
+\begin{asciiart}
+interface BaseMetrics {
+  score: number;
+  metrics: Record<string, any>;
+  details: Record<string, any>;
+}
+\end{asciiart}
+
+\subsection{Interfaccia PerformanceMetrics}
+\begin{asciiart}
+interface PerformanceMetrics extends BaseMetrics {
+  metrics: {
+    fcp: number;
+    lcp: number;
+    tti: number;
+    cls: number;
+    totalSize: number;
+  };
+  details: {
+    resources: {
+      js: number;
+      css: number;
+      images: number;
+      fonts: number;
+    };
+    resourceCount: number;
+    renderBlocking: number;
+  };
+}
+\end{asciiart}
+
+\subsection{Interfaccia SEOMetrics}
+\begin{asciiart}
+interface SEOMetrics extends BaseMetrics {
+  metrics: {
+    title: string;
+    meta: string;
+    headings: string;
+    images: string;
+    links: string;
+  };
+  details: {
+    titleLength: number;
+    metaDescription: number;
+    hasCanonical: boolean;
+    imgAltTags: number;
+    headingStructure: string;
+    linkQuality: string;
+  };
+}
+\end{asciiart}
+
+\subsection{Interfaccia SecurityMetrics}
+\begin{asciiart}
+interface SecurityMetrics extends BaseMetrics {
+  metrics: {
+    ssl: string;
+    headers: string;
+    vulnerabilities: number;
+    cookies: string;
+    csp: string;
+  };
+  details: {
+    sslDetails: {
+      grade: string;
+      protocol: string;
+      expiry: string;
+    };
+    securityHeaders: {
+      strictTransportSecurity: boolean;
+      contentSecurityPolicy: boolean;
+      xFrameOptions: boolean;
+      xContentTypeOptions: boolean;
+      referrerPolicy: boolean;
+    };
+    cookiesDetails: {
+      secure: boolean;
+      httpOnly: boolean;
+      sameSite: string;
+    };
+  };
+}
+\end{asciiart}
+
+\subsection{Interfaccia TechnicalMetrics}
+\begin{asciiart}
+interface TechnicalMetrics extends BaseMetrics {
+  metrics: {
+    html: string;
+    css: string;
+    javascript: string;
+    responsive: boolean;
+    technologies: string[];
+  };
+  details: {
+    htmlVersion: string;
+    cssVersion: string;
+    jsFeatures: string[];
+    frameworks: string[];
+    libraries: string[];
+    serverInfo: {
+      server: string;
+      platform: string;
+    };
+  };
+}
+\end{asciiart}
+
+\subsection{Interfaccia ComparisonResult}
+\begin{asciiart}
+interface ComparisonResult {
+  performance: 'site1' | 'site2' | 'tie';
+  seo: 'site1' | 'site2' | 'tie';
+  security: 'site1' | 'site2' | 'tie';
+  technical: 'site1' | 'site2' | 'tie';
+  overallScore: 'site1' | 'site2' | 'tie';
+  scoreGap: number;
+}
+\end{asciiart}
+
+\section{Normalizzazione dei Dati}
+
+\subsection{Diagramma di Normalizzazione}
+
+```mermaid
+flowchart LR
+    RawData["Raw Data"] --> Validation["Validation"]
+    Validation --> TypeConversion["Type Conversion"]
+    TypeConversion --> ScaleAdjustment["Scale Adjustment"]
+    ScaleAdjustment --> FinalProcessing["Final Processing"]
+    FinalProcessing --> NormalizedData["Normalized Data"]
+```
+
+\subsection{Regole di Normalizzazione per Metriche Chiave}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|c|}
+\hline
+\textbf{Metrica} & \textbf{Valore Raw} & \textbf{Valutazione} & \textbf{Punteggio} \\
+\hline
+FCP & < 1000ms & Eccellente & 90-100 \\
+\hline
+FCP & 1000-2500ms & Buono & 60-89 \\
+\hline
+FCP & 2500-4000ms & Migliorabile & 30-59 \\
+\hline
+FCP & > 4000ms & Scarso & 0-29 \\
+\hline
+LCP & < 2500ms & Eccellente & 90-100 \\
+\hline
+LCP & 2500-4000ms & Buono & 60-89 \\
+\hline
+LCP & 4000-6000ms & Migliorabile & 30-59 \\
+\hline
+LCP & > 6000ms & Scarso & 0-29 \\
+\hline
+CLS & < 0.1 & Eccellente & 90-100 \\
+\hline
+CLS & 0.1-0.25 & Buono & 60-89 \\
+\hline
+CLS & 0.25-0.4 & Migliorabile & 30-59 \\
+\hline
+CLS & > 0.4 & Scarso & 0-29 \\
+\hline
+SSL Grade & A+ & Eccellente & 90-100 \\
+\hline
+SSL Grade & A & Molto Buono & 80-89 \\
+\hline
+SSL Grade & B & Buono & 70-79 \\
+\hline
+SSL Grade & C & Migliorabile & 50-69 \\
+\hline
+SSL Grade & F & Scarso & 0-49 \\
+\hline
+\end{tabular}
+\caption{Normalizzazione delle metriche principali}
+\label{table:normalization-rules}
+\end{table}
+
+\section{Diagramma di Relazioni tra Metriche}
+
+```mermaid
+flowchart TD
+    Performance["Performance"] -- "affects" --> UserExperience["User Experience"]
+    Technical["Technical"] --> UserExperience
+    Accessibility["Accessibility"] --> UserExperience
+    
+    UserExperience -- "contributes to" --> OverallQuality["Overall Quality"]
+    Security["Security"] --> OverallQuality
+    SEO["SEO"] --> OverallQuality
+```
+
+\section{Diagramma della Rappresentazione Visiva dei Dati}
+
+```mermaid
+flowchart TD
+    AnalysisResults["Analysis Results"] -- "format for charts" --> ChartData["Chart Data"]
+    ChartData -- "render as" --> RadarChart["Radar Chart"]
+    
+    AnalysisResults -- "format for tables" --> TableData["Table Data"]
+    TableData -- "render as" --> ComparisonTable["Comparison Table"]
+    TableData -- "render as" --> ScoreGauges["Score Gauges"]
+    
+    ComparisonTable --> DetailedMetricsView["Detailed Metrics View"]
+    ScoreGauges --> DetailedMetricsView
+    
+    AnalysisResults -- "format for details" --> DetailedData["Detailed Data"]
+    DetailedData --> DetailedMetricsView
+```

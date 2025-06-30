@@ -1,0 +1,597 @@
+[23-Apr-2025 11:30:30 UTC] Verifica pertinenza: https://www.marcellogalli.it vs http://davidegalli.com
+[23-Apr-2025 11:30:32 UTC] [OPENAI RESPONSE] {
+  "id": "chatcmpl-BPSb8zCJ5uCSsvAYQYGkQ71HPY0b2",
+  "object": "chat.completion",
+  "created": 1745407830,
+  "model": "gpt-3.5-turbo-0125",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"score\": 60,\n  \"categories\": [\"portfolio professionali\", \"siti personali\"],\n  \"audience\": \"professionisti del settore creativo e artistico\",\n  \"explanation\": \"Il confronto tra www.marcellogalli.it e davidegalli.com risulta signif...
+[23-Apr-2025 11:30:32 UTC] [OPENAI REQUEST] URL: https://api.openai.com/v1/chat/completions, Code: 200, Time: 1.821239s
+[23-Apr-2025 11:30:32 UTC] [VALIDATION] AI execution success: true
+[23-Apr-2025 11:30:32 UTC] [VALIDATION] AI full response: {
+  "score": 60,
+  "categories": ["portfolio professionali", "siti personali"],
+  "audience": "professionisti del settore creativo e artistico",
+  "explanation": "Il confronto tra www.marcellogalli.it e davidegalli.com risulta significativo poiché entrambi sono siti personali di professionisti del settore creativo, focalizzati sulla presentazione dei propri lavori e competenze.",
+  "focus_areas": ["design e user experience", "contenuti e portfolio", "presenza sui motori di ricerca"]
+}
+[23-Apr-2025 11:30:32 UTC] [VALIDATION] Parsed AI response: Array
+(
+    [score] => 60
+    [categories] => Array
+        (
+            [0] => portfolio professionali
+            [1] => siti personali
+        )
+
+    [audience] => professionisti del settore creativo e artistico
+    [explanation] => Il confronto tra www.marcellogalli.it e davidegalli.com risulta significativo poiché entrambi sono siti personali di professionisti del settore creativo, focalizzati sulla presentazione dei propri lavori e competenze.
+    [focus_areas] => Array
+        (
+            [0] => design e user experience
+            [1] => contenuti e portfolio
+            [2] => presenza sui motori di ricerca
+        )
+
+)
+
+[23-Apr-2025 11:30:32 UTC] Nessun risultato in cache per https://www.marcellogalli.it vs http://davidegalli.com
+[23-Apr-2025 11:30:32 UTC] Avvio analisi per ID analysis_6808cf5821190: https://www.marcellogalli.it vs http://davidegalli.com
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Esecuzione analisi diretta per i siti https://www.marcellogalli.it e http://davidegalli.com
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Analizzatori disponibili: seo, security, performance
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Creazione analizzatore 'seo' per entrambi i siti
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Creazione analizzatore 'security' per entrambi i siti
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Creazione analizzatore 'performance' per entrambi i siti
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Esecuzione analisi tipo 'seo'
+[23-Apr-2025 11:30:32 UTC] [ANALYSIS] Analisi 'seo' per sito 1: https://www.marcellogalli.it
+[23-Apr-2025 11:30:32 UTC] [ANALYZER] SEOAnalyzer - Inizio analisi per URL: https://www.marcellogalli.it
+[23-Apr-2025 11:30:32 UTC] [ANALYZER] SEOAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:30:32 UTC] [SEO] Avvio integrazione dati esterni da Moz API per dominio: www.marcellogalli.it
+[23-Apr-2025 11:30:32 UTC] [SEO] Esecuzione chiamata a Moz API
+[23-Apr-2025 11:30:32 UTC] [SEO] Chiamata a Moz API completata con successo
+[23-Apr-2025 11:30:32 UTC] [SEO] Dati Moz API integrati: {"domain_authority":1,"page_authority":3,"backlinks":0,"error":null}
+[23-Apr-2025 11:30:32 UTC] [SEO] Avvio integrazione dati WHOIS per dominio: www.marcellogalli.it
+[23-Apr-2025 11:30:32 UTC] [SEO] Esecuzione chiamata a WHOIS API
+[23-Apr-2025 11:30:32 UTC] [PROXY] URL costruito per whois: https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=www.marcellogalli.it
+[23-Apr-2025 11:30:32 UTC] [PROXY] Esecuzione richiesta GET a https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=www.marcellogalli.it per servizio: whois
+[23-Apr-2025 11:30:33 UTC] [PROXY ERROR] whois: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:30:33 UTC] [PROXY] Attivazione fallback per whois
+[23-Apr-2025 11:30:33 UTC] [SEO ERROR] Errore chiamata WHOIS API: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:30:33 UTC] [ANALYZER] SEOAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:30:33 UTC] [ANALYZER RESULTS] SEOAnalyzer - Risultati: Array
+(
+    [0] => metaTags
+    [1] => headings
+    [2] => images
+    [3] => links
+    [4] => content
+    [5] => structuredData
+    [6] => loadSpeed
+    [7] => url
+    [8] => external
+    [9] => totalScore
+)
+
+[23-Apr-2025 11:30:33 UTC] [ANALYZER API] SEOAnalyzer - Contiene dati da API esterne
+[23-Apr-2025 11:30:33 UTC] [ANALYSIS] Completata analisi 'seo' per sito 1 in 1148ms
+[23-Apr-2025 11:30:33 UTC] [ANALYSIS RESULT] Sito 1 'seo' score: 46.95
+[23-Apr-2025 11:30:33 UTC] [ANALYSIS RESULT] Sito 1 'seo' ha dati da API esterne
+[23-Apr-2025 11:30:33 UTC] [API DATA] Sito 1 SEO Moz domain_authority: 1
+[23-Apr-2025 11:30:33 UTC] [API DATA] Sito 1 SEO Moz page_authority: 3
+[23-Apr-2025 11:30:33 UTC] [API DATA] Sito 1 SEO Moz backlinks: 0
+[23-Apr-2025 11:30:33 UTC] [ANALYSIS] Analisi 'seo' per sito 2: http://davidegalli.com
+[23-Apr-2025 11:30:33 UTC] [ANALYZER] SEOAnalyzer - Inizio analisi per URL: http://davidegalli.com
+[23-Apr-2025 11:30:33 UTC] [ANALYZER] SEOAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:30:33 UTC] [SEO] Avvio integrazione dati esterni da Moz API per dominio: davidegalli.com
+[23-Apr-2025 11:30:33 UTC] [SEO] Esecuzione chiamata a Moz API
+[23-Apr-2025 11:30:33 UTC] [PROXY] URL costruito per moz: https://lsapi.seomoz.com/v2/url_metrics
+[23-Apr-2025 11:30:33 UTC] [PROXY] Configurato header Authorization Basic per MOZ API
+[23-Apr-2025 11:30:33 UTC] [PROXY] Esecuzione richiesta POST a https://lsapi.seomoz.com/v2/url_metrics per servizio: moz
+[23-Apr-2025 11:30:33 UTC] [PROXY] Richiesta completata con successo per moz
+[23-Apr-2025 11:30:33 UTC] [MOZ API] Elaborazione risposta Moz API
+[23-Apr-2025 11:30:33 UTC] [MOZ DTO] Analisi struttura risposta: ["results"]
+[23-Apr-2025 11:30:33 UTC] [MOZ DTO] Struttura 'results[0]': ["page","subdomain","root_domain","title","last_crawled","http_code","pages_to_page","nofollow_pages_to_page","redirect_pages_to_page","external_pages_to_page","external_nofollow_pages_to_page","external_redirect_pages_to_page","deleted_pages_to_page","root_domains_to_page","indirect_root_domains_to_page","deleted_root_domains_to_page","nofollow_root_domains_to_page","pages_to_subdomain","nofollow_pages_to_subdomain","redirect_pages_to_subdomain","external_pages_to_subdomain","external_nofollow_pages_to_subdomain","external_redirect_pages_to_subdomain","deleted_pages_to_subdomain","root_domains_to_subdomain","deleted_root_domains_to_subdomain","nofollow_root_domains_to_subdomain","pages_to_root_domain","nofollow_pages_to_root_domain","redirect_pages_to_root_domain","external_pages_to_root_domain","external_indirect_pages_to_root_domain","external_nofollow_pages_to_root_domain","external_redirect_pages_to_root_domain","deleted_pages_to_root_domain","root_domains_to_root_domain","indirect_root_domains_to_root_domain","deleted_root_domains_to_root_domain","nofollow_root_domains_to_root_domain","page_authority","domain_authority","link_propensity","spam_score","root_domains_from_page","nofollow_root_domains_from_page","pages_from_page","nofollow_pages_from_page","root_domains_from_root_domain","nofollow_root_domains_from_root_domain","pages_from_root_domain","nofollow_pages_from_root_domain","pages_crawled_from_root_domain"]
+[23-Apr-2025 11:30:33 UTC] [MOZ API] Dati estratti - DA: 10 PA: 21 Backlinks: 0
+[23-Apr-2025 11:30:33 UTC] [PROXY] Risultato memorizzato in cache per moz
+[23-Apr-2025 11:30:33 UTC] [SEO] Chiamata a Moz API completata con successo
+[23-Apr-2025 11:30:33 UTC] [SEO] Dati Moz API integrati: {"domain_authority":10,"page_authority":21,"backlinks":0,"error":null}
+[23-Apr-2025 11:30:33 UTC] [SEO] Avvio integrazione dati WHOIS per dominio: davidegalli.com
+[23-Apr-2025 11:30:33 UTC] [SEO] Esecuzione chiamata a WHOIS API
+[23-Apr-2025 11:30:33 UTC] [PROXY] URL costruito per whois: https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=davidegalli.com
+[23-Apr-2025 11:30:33 UTC] [PROXY] Esecuzione richiesta GET a https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=davidegalli.com per servizio: whois
+[23-Apr-2025 11:30:34 UTC] [PROXY ERROR] whois: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:30:34 UTC] [PROXY] Attivazione fallback per whois
+[23-Apr-2025 11:30:34 UTC] [SEO ERROR] Errore chiamata WHOIS API: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:30:34 UTC] [ANALYZER] SEOAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:30:34 UTC] [ANALYZER RESULTS] SEOAnalyzer - Risultati: Array
+(
+    [0] => metaTags
+    [1] => headings
+    [2] => images
+    [3] => links
+    [4] => content
+    [5] => structuredData
+    [6] => loadSpeed
+    [7] => url
+    [8] => external
+    [9] => totalScore
+)
+
+[23-Apr-2025 11:30:34 UTC] [ANALYZER API] SEOAnalyzer - Contiene dati da API esterne
+[23-Apr-2025 11:30:34 UTC] [ANALYSIS] Completata analisi 'seo' per sito 2 in 1237ms
+[23-Apr-2025 11:30:34 UTC] [ANALYSIS RESULT] Sito 2 'seo' score: 48.16
+[23-Apr-2025 11:30:34 UTC] [ANALYSIS RESULT] Sito 2 'seo' ha dati da API esterne
+[23-Apr-2025 11:30:34 UTC] [API DATA] Sito 2 SEO Moz domain_authority: 10
+[23-Apr-2025 11:30:34 UTC] [API DATA] Sito 2 SEO Moz page_authority: 21
+[23-Apr-2025 11:30:34 UTC] [API DATA] Sito 2 SEO Moz backlinks: 0
+[23-Apr-2025 11:30:34 UTC] [ANALYSIS] Esecuzione analisi tipo 'security'
+[23-Apr-2025 11:30:34 UTC] [ANALYSIS] Analisi 'security' per sito 1: https://www.marcellogalli.it
+[23-Apr-2025 11:30:34 UTC] [ANALYZER] SecurityAnalyzer - Inizio analisi per URL: https://www.marcellogalli.it
+[23-Apr-2025 11:30:34 UTC] [ANALYZER] SecurityAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:30:34 UTC] [SECURITY] Avvio integrazione dati esterni da Security Headers API per URL: https://www.marcellogalli.it
+[23-Apr-2025 11:30:34 UTC] [SECURITY] Esecuzione chiamata a Security Headers API per www.marcellogalli.it
+[23-Apr-2025 11:30:34 UTC] [PROXY] URL costruito per securityheaders: https://securityheaders.com/api/v1/analyze?domain=www.marcellogalli.it&hide=on
+[23-Apr-2025 11:30:34 UTC] [PROXY] Esecuzione richiesta GET a https://securityheaders.com/api/v1/analyze?domain=www.marcellogalli.it&hide=on per servizio: securityheaders
+[23-Apr-2025 11:30:35 UTC] [PROXY ERROR] securityheaders: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d07993a54edb4',cH: 'iarSSZr8nZMbSCh0aiQ_wolK.QsbjFLlhFtmXeopnHk-1745407835-1.2.1.1-O9ngExpI0Zl4cizqpe4EdsVPYZGpdDQYfLwmJxMEv.9wdP0GSdvw5VUiHgElEXe_',cUPMDTk: "\/api\/v1\/analyze?domain=www.marcellogalli.it&hide=on&__cf_chl_tk=CE8MhpN2Y2bVEr3mw9H4zEHjGpGSAKgCD37o78jYTBM-1745407835-1.0.1.1-o_NXoiQhpT14THhQ_Ysrj9KvGmp.zREGCos1KO4ziMQ",cFPWv: 'g',cITimeS: '1745407835',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=www.marcellogalli.it&hide=on&__cf_chl_f_tk=CE8MhpN2Y2bVEr3mw9H4zEHjGpGSAKgCD37o78jYTBM-1745407835-1.0.1.1-o_NXoiQhpT14THhQ_Ysrj9KvGmp.zREGCos1KO4ziMQ",md: "0TKPyYrB7uogphWHwcE0YJSlbPAAN7jkF7RYIDf5BVM-1745407835-1.2.1.1-ZKlZ67rdtBYKQXlGoan66bSwg2BERN_lbngNb.BvaDt3D3GDz4ueJKEarXine6lJHGhJw..AF03NR2AEdjuNd_qSBHGfQX3LFW7Vcamd35LROMAokWVM25kAFntdMkBryFypK.F5dYn.jVsM9Wplq8THGIroJimTGkewQBRVh3PeUfL5Eq0XcGQmnNSweZK7Kk5pS81N14wI9TETnIVE_9sN2Cev9LxAOiHbHvqdiwcQ13BayRqiyTKtUE3uFcrVB2TwwF5dQL8razqwflW2Mf2Clb6.8.e7JzQBbXjmKMpzasK8I39LJfvCAOUH97nuiGn.FRIVh.8Dah.xMzrlfxcAyRvON0ueezNTM1nJsFRerI2iUeEEz_tbmTMEac15vphunm0LBE0UDhJylpN34E1LXZuKEP5wrTrc_sSso2mnMJJDXctDEklv6dAACAyLTy3N6Ls8i.9qsYHHdlh2oYQsi5VMssy82gA3N1v8duU8D2k2c8LXtwZat1W9yvuDoth5cWUrVm5VRqYLfyE1CogDgsgSkF82KwvwOQRG2bRxyw8_gh5b7u.Waf_p7sWavJfdbyJgXRJ1zjHnTN6c6ZEMtXTYXl.G7hsqqnW42WP8bZNZGeWvFQNzYA.HNti2ii0b81vmt8WNkOiTx66x_jAI9Tayt9hJ0v44Es.2wSloPk6ifUCCveHED7ccp84CWFOEvcUszIa9BHS6WfdPMqMG5HYpX.6hx5YfeB7IL6Sm5.UfLyyckb.C9OIXPc1e2Db6O4M0GlFqdpJC2JqhWqZH3nay46hDUNzncx8sXuHt6Xz3VsHu6aQl81hewQDLWZlrkVA73We5rkjYov7Qoywj3JqcBtSWk98D1nuZhcDYj93uFPpoiD9knzqpBjU.rJtZd4nF5mfRowPLrcHWTzgjtzoB_VMg9ZKfmWSCztDi21V8dSUkLEwwjHWPPntD734bZxt.p1asFxLPwffSkiYFcU5w_wEHZZH7WdIUr0I_UlT.ZxFKgsu.h_UQlTBhZYdX_DlTNEzotuOGyb4_R4nTk_tZwev8E1UUkeuYt8LZFK.zJm6Ladgbc8JwadfW",mdrd: "bSxFu4LS0AK0rRPLFX5A0ARRLwvW2gMugyJI_rtFydM-1745407835-1.2.1.1-XS29ctx_kzvajINT7Hw3Z1Ryz_X1wL6ccdFBGWKIUCheitM5YzfhUKU880UwZZUAK1pk1S5PaDhOw1oYqzV9s_VOfThp8qyRYIgqbmFOGSK6tM0ld7SaRV26OkeH3JHpsd4lQruGTzjD2.SVtG0Dndprx90r80NUZ4g7yCwvckejF0AGj1pOCOTM0M7yP6aNpGGHPKWZgrJmsNNRCpknJ392bQCdEWT8KfXGFgwF8JDDoCSAH02WoKAe81PuU43m6iaP03xUM6VTuNsOXTigJMcqjIPaEciIZGKFdrHO5kpgVLcgIIXVL1CluItbzvzBeTFXhLiod2BlzA6_qPiTlh03RCQJyDPJ2U9xdKnO5eMqnWXCkgwz8Rt4XxQ14G65WeY99xgcGe0TUTO1MsZFaEUqrfdaU7126SYRKkIxuyFWneqYQGkXUPFsgVaSrkK7giXHiWpy5qaPN1DD4n2hXEEhIBjb8uOTyfjMRI.CiCKMfaVAJnYGYmzvXeo0ueV1AB.PQMGgVoBJouD8bSSCHrfdieswBc5H1TXxHOaP9jCBuk0sablsSRMqJkdpkgaA6ktHHiaXwXxixN.SZquU.y3nj344mZkxgXRNgrcM2l9C0TbuN_8WJXDb_OSwkauGr3y13gTTiXI.s_nlFc7bV2J_xJHPYYXI2IRNzrC7AzoI2lNdSDOlwZys9Sfqvc4aR.lR6wzcaS50xP9wDNDSo64uVCocgvdIFKcB0mS1iiPAKANe0k1A2Bb2M9AMPIyZeag7WrjHnKnNnBk4x4JxyJ0L38_16h4tu1qNwZI1vDD0Y02FfwZuVYO9aDJsYRZo2qL2GvsFlkwkaXSkO6nqbn8gDwpSbPRJ_HHNizWxxi3PRUfPfZ50QOAr.jp9fTE6ItAduOKfe0XnsmpfcVzJDT1uqVtSU98SsS_yAGk.wGdwLmAlQwKoLkaaaP9IIRrunqs_F7z97VeQ.yIcSIcFPmZnP5KaTLnZWRxP0BovUv9b894cgXGxrJEvo6CAxNlVp7LXnyUE3Zukkb1wn1bhIJ26RlCmUyKSDLxxVdg7P6sb6wpmuahjtl3OK6qnsiTpJUmnVtY0KMXuHtpH0wDLncNeW6hQ.rmwX4AGLbzBcdndY3GEECvDw54_br9.rR7_B3G_CQLav9u6S43P3.ULyMNV0_JvkpDvezWBLbdiT6G.035Lzv5AcgfD4bx8Xdy1c2HovfGb10LYd_VIthSNyGdEm6EMPWjLK6ulYEPyekW8KLm2ue5aAJksnKf7cEVOb_vihR56JVLpEqqlCMrBhdkflu_mTpg.otoRdLmjLcO8d2UB9XoY9tL6VnupjI0P5N9V3oM7RdpdAP6QZIpi.M0wQFa3okMJzG8M_yoSR60SgdobrkXOIbanJU5NOlDUE3SHNjCJHhRm4AtgPYHokkoDadT8Pb0Of1Quocedt8GiFmc_6Ya9N85t_7.XRRXD9qeBI63AvobMcZYn_77_LA79cHgJUnZudqUGBpukAyBggg_vYoZFzmHk7sHer.KMtUj08leWZQnHaO5Z8TOw8ZBxPBsqufCxxKK1fiaCHsj8HaTKDuEdLnzh2KNpRfHCHRtYm.c_txGlck9DazIx7A73RS6eERaVd3EZbxZQaxFepYh8O0vfJjyZIJPL6g7Qlz4Pid8UuyBxNcPI8Zmtx6.OS8js9P52C4C_LhDk.eckJ5OdkmtJT2j4HEQIN5efYj1eovGP8hJ2Vg1lVzrfegIug2Jjce2qysQeM6wsfnJsynz2z2qCE7xVr7riq.aTwVCdRJe5fjE0b6QmA.Em6uGcVQp63IE3G67hWB53rS.t0v1PphYufP0yItmEbo8ZUObsRecd8rrRZq9tz_qJ1LWNb27jxXl4uyG4ACOqZr0sEWuKJjWvEfsaqdOJQNdo12ciC91rI_42VvGUk6GJa4bbpZQbbs6K_zSHG8yfbe0q9wskcewaKWEQgzSetl5eyf_ZBw1HM3jsHnIez9zf_I.bgyYJp5OT1JFh7PYx37CkpDDHQOLNAujCK9o3XcJe3tn6ZaeZ.kjP5tvm1eNN1TQhrjjjzLTauer06wJGCdJ9Mramkafp2tPkc5A3BycH38m1JVLerZMseIAm9HgHobCl.6uFi2HBqB8OL7I2o8h8ZkCbhu69yUEqWLpECm.2eqd4AJ9KK4p.nTRNThah90Tru.xx6zz6wDkMvuS_pyKyrMAORmn9k5zKwC2YkEAJAaqnj1f9VYXNUSg6plsW13qVynAZKiv83CVOPAl54waZWXS5.3y10BwA8XXXq7slsiylP7S06z38x_8ZfVekcocwxFAjoyI7iB9ANE644ZE"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d07993a54edb4';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=www.marcellogalli.it&hide=on&__cf_chl_rt_tk=CE8MhpN2Y2bVEr3mw9H4zEHjGpGSAKgCD37o78jYTBM-1745407835-1.0.1.1-o_NXoiQhpT14THhQ_Ysrj9KvGmp.zREGCos1KO4ziMQ" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:30:35 UTC] [PROXY] Attivazione fallback per securityheaders
+[23-Apr-2025 11:30:35 UTC] [SECURITY ERROR] Errore chiamata Security Headers API: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d07993a54edb4',cH: 'iarSSZr8nZMbSCh0aiQ_wolK.QsbjFLlhFtmXeopnHk-1745407835-1.2.1.1-O9ngExpI0Zl4cizqpe4EdsVPYZGpdDQYfLwmJxMEv.9wdP0GSdvw5VUiHgElEXe_',cUPMDTk: "\/api\/v1\/analyze?domain=www.marcellogalli.it&hide=on&__cf_chl_tk=CE8MhpN2Y2bVEr3mw9H4zEHjGpGSAKgCD37o78jYTBM-1745407835-1.0.1.1-o_NXoiQhpT14THhQ_Ysrj9KvGmp.zREGCos1KO4ziMQ",cFPWv: 'g',cITimeS: '1745407835',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=www.marcellogalli.it&hide=on&__cf_chl_f_tk=CE8MhpN2Y2bVEr3mw9H4zEHjGpGSAKgCD37o78jYTBM-1745407835-1.0.1.1-o_NXoiQhpT14THhQ_Ysrj9KvGmp.zREGCos1KO4ziMQ",md: "0TKPyYrB7uogphWHwcE0YJSlbPAAN7jkF7RYIDf5BVM-1745407835-1.2.1.1-ZKlZ67rdtBYKQXlGoan66bSwg2BERN_lbngNb.BvaDt3D3GDz4ueJKEarXine6lJHGhJw..AF03NR2AEdjuNd_qSBHGfQX3LFW7Vcamd35LROMAokWVM25kAFntdMkBryFypK.F5dYn.jVsM9Wplq8THGIroJimTGkewQBRVh3PeUfL5Eq0XcGQmnNSweZK7Kk5pS81N14wI9TETnIVE_9sN2Cev9LxAOiHbHvqdiwcQ13BayRqiyTKtUE3uFcrVB2TwwF5dQL8razqwflW2Mf2Clb6.8.e7JzQBbXjmKMpzasK8I39LJfvCAOUH97nuiGn.FRIVh.8Dah.xMzrlfxcAyRvON0ueezNTM1nJsFRerI2iUeEEz_tbmTMEac15vphunm0LBE0UDhJylpN34E1LXZuKEP5wrTrc_sSso2mnMJJDXctDEklv6dAACAyLTy3N6Ls8i.9qsYHHdlh2oYQsi5VMssy82gA3N1v8duU8D2k2c8LXtwZat1W9yvuDoth5cWUrVm5VRqYLfyE1CogDgsgSkF82KwvwOQRG2bRxyw8_gh5b7u.Waf_p7sWavJfdbyJgXRJ1zjHnTN6c6ZEMtXTYXl.G7hsqqnW42WP8bZNZGeWvFQNzYA.HNti2ii0b81vmt8WNkOiTx66x_jAI9Tayt9hJ0v44Es.2wSloPk6ifUCCveHED7ccp84CWFOEvcUszIa9BHS6WfdPMqMG5HYpX.6hx5YfeB7IL6Sm5.UfLyyckb.C9OIXPc1e2Db6O4M0GlFqdpJC2JqhWqZH3nay46hDUNzncx8sXuHt6Xz3VsHu6aQl81hewQDLWZlrkVA73We5rkjYov7Qoywj3JqcBtSWk98D1nuZhcDYj93uFPpoiD9knzqpBjU.rJtZd4nF5mfRowPLrcHWTzgjtzoB_VMg9ZKfmWSCztDi21V8dSUkLEwwjHWPPntD734bZxt.p1asFxLPwffSkiYFcU5w_wEHZZH7WdIUr0I_UlT.ZxFKgsu.h_UQlTBhZYdX_DlTNEzotuOGyb4_R4nTk_tZwev8E1UUkeuYt8LZFK.zJm6Ladgbc8JwadfW",mdrd: "bSxFu4LS0AK0rRPLFX5A0ARRLwvW2gMugyJI_rtFydM-1745407835-1.2.1.1-XS29ctx_kzvajINT7Hw3Z1Ryz_X1wL6ccdFBGWKIUCheitM5YzfhUKU880UwZZUAK1pk1S5PaDhOw1oYqzV9s_VOfThp8qyRYIgqbmFOGSK6tM0ld7SaRV26OkeH3JHpsd4lQruGTzjD2.SVtG0Dndprx90r80NUZ4g7yCwvckejF0AGj1pOCOTM0M7yP6aNpGGHPKWZgrJmsNNRCpknJ392bQCdEWT8KfXGFgwF8JDDoCSAH02WoKAe81PuU43m6iaP03xUM6VTuNsOXTigJMcqjIPaEciIZGKFdrHO5kpgVLcgIIXVL1CluItbzvzBeTFXhLiod2BlzA6_qPiTlh03RCQJyDPJ2U9xdKnO5eMqnWXCkgwz8Rt4XxQ14G65WeY99xgcGe0TUTO1MsZFaEUqrfdaU7126SYRKkIxuyFWneqYQGkXUPFsgVaSrkK7giXHiWpy5qaPN1DD4n2hXEEhIBjb8uOTyfjMRI.CiCKMfaVAJnYGYmzvXeo0ueV1AB.PQMGgVoBJouD8bSSCHrfdieswBc5H1TXxHOaP9jCBuk0sablsSRMqJkdpkgaA6ktHHiaXwXxixN.SZquU.y3nj344mZkxgXRNgrcM2l9C0TbuN_8WJXDb_OSwkauGr3y13gTTiXI.s_nlFc7bV2J_xJHPYYXI2IRNzrC7AzoI2lNdSDOlwZys9Sfqvc4aR.lR6wzcaS50xP9wDNDSo64uVCocgvdIFKcB0mS1iiPAKANe0k1A2Bb2M9AMPIyZeag7WrjHnKnNnBk4x4JxyJ0L38_16h4tu1qNwZI1vDD0Y02FfwZuVYO9aDJsYRZo2qL2GvsFlkwkaXSkO6nqbn8gDwpSbPRJ_HHNizWxxi3PRUfPfZ50QOAr.jp9fTE6ItAduOKfe0XnsmpfcVzJDT1uqVtSU98SsS_yAGk.wGdwLmAlQwKoLkaaaP9IIRrunqs_F7z97VeQ.yIcSIcFPmZnP5KaTLnZWRxP0BovUv9b894cgXGxrJEvo6CAxNlVp7LXnyUE3Zukkb1wn1bhIJ26RlCmUyKSDLxxVdg7P6sb6wpmuahjtl3OK6qnsiTpJUmnVtY0KMXuHtpH0wDLncNeW6hQ.rmwX4AGLbzBcdndY3GEECvDw54_br9.rR7_B3G_CQLav9u6S43P3.ULyMNV0_JvkpDvezWBLbdiT6G.035Lzv5AcgfD4bx8Xdy1c2HovfGb10LYd_VIthSNyGdEm6EMPWjLK6ulYEPyekW8KLm2ue5aAJksnKf7cEVOb_vihR56JVLpEqqlCMrBhdkflu_mTpg.otoRdLmjLcO8d2UB9XoY9tL6VnupjI0P5N9V3oM7RdpdAP6QZIpi.M0wQFa3okMJzG8M_yoSR60SgdobrkXOIbanJU5NOlDUE3SHNjCJHhRm4AtgPYHokkoDadT8Pb0Of1Quocedt8GiFmc_6Ya9N85t_7.XRRXD9qeBI63AvobMcZYn_77_LA79cHgJUnZudqUGBpukAyBggg_vYoZFzmHk7sHer.KMtUj08leWZQnHaO5Z8TOw8ZBxPBsqufCxxKK1fiaCHsj8HaTKDuEdLnzh2KNpRfHCHRtYm.c_txGlck9DazIx7A73RS6eERaVd3EZbxZQaxFepYh8O0vfJjyZIJPL6g7Qlz4Pid8UuyBxNcPI8Zmtx6.OS8js9P52C4C_LhDk.eckJ5OdkmtJT2j4HEQIN5efYj1eovGP8hJ2Vg1lVzrfegIug2Jjce2qysQeM6wsfnJsynz2z2qCE7xVr7riq.aTwVCdRJe5fjE0b6QmA.Em6uGcVQp63IE3G67hWB53rS.t0v1PphYufP0yItmEbo8ZUObsRecd8rrRZq9tz_qJ1LWNb27jxXl4uyG4ACOqZr0sEWuKJjWvEfsaqdOJQNdo12ciC91rI_42VvGUk6GJa4bbpZQbbs6K_zSHG8yfbe0q9wskcewaKWEQgzSetl5eyf_ZBw1HM3jsHnIez9zf_I.bgyYJp5OT1JFh7PYx37CkpDDHQOLNAujCK9o3XcJe3tn6ZaeZ.kjP5tvm1eNN1TQhrjjjzLTauer06wJGCdJ9Mramkafp2tPkc5A3BycH38m1JVLerZMseIAm9HgHobCl.6uFi2HBqB8OL7I2o8h8ZkCbhu69yUEqWLpECm.2eqd4AJ9KK4p.nTRNThah90Tru.xx6zz6wDkMvuS_pyKyrMAORmn9k5zKwC2YkEAJAaqnj1f9VYXNUSg6plsW13qVynAZKiv83CVOPAl54waZWXS5.3y10BwA8XXXq7slsiylP7S06z38x_8ZfVekcocwxFAjoyI7iB9ANE644ZE"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d07993a54edb4';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=www.marcellogalli.it&hide=on&__cf_chl_rt_tk=CE8MhpN2Y2bVEr3mw9H4zEHjGpGSAKgCD37o78jYTBM-1745407835-1.0.1.1-o_NXoiQhpT14THhQ_Ysrj9KvGmp.zREGCos1KO4ziMQ" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] SecurityAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:30:35 UTC] [ANALYZER RESULTS] SecurityAnalyzer - Risultati: Array
+(
+    [0] => securityHeaders
+    [1] => ssl
+    [2] => vulnerabilities
+    [3] => cookies
+    [4] => authForms
+    [5] => sensitiveInfo
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Completata analisi 'security' per sito 1 in 457ms
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS RESULT] Sito 1 'security' score: 62.55
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Analisi 'security' per sito 2: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] SecurityAnalyzer - Inizio analisi per URL: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] SecurityAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:30:35 UTC] [SECURITY] Avvio integrazione dati esterni da Security Headers API per URL: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [SECURITY] Esecuzione chiamata a Security Headers API per davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [PROXY] URL costruito per securityheaders: https://securityheaders.com/api/v1/analyze?domain=davidegalli.com&hide=on
+[23-Apr-2025 11:30:35 UTC] [PROXY] Esecuzione richiesta GET a https://securityheaders.com/api/v1/analyze?domain=davidegalli.com&hide=on per servizio: securityheaders
+[23-Apr-2025 11:30:35 UTC] [PROXY ERROR] securityheaders: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d079ab8780e97',cH: 'fjCMIAIbvXn9pi7yVNHNyLsc611PnrMLLviCB0wO7M4-1745407835-1.2.1.1-GH_bbtBnHv2SQNMdrUu_sAKmVcISr8WvtrlITnUl0ICVUSG84TYkr6jSua5Bjv9X',cUPMDTk: "\/api\/v1\/analyze?domain=davidegalli.com&hide=on&__cf_chl_tk=iA8EYhiLcfSfXLzltd0oRDhNeCcPLsWTuLu9_GQEfhk-1745407835-1.0.1.1-ExW1MToCywci9i4Cb6EhZ2BMbP2fFhVOd8LbUqIHc4U",cFPWv: 'g',cITimeS: '1745407835',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=davidegalli.com&hide=on&__cf_chl_f_tk=iA8EYhiLcfSfXLzltd0oRDhNeCcPLsWTuLu9_GQEfhk-1745407835-1.0.1.1-ExW1MToCywci9i4Cb6EhZ2BMbP2fFhVOd8LbUqIHc4U",md: "Ffl0dC.MEFoaPMYKBxbxjOxnyyBbLH1zqhFJ05tmBFc-1745407835-1.2.1.1-o9CrFzzx2AvbCETfnFIMOrP3j53W2kgrzEn9IKK4CYHYTLcz5VMKRfrQe8LqmF5K8IlkQBpqPr01ULSKPCQ.LoGnzdG3nrcjwSUI_g98h5g.3ULRsIKKWcG6eCEIptyEJ76RdULO_bE6kuLJNjsoWH.iGQran37lfVir1KQg92Kr4kh7AtxjsFy4ha_QP8g4TT4_3H6wyPV_gAjBgyaEtiyPQTq0rXC_58Sk50ZkldiOPsVUo16fxqgs88_HDGylCyTawsuUb3lELjpOPHgmJ.DsDoKw53UnBaNQo6erXb2Ytnhi1h7V6rBn8uFwF6Ct2HpnaBRfLTc5pvWigRmYi4H.SUwacBDG7qw4TPG8tEBV1wNMmITTneR6zVKBTgeB2ulXhcZ62hazqJa2k_Eo6IJCi6kmkfrCH4oNfP9ExaYZGdMd7XBlUZ3wHvecbeEuWLymtmCi0IyDZ4Res6RcaC0SVNl9IBep71P_wwKXqWCDq2buqMSwTRdLfFaF8hCPBfCVSpz2wJUfDX3SnGq_8r_pLbMTLRfeFmFnopOU.WFU8_0gVKZdvTqFjnSDXgWdPlMJFgWyUSL.0jU50yG7hSG4ct0mijzFGAtQJZfPcGlF02F0Ln47Npnx1VuIosWrcjGeKjlKtiIzAcKU8yseE.SFDcwHXDvd2_xtcwkor8_zwRU0J2LGT.wPSMdMwKiYfy8jHQGKM5rR4EmDZIu.vgWd3qNYf56VgWXZKFMZtcvy.HfGAyY3Z7.PEvtvkCVZIgPG_RGk3eVL0nv7jC41V1I3HFwc.YHGoHmXYU7btaLqEYrWA_HSgqR4TAx4FmZd6VxcqDShdjZKAOPb_3D0XGzcGDzfcFaFqYoMxOL5TzEIFtO4j4wFk2zVAVLmmr8wYjlz.4RNLbkNqPDmjqyZVk568oL_T_r6CA2Tb_Vb3wFFH65EE7s6h8BAcXZPjtvmc5acwlGZXLlxrMmd1Nz8YJo0U.bzYDPwsu2AaxG.eeMSXp4iD5XAhJ2uMhWFlLxk7ljN2ufQKjmdK0.sviUKN_zaGlnXxLob1AKqSKhxreI",mdrd: "l_JbEWQCdDtfw8Jdji2dTU8qBMV4pXeDtrtOV7XUYQc-1745407835-1.2.1.1-mcp4sLqOzG.vIG.n_PYxPTsos0iNkgNWLiY.tKlhEdIiBNpxi5etgQKVoH_5tr_A3isJ8u4vNGZrWPOUHKFZSAgzbthE_OLx6nT6HvNM.ae.rYoL1s4tLZbZxD1KwIcWW3fFkZsYx.txmjgG2fSqBNlrlKOEfxAis2FFmwGpn4bLlsFHspvgrWTXcmwglOBQhDWV7tzJFGJTL4yDifFT2iQwQ1rq4UEohut2LPsXzSY2c2Vs7Ugn5QWiLLOzG6HQCPytVM7IiOx_Fb88unL6.QSQlPIX.84_KOSPvGaeVJajhHWPUYc.IYZpMetb11ADxaMmxhWUdGf1O.HLuSdKXQ33t0foLCpo0_Qxl9AiXoavPAg82ljwGBGk_zs9yDFvGU69mQwUcB2DfuOCVk4IunP1awAumLYAytk_wnZ5816Ven312Qeab6kFrZbSS1US0wwijtGQryNo0OubL8I_awdTlAtnoZYvo4vwubwPXpSwiNJPYDK9cR_5supf7X7jEO3wwtBL8hq6W_bSbLzJCnyhlXV4SC4mGplSBEDtnliTUr1O49n_wiXmTwVySNIN0mktLsIVpQJyQQCrhsBoXUhD8X4vlmXzCcsN.O6HgmanzXf_enadNjiq.SqDXll.j6c42WU6doBR1A7fQ4ZVlPTavK0cPGr5eJJk2iu7v.1.bTQp0lwSHo9Bpy.m4KWdCSw4bXQJIeLCuTpqRBtErmNiQ7mpW9IoJW5Jgo9IkfqaG4ebOXJa6L_pzEjsJdKzvyoJ1mBzTmQXdqhLGgU5c60KY2.e._GDhj3_9PFcySYbROoZ27ze.NWQ6rppoUUIuzAnlSDLfi3PA0YePdbvZKJA5nl2x7.dxxKGyrDl.O3.uV5kLBxmCmEZM67ViAZ_YKgv3V1aeyqm4asRd0FTemSVjMrBvmr3WxbAZ8oLpZ75dpvo7jMfPnH4gxcIV1Ld1z_IeEj8eeN2EW0q95P2FxuP5G3FzUP0hBUkgk9ntX204EG7GxcHj3Kg_DFFOSAiE32POCBUa6RLbZjEhdNIBY.YVzs9xqNk53.rPbyj4xECZjElUXmjW6zlDse4by4ArdiOELC.8x5ZGgAq_9ljME0e8Y_MnAv0dndu_Jbncc0Z3uRC3xdJpGYnfgtdV5HfCXsE8rYheJXbva9KhOdp.rMSOHqMbJ7E1x869Tc4dc_6b99kLmZYWW8MWlZGDLzkUd2IutFGxO9q0S5XwVuHg0jcs4E_yAKjgBUZOGEefy5_x7xPh4UJf5w1Xltuf13kkDoDQ4k4Sn5ovEtzYSHWq222WFACuxbM42OTYG3TndjhLdPovG6Mcj8.T68Fcqj02vwcukvnAhFIoR14KIZiTTL761ET5Iz5O56CYAeqzFtED1dc1ELToZa6URyAbge2HmEGIGnAO3fDXpxk_5w__bHVGHHApzD2iu66bjdkdXUGdLiiNBK0dnD89IYqTxh5YyZ4pkyf4UpQK1nXgI_8.yJlBOD2YNBwRNvjaG.Eem_5XygEmBNLlDzwc8xzba7aBysigyE22SXNd9SYa32mH4yJdKT4oOrn4oss9GncjOS_uk2og4iVr_tDPahMN4AKHGJVklidcqlcu_RHjSd6XVJsz3BsYXjILGFlNvY2BqeVy9xhPJOVoOaZsCH5MGyD5nTPyGcex7LCHGPcCd0VBl0i1SbENhNLo2iwGORPBFX16yfQsOU6nAyHFfPbajE_IpgqqLKu1l94JJTN916PEr0uJ5Kt7_sh.iqKf2qODtK5EHrYYadNXqtqhrpCgMKd_f_BjVer.ZLiDeCl7KcG4yFAGmHJSn0KNh87B7ttR2Y6bK9lcCyrnG0G5f2UvBnhLGmNAtwT4mAlTVI5Trys0nO23jNELA4CLWpwIXdMHqB0TiLamgVnbw7dXVP9GRH9rpL1JFrUyTfqByRl6SJZycl3uan1dFnl4.EGMwlGb6HnUYMIB9p7BK9pT0GhDq4fkSPoeOef61AbH5MS7M1Bm79sNCDFRRmrPP13JwPsf7PS525cIylwPpGTU8HJ494p_Xg3wdObQdMPlsNAXRefHeMowS5ElS98K3v4BRPBrxI8v3.5qkZDLSEBNnAHUNe84AGRedNmmYtMOtQPLV_o8E.EthsODuIcZMwsvIgqwNyVqDjhI5.KNZHPbgBF0upVZziy_HGHGfwTaj3sTZoe6ye6_LGBY2MfPKiXGsalDFPmxMciT.P1x_9D5K0Oi_dhyD6h31czLBzYIHOyIXWRtfca5UULWvpJqV.0CsRJdNYjq5kmEtuduJEA_hVmtJtSEyU74y5kZUDazdCxvlX6YEYtndPcacFF55rYAZIA8T4"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d079ab8780e97';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=davidegalli.com&hide=on&__cf_chl_rt_tk=iA8EYhiLcfSfXLzltd0oRDhNeCcPLsWTuLu9_GQEfhk-1745407835-1.0.1.1-ExW1MToCywci9i4Cb6EhZ2BMbP2fFhVOd8LbUqIHc4U" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:30:35 UTC] [PROXY] Attivazione fallback per securityheaders
+[23-Apr-2025 11:30:35 UTC] [SECURITY ERROR] Errore chiamata Security Headers API: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d079ab8780e97',cH: 'fjCMIAIbvXn9pi7yVNHNyLsc611PnrMLLviCB0wO7M4-1745407835-1.2.1.1-GH_bbtBnHv2SQNMdrUu_sAKmVcISr8WvtrlITnUl0ICVUSG84TYkr6jSua5Bjv9X',cUPMDTk: "\/api\/v1\/analyze?domain=davidegalli.com&hide=on&__cf_chl_tk=iA8EYhiLcfSfXLzltd0oRDhNeCcPLsWTuLu9_GQEfhk-1745407835-1.0.1.1-ExW1MToCywci9i4Cb6EhZ2BMbP2fFhVOd8LbUqIHc4U",cFPWv: 'g',cITimeS: '1745407835',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=davidegalli.com&hide=on&__cf_chl_f_tk=iA8EYhiLcfSfXLzltd0oRDhNeCcPLsWTuLu9_GQEfhk-1745407835-1.0.1.1-ExW1MToCywci9i4Cb6EhZ2BMbP2fFhVOd8LbUqIHc4U",md: "Ffl0dC.MEFoaPMYKBxbxjOxnyyBbLH1zqhFJ05tmBFc-1745407835-1.2.1.1-o9CrFzzx2AvbCETfnFIMOrP3j53W2kgrzEn9IKK4CYHYTLcz5VMKRfrQe8LqmF5K8IlkQBpqPr01ULSKPCQ.LoGnzdG3nrcjwSUI_g98h5g.3ULRsIKKWcG6eCEIptyEJ76RdULO_bE6kuLJNjsoWH.iGQran37lfVir1KQg92Kr4kh7AtxjsFy4ha_QP8g4TT4_3H6wyPV_gAjBgyaEtiyPQTq0rXC_58Sk50ZkldiOPsVUo16fxqgs88_HDGylCyTawsuUb3lELjpOPHgmJ.DsDoKw53UnBaNQo6erXb2Ytnhi1h7V6rBn8uFwF6Ct2HpnaBRfLTc5pvWigRmYi4H.SUwacBDG7qw4TPG8tEBV1wNMmITTneR6zVKBTgeB2ulXhcZ62hazqJa2k_Eo6IJCi6kmkfrCH4oNfP9ExaYZGdMd7XBlUZ3wHvecbeEuWLymtmCi0IyDZ4Res6RcaC0SVNl9IBep71P_wwKXqWCDq2buqMSwTRdLfFaF8hCPBfCVSpz2wJUfDX3SnGq_8r_pLbMTLRfeFmFnopOU.WFU8_0gVKZdvTqFjnSDXgWdPlMJFgWyUSL.0jU50yG7hSG4ct0mijzFGAtQJZfPcGlF02F0Ln47Npnx1VuIosWrcjGeKjlKtiIzAcKU8yseE.SFDcwHXDvd2_xtcwkor8_zwRU0J2LGT.wPSMdMwKiYfy8jHQGKM5rR4EmDZIu.vgWd3qNYf56VgWXZKFMZtcvy.HfGAyY3Z7.PEvtvkCVZIgPG_RGk3eVL0nv7jC41V1I3HFwc.YHGoHmXYU7btaLqEYrWA_HSgqR4TAx4FmZd6VxcqDShdjZKAOPb_3D0XGzcGDzfcFaFqYoMxOL5TzEIFtO4j4wFk2zVAVLmmr8wYjlz.4RNLbkNqPDmjqyZVk568oL_T_r6CA2Tb_Vb3wFFH65EE7s6h8BAcXZPjtvmc5acwlGZXLlxrMmd1Nz8YJo0U.bzYDPwsu2AaxG.eeMSXp4iD5XAhJ2uMhWFlLxk7ljN2ufQKjmdK0.sviUKN_zaGlnXxLob1AKqSKhxreI",mdrd: "l_JbEWQCdDtfw8Jdji2dTU8qBMV4pXeDtrtOV7XUYQc-1745407835-1.2.1.1-mcp4sLqOzG.vIG.n_PYxPTsos0iNkgNWLiY.tKlhEdIiBNpxi5etgQKVoH_5tr_A3isJ8u4vNGZrWPOUHKFZSAgzbthE_OLx6nT6HvNM.ae.rYoL1s4tLZbZxD1KwIcWW3fFkZsYx.txmjgG2fSqBNlrlKOEfxAis2FFmwGpn4bLlsFHspvgrWTXcmwglOBQhDWV7tzJFGJTL4yDifFT2iQwQ1rq4UEohut2LPsXzSY2c2Vs7Ugn5QWiLLOzG6HQCPytVM7IiOx_Fb88unL6.QSQlPIX.84_KOSPvGaeVJajhHWPUYc.IYZpMetb11ADxaMmxhWUdGf1O.HLuSdKXQ33t0foLCpo0_Qxl9AiXoavPAg82ljwGBGk_zs9yDFvGU69mQwUcB2DfuOCVk4IunP1awAumLYAytk_wnZ5816Ven312Qeab6kFrZbSS1US0wwijtGQryNo0OubL8I_awdTlAtnoZYvo4vwubwPXpSwiNJPYDK9cR_5supf7X7jEO3wwtBL8hq6W_bSbLzJCnyhlXV4SC4mGplSBEDtnliTUr1O49n_wiXmTwVySNIN0mktLsIVpQJyQQCrhsBoXUhD8X4vlmXzCcsN.O6HgmanzXf_enadNjiq.SqDXll.j6c42WU6doBR1A7fQ4ZVlPTavK0cPGr5eJJk2iu7v.1.bTQp0lwSHo9Bpy.m4KWdCSw4bXQJIeLCuTpqRBtErmNiQ7mpW9IoJW5Jgo9IkfqaG4ebOXJa6L_pzEjsJdKzvyoJ1mBzTmQXdqhLGgU5c60KY2.e._GDhj3_9PFcySYbROoZ27ze.NWQ6rppoUUIuzAnlSDLfi3PA0YePdbvZKJA5nl2x7.dxxKGyrDl.O3.uV5kLBxmCmEZM67ViAZ_YKgv3V1aeyqm4asRd0FTemSVjMrBvmr3WxbAZ8oLpZ75dpvo7jMfPnH4gxcIV1Ld1z_IeEj8eeN2EW0q95P2FxuP5G3FzUP0hBUkgk9ntX204EG7GxcHj3Kg_DFFOSAiE32POCBUa6RLbZjEhdNIBY.YVzs9xqNk53.rPbyj4xECZjElUXmjW6zlDse4by4ArdiOELC.8x5ZGgAq_9ljME0e8Y_MnAv0dndu_Jbncc0Z3uRC3xdJpGYnfgtdV5HfCXsE8rYheJXbva9KhOdp.rMSOHqMbJ7E1x869Tc4dc_6b99kLmZYWW8MWlZGDLzkUd2IutFGxO9q0S5XwVuHg0jcs4E_yAKjgBUZOGEefy5_x7xPh4UJf5w1Xltuf13kkDoDQ4k4Sn5ovEtzYSHWq222WFACuxbM42OTYG3TndjhLdPovG6Mcj8.T68Fcqj02vwcukvnAhFIoR14KIZiTTL761ET5Iz5O56CYAeqzFtED1dc1ELToZa6URyAbge2HmEGIGnAO3fDXpxk_5w__bHVGHHApzD2iu66bjdkdXUGdLiiNBK0dnD89IYqTxh5YyZ4pkyf4UpQK1nXgI_8.yJlBOD2YNBwRNvjaG.Eem_5XygEmBNLlDzwc8xzba7aBysigyE22SXNd9SYa32mH4yJdKT4oOrn4oss9GncjOS_uk2og4iVr_tDPahMN4AKHGJVklidcqlcu_RHjSd6XVJsz3BsYXjILGFlNvY2BqeVy9xhPJOVoOaZsCH5MGyD5nTPyGcex7LCHGPcCd0VBl0i1SbENhNLo2iwGORPBFX16yfQsOU6nAyHFfPbajE_IpgqqLKu1l94JJTN916PEr0uJ5Kt7_sh.iqKf2qODtK5EHrYYadNXqtqhrpCgMKd_f_BjVer.ZLiDeCl7KcG4yFAGmHJSn0KNh87B7ttR2Y6bK9lcCyrnG0G5f2UvBnhLGmNAtwT4mAlTVI5Trys0nO23jNELA4CLWpwIXdMHqB0TiLamgVnbw7dXVP9GRH9rpL1JFrUyTfqByRl6SJZycl3uan1dFnl4.EGMwlGb6HnUYMIB9p7BK9pT0GhDq4fkSPoeOef61AbH5MS7M1Bm79sNCDFRRmrPP13JwPsf7PS525cIylwPpGTU8HJ494p_Xg3wdObQdMPlsNAXRefHeMowS5ElS98K3v4BRPBrxI8v3.5qkZDLSEBNnAHUNe84AGRedNmmYtMOtQPLV_o8E.EthsODuIcZMwsvIgqwNyVqDjhI5.KNZHPbgBF0upVZziy_HGHGfwTaj3sTZoe6ye6_LGBY2MfPKiXGsalDFPmxMciT.P1x_9D5K0Oi_dhyD6h31czLBzYIHOyIXWRtfca5UULWvpJqV.0CsRJdNYjq5kmEtuduJEA_hVmtJtSEyU74y5kZUDazdCxvlX6YEYtndPcacFF55rYAZIA8T4"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d079ab8780e97';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=davidegalli.com&hide=on&__cf_chl_rt_tk=iA8EYhiLcfSfXLzltd0oRDhNeCcPLsWTuLu9_GQEfhk-1745407835-1.0.1.1-ExW1MToCywci9i4Cb6EhZ2BMbP2fFhVOd8LbUqIHc4U" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] SecurityAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:30:35 UTC] [ANALYZER RESULTS] SecurityAnalyzer - Risultati: Array
+(
+    [0] => securityHeaders
+    [1] => ssl
+    [2] => vulnerabilities
+    [3] => cookies
+    [4] => authForms
+    [5] => sensitiveInfo
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Completata analisi 'security' per sito 2 in 241ms
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS RESULT] Sito 2 'security' score: 39
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Esecuzione analisi tipo 'performance'
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Analisi 'performance' per sito 1: https://www.marcellogalli.it
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] PerformanceAnalyzer - Inizio analisi per URL: https://www.marcellogalli.it
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] PerformanceAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] PerformanceAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:30:35 UTC] [ANALYZER RESULTS] PerformanceAnalyzer - Risultati: Array
+(
+    [0] => localMetrics
+    [1] => pageSpeed
+    [2] => resourceHints
+    [3] => renderBlocking
+    [4] => imageOptimization
+    [5] => caching
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Completata analisi 'performance' per sito 1 in 167ms
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS RESULT] Sito 1 'performance' score: 35
+[23-Apr-2025 11:30:35 UTC] [ANALYSIS] Analisi 'performance' per sito 2: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] PerformanceAnalyzer - Inizio analisi per URL: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [ANALYZER] PerformanceAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:30:35 UTC] [PAGESPEED] Avvio analisi PageSpeed per URL: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [PAGESPEED] Esecuzione chiamata API per URL: http://davidegalli.com
+[23-Apr-2025 11:30:35 UTC] [PROXY] Aggiunta API key a URL per pagespeed, param: key
+[23-Apr-2025 11:30:35 UTC] [PROXY] URL costruito per pagespeed: https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&locale=it_IT&url=http%3A%2F%2Fdavidegalli.com&key=HIDDEN
+[23-Apr-2025 11:30:35 UTC] [PROXY] Esecuzione richiesta GET a https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&locale=it_IT&url=http%3A%2F%2Fdavidegalli.com&key=AIzaSyAfLTZsAP43GvqSdECw-3T2Hk3LMdCkc3Y per servizio: pagespeed
+[23-Apr-2025 11:30:51 UTC] [PROXY] Richiesta completata con successo per pagespeed
+[23-Apr-2025 11:30:51 UTC] [PROXY] Risultato memorizzato in cache per pagespeed
+[23-Apr-2025 11:30:51 UTC] [PAGESPEED] API chiamata con successo
+[23-Apr-2025 11:30:51 UTC] [ANALYZER] PerformanceAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:30:51 UTC] [ANALYZER RESULTS] PerformanceAnalyzer - Risultati: Array
+(
+    [0] => localMetrics
+    [1] => pageSpeed
+    [2] => resourceHints
+    [3] => renderBlocking
+    [4] => imageOptimization
+    [5] => caching
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS] Completata analisi 'performance' per sito 2 in 15711ms
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT] Sito 2 'performance' score: 31.4
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS] Elaborazione e confronto dei risultati
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS] Calcolo punteggi finali
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT] Punteggio finale sito 1: 47.88
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT] Punteggio finale sito 2: 41.21
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT] Vincitore: www.marcellogalli.it
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT] Livello vittoria: leggera
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT STRUCTURE] Struttura dati risultato finale: Array
+(
+    [0] => url1
+    [1] => url2
+    [2] => site1
+    [3] => site2
+    [4] => comparison
+    [5] => metadata
+    [6] => winner
+    [7] => advantage
+    [8] => winMargin
+    [9] => victoryLevel
+    [10] => strengthAnalysis
+)
+
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT STRUCTURE] Struttura site1: Array
+(
+    [0] => metrics
+    [1] => categories
+    [2] => performance
+    [3] => seo
+    [4] => security
+    [5] => technical
+    [6] => performanceScore
+    [7] => seoScore
+    [8] => securityScore
+    [9] => technicalScore
+    [10] => totalScore
+)
+
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS RESULT STRUCTURE] Struttura site2: Array
+(
+    [0] => metrics
+    [1] => categories
+    [2] => performance
+    [3] => seo
+    [4] => security
+    [5] => technical
+    [6] => performanceScore
+    [7] => seoScore
+    [8] => securityScore
+    [9] => technicalScore
+    [10] => totalScore
+)
+
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS API USAGE] seo ha dati da API esterne per il sito 1
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS API USAGE] seo ha dati da API esterne per il sito 2
+[23-Apr-2025 11:30:51 UTC] [ANALYSIS] Analisi completata con successo. API utilizzate: seo
+[23-Apr-2025 11:30:51 UTC] Analisi completata per ID analysis_6808cf5821190
+[23-Apr-2025 11:30:53 UTC] Richiesta di recupero risultati per analisi ID: analysis_6808cf5821190
+[23-Apr-2025 11:32:34 UTC] Trovati risultati in cache per https://www.unipr.it vs https://www.unimore.it
+[23-Apr-2025 11:41:17 UTC] Verifica pertinenza: https://www.aruba.it vs https://www.wordpress.com
+[23-Apr-2025 11:41:32 UTC] [OPENAI RESPONSE] {
+  "id": "chatcmpl-BPSlZmh8qTyhhVsuk8z9ZfQm9odnM",
+  "object": "chat.completion",
+  "created": 1745408477,
+  "model": "gpt-3.5-turbo-0125",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"score\": 60,\n  \"categories\": [\"Web hosting\", \"Servizi online\"],\n  \"audience\": \"Utenti che cercano servizi di hosting web e piattaforme per la creazione di siti web\",\n  \"explanation\": \"Il confronto tra Aruba e WordPress è signifi...
+[23-Apr-2025 11:41:32 UTC] [OPENAI REQUEST] URL: https://api.openai.com/v1/chat/completions, Code: 200, Time: 14.723348s
+[23-Apr-2025 11:41:32 UTC] [VALIDATION] AI execution success: true
+[23-Apr-2025 11:41:32 UTC] [VALIDATION] AI full response: {
+  "score": 60,
+  "categories": ["Web hosting", "Servizi online"],
+  "audience": "Utenti che cercano servizi di hosting web e piattaforme per la creazione di siti web",
+  "explanation": "Il confronto tra Aruba e WordPress è significativo poiché entrambi offrono servizi legati alla creazione e gestione di siti web, anche se con approcci diversi.",
+  "focus_areas": ["Performance", "Facilità d'uso", "Personalizzazione dei siti"]
+}
+[23-Apr-2025 11:41:32 UTC] [VALIDATION] Parsed AI response: Array
+(
+    [score] => 60
+    [categories] => Array
+        (
+            [0] => Web hosting
+            [1] => Servizi online
+        )
+
+    [audience] => Utenti che cercano servizi di hosting web e piattaforme per la creazione di siti web
+    [explanation] => Il confronto tra Aruba e WordPress è significativo poiché entrambi offrono servizi legati alla creazione e gestione di siti web, anche se con approcci diversi.
+    [focus_areas] => Array
+        (
+            [0] => Performance
+            [1] => Facilità d'uso
+            [2] => Personalizzazione dei siti
+        )
+
+)
+
+[23-Apr-2025 11:41:32 UTC] Nessun risultato in cache per https://www.aruba.it vs https://www.wordpress.com
+[23-Apr-2025 11:41:32 UTC] Avvio analisi per ID analysis_6808d1ec3aee5: https://www.aruba.it vs https://www.wordpress.com
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Esecuzione analisi diretta per i siti https://www.aruba.it e https://www.wordpress.com
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Analizzatori disponibili: seo, security, performance
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Creazione analizzatore 'seo' per entrambi i siti
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Creazione analizzatore 'security' per entrambi i siti
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Creazione analizzatore 'performance' per entrambi i siti
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Esecuzione analisi tipo 'seo'
+[23-Apr-2025 11:41:32 UTC] [ANALYSIS] Analisi 'seo' per sito 1: https://www.aruba.it
+[23-Apr-2025 11:41:32 UTC] [ANALYZER] SEOAnalyzer - Inizio analisi per URL: https://www.aruba.it
+[23-Apr-2025 11:41:32 UTC] [ANALYZER] SEOAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:41:32 UTC] [SEO] Avvio integrazione dati esterni da Moz API per dominio: www.aruba.it
+[23-Apr-2025 11:41:32 UTC] [SEO] Esecuzione chiamata a Moz API
+[23-Apr-2025 11:41:32 UTC] [PROXY] URL costruito per moz: https://lsapi.seomoz.com/v2/url_metrics
+[23-Apr-2025 11:41:32 UTC] [PROXY] Configurato header Authorization Basic per MOZ API
+[23-Apr-2025 11:41:32 UTC] [PROXY] Esecuzione richiesta POST a https://lsapi.seomoz.com/v2/url_metrics per servizio: moz
+[23-Apr-2025 11:41:33 UTC] [PROXY] Richiesta completata con successo per moz
+[23-Apr-2025 11:41:33 UTC] [MOZ API] Elaborazione risposta Moz API
+[23-Apr-2025 11:41:33 UTC] [MOZ DTO] Analisi struttura risposta: ["results"]
+[23-Apr-2025 11:41:33 UTC] [MOZ DTO] Struttura 'results[0]': ["page","subdomain","root_domain","title","last_crawled","http_code","pages_to_page","nofollow_pages_to_page","redirect_pages_to_page","external_pages_to_page","external_nofollow_pages_to_page","external_redirect_pages_to_page","deleted_pages_to_page","root_domains_to_page","indirect_root_domains_to_page","deleted_root_domains_to_page","nofollow_root_domains_to_page","pages_to_subdomain","nofollow_pages_to_subdomain","redirect_pages_to_subdomain","external_pages_to_subdomain","external_nofollow_pages_to_subdomain","external_redirect_pages_to_subdomain","deleted_pages_to_subdomain","root_domains_to_subdomain","deleted_root_domains_to_subdomain","nofollow_root_domains_to_subdomain","pages_to_root_domain","nofollow_pages_to_root_domain","redirect_pages_to_root_domain","external_pages_to_root_domain","external_indirect_pages_to_root_domain","external_nofollow_pages_to_root_domain","external_redirect_pages_to_root_domain","deleted_pages_to_root_domain","root_domains_to_root_domain","indirect_root_domains_to_root_domain","deleted_root_domains_to_root_domain","nofollow_root_domains_to_root_domain","page_authority","domain_authority","link_propensity","spam_score","root_domains_from_page","nofollow_root_domains_from_page","pages_from_page","nofollow_pages_from_page","root_domains_from_root_domain","nofollow_root_domains_from_root_domain","pages_from_root_domain","nofollow_pages_from_root_domain","pages_crawled_from_root_domain"]
+[23-Apr-2025 11:41:33 UTC] [MOZ API] Dati estratti - DA: 91 PA: 72 Backlinks: 0
+[23-Apr-2025 11:41:33 UTC] [PROXY] Risultato memorizzato in cache per moz
+[23-Apr-2025 11:41:33 UTC] [SEO] Chiamata a Moz API completata con successo
+[23-Apr-2025 11:41:33 UTC] [SEO] Dati Moz API integrati: {"domain_authority":91,"page_authority":72,"backlinks":0,"error":null}
+[23-Apr-2025 11:41:33 UTC] [SEO] Avvio integrazione dati WHOIS per dominio: www.aruba.it
+[23-Apr-2025 11:41:33 UTC] [SEO] Esecuzione chiamata a WHOIS API
+[23-Apr-2025 11:41:33 UTC] [PROXY] URL costruito per whois: https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=www.aruba.it
+[23-Apr-2025 11:41:33 UTC] [PROXY] Esecuzione richiesta GET a https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=www.aruba.it per servizio: whois
+[23-Apr-2025 11:41:33 UTC] [PROXY ERROR] whois: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:41:33 UTC] [PROXY] Attivazione fallback per whois
+[23-Apr-2025 11:41:33 UTC] [SEO ERROR] Errore chiamata WHOIS API: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:41:33 UTC] [ANALYZER] SEOAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:41:33 UTC] [ANALYZER RESULTS] SEOAnalyzer - Risultati: Array
+(
+    [0] => metaTags
+    [1] => headings
+    [2] => images
+    [3] => links
+    [4] => content
+    [5] => structuredData
+    [6] => loadSpeed
+    [7] => url
+    [8] => external
+    [9] => totalScore
+)
+
+[23-Apr-2025 11:41:33 UTC] [ANALYZER API] SEOAnalyzer - Contiene dati da API esterne
+[23-Apr-2025 11:41:33 UTC] [ANALYSIS] Completata analisi 'seo' per sito 1 in 1538ms
+[23-Apr-2025 11:41:33 UTC] [ANALYSIS RESULT] Sito 1 'seo' score: 70.49
+[23-Apr-2025 11:41:33 UTC] [ANALYSIS RESULT] Sito 1 'seo' ha dati da API esterne
+[23-Apr-2025 11:41:33 UTC] [API DATA] Sito 1 SEO Moz domain_authority: 91
+[23-Apr-2025 11:41:33 UTC] [API DATA] Sito 1 SEO Moz page_authority: 72
+[23-Apr-2025 11:41:33 UTC] [API DATA] Sito 1 SEO Moz backlinks: 0
+[23-Apr-2025 11:41:33 UTC] [ANALYSIS] Analisi 'seo' per sito 2: https://www.wordpress.com
+[23-Apr-2025 11:41:33 UTC] [ANALYZER] SEOAnalyzer - Inizio analisi per URL: https://www.wordpress.com
+[23-Apr-2025 11:41:34 UTC] [ANALYZER] SEOAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:41:34 UTC] [SEO] Avvio integrazione dati esterni da Moz API per dominio: www.wordpress.com
+[23-Apr-2025 11:41:34 UTC] [SEO] Esecuzione chiamata a Moz API
+[23-Apr-2025 11:41:34 UTC] [PROXY] URL costruito per moz: https://lsapi.seomoz.com/v2/url_metrics
+[23-Apr-2025 11:41:34 UTC] [PROXY] Configurato header Authorization Basic per MOZ API
+[23-Apr-2025 11:41:34 UTC] [PROXY] Esecuzione richiesta POST a https://lsapi.seomoz.com/v2/url_metrics per servizio: moz
+[23-Apr-2025 11:41:35 UTC] [PROXY] Richiesta completata con successo per moz
+[23-Apr-2025 11:41:35 UTC] [MOZ API] Elaborazione risposta Moz API
+[23-Apr-2025 11:41:35 UTC] [MOZ DTO] Analisi struttura risposta: ["results"]
+[23-Apr-2025 11:41:35 UTC] [MOZ DTO] Struttura 'results[0]': ["page","subdomain","root_domain","title","last_crawled","http_code","pages_to_page","nofollow_pages_to_page","redirect_pages_to_page","external_pages_to_page","external_nofollow_pages_to_page","external_redirect_pages_to_page","deleted_pages_to_page","root_domains_to_page","indirect_root_domains_to_page","deleted_root_domains_to_page","nofollow_root_domains_to_page","pages_to_subdomain","nofollow_pages_to_subdomain","redirect_pages_to_subdomain","external_pages_to_subdomain","external_nofollow_pages_to_subdomain","external_redirect_pages_to_subdomain","deleted_pages_to_subdomain","root_domains_to_subdomain","deleted_root_domains_to_subdomain","nofollow_root_domains_to_subdomain","pages_to_root_domain","nofollow_pages_to_root_domain","redirect_pages_to_root_domain","external_pages_to_root_domain","external_indirect_pages_to_root_domain","external_nofollow_pages_to_root_domain","external_redirect_pages_to_root_domain","deleted_pages_to_root_domain","root_domains_to_root_domain","indirect_root_domains_to_root_domain","deleted_root_domains_to_root_domain","nofollow_root_domains_to_root_domain","page_authority","domain_authority","link_propensity","spam_score","root_domains_from_page","nofollow_root_domains_from_page","pages_from_page","nofollow_pages_from_page","root_domains_from_root_domain","nofollow_root_domains_from_root_domain","pages_from_root_domain","nofollow_pages_from_root_domain","pages_crawled_from_root_domain"]
+[23-Apr-2025 11:41:35 UTC] [MOZ API] Dati estratti - DA: 82 PA: 74 Backlinks: 0
+[23-Apr-2025 11:41:35 UTC] [PROXY] Risultato memorizzato in cache per moz
+[23-Apr-2025 11:41:35 UTC] [SEO] Chiamata a Moz API completata con successo
+[23-Apr-2025 11:41:35 UTC] [SEO] Dati Moz API integrati: {"domain_authority":82,"page_authority":74,"backlinks":0,"error":null}
+[23-Apr-2025 11:41:35 UTC] [SEO] Avvio integrazione dati WHOIS per dominio: www.wordpress.com
+[23-Apr-2025 11:41:35 UTC] [SEO] Esecuzione chiamata a WHOIS API
+[23-Apr-2025 11:41:35 UTC] [PROXY] URL costruito per whois: https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=www.wordpress.com
+[23-Apr-2025 11:41:35 UTC] [PROXY] Esecuzione richiesta GET a https://www.whoisxmlapi.com/whoisserver/WhoisService?outputFormat=JSON&domainName=www.wordpress.com per servizio: whois
+[23-Apr-2025 11:41:36 UTC] [PROXY ERROR] whois: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:41:36 UTC] [PROXY] Attivazione fallback per whois
+[23-Apr-2025 11:41:36 UTC] [SEO ERROR] Errore chiamata WHOIS API: HTTP Error: 401 - Response: {"ErrorMessage": {
+  "errorCode": "AUTHENTICATE_03",
+  "msg": "username/password is missing"
+}}
+[23-Apr-2025 11:41:36 UTC] [ANALYZER] SEOAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:41:36 UTC] [ANALYZER RESULTS] SEOAnalyzer - Risultati: Array
+(
+    [0] => metaTags
+    [1] => headings
+    [2] => images
+    [3] => links
+    [4] => content
+    [5] => structuredData
+    [6] => loadSpeed
+    [7] => url
+    [8] => external
+    [9] => totalScore
+)
+
+[23-Apr-2025 11:41:36 UTC] [ANALYZER API] SEOAnalyzer - Contiene dati da API esterne
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS] Completata analisi 'seo' per sito 2 in 2453ms
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS RESULT] Sito 2 'seo' score: 74.93
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS RESULT] Sito 2 'seo' ha dati da API esterne
+[23-Apr-2025 11:41:36 UTC] [API DATA] Sito 2 SEO Moz domain_authority: 82
+[23-Apr-2025 11:41:36 UTC] [API DATA] Sito 2 SEO Moz page_authority: 74
+[23-Apr-2025 11:41:36 UTC] [API DATA] Sito 2 SEO Moz backlinks: 0
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS] Esecuzione analisi tipo 'security'
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS] Analisi 'security' per sito 1: https://www.aruba.it
+[23-Apr-2025 11:41:36 UTC] [ANALYZER] SecurityAnalyzer - Inizio analisi per URL: https://www.aruba.it
+[23-Apr-2025 11:41:36 UTC] [ANALYZER] SecurityAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:41:36 UTC] [SECURITY] Avvio integrazione dati esterni da Security Headers API per URL: https://www.aruba.it
+[23-Apr-2025 11:41:36 UTC] [SECURITY] Esecuzione chiamata a Security Headers API per www.aruba.it
+[23-Apr-2025 11:41:36 UTC] [PROXY] URL costruito per securityheaders: https://securityheaders.com/api/v1/analyze?domain=www.aruba.it&hide=on
+[23-Apr-2025 11:41:36 UTC] [PROXY] Esecuzione richiesta GET a https://securityheaders.com/api/v1/analyze?domain=www.aruba.it&hide=on per servizio: securityheaders
+[23-Apr-2025 11:41:36 UTC] [PROXY ERROR] securityheaders: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d17c118d4c99e',cH: '9EiPx1FoBDZ2zJs0f_hBiYEMQo52_6jwmNbRcu_hX9M-1745408496-1.2.1.1-oJS9CkYfZU2Fkc1c5ZBXdWYosXMIpehPsKcPEqmZFDaKDdeYK0FAjx.RVECTw6Vt',cUPMDTk: "\/api\/v1\/analyze?domain=www.aruba.it&hide=on&__cf_chl_tk=Bg1Qdysvx1mWNGcIeJdwc6NeB4yTyLTKifk1jFC1U6c-1745408496-1.0.1.1-SBzxrFzd676G3xRKE85_fu7a4N3lLkhEnU3Yv1dO1os",cFPWv: 'g',cITimeS: '1745408496',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=www.aruba.it&hide=on&__cf_chl_f_tk=Bg1Qdysvx1mWNGcIeJdwc6NeB4yTyLTKifk1jFC1U6c-1745408496-1.0.1.1-SBzxrFzd676G3xRKE85_fu7a4N3lLkhEnU3Yv1dO1os",md: "YaQzX73hEX8TmGAc4xsBSNLczbCtzN7P4lYJNaivOMk-1745408496-1.2.1.1-TCfUxDWLAI85uJZ7gajnfBfb0Y7M0vGvrVsVdLQOYhRIInHD5ta8DyOzbXRAvsbSFDVvj1e2lOBBkWq1ULtIDG1JsDlbYW8JmZV_JhqQpwKypdJActqszbziSzku_GoehE5ki55Z1m6U8Ld4jT86GSRsshIjOO6rnBQxxcyuOzct6MlWzfRUz5we9PN_1aFJRfF1vHj.WGPjZIJeJCXpU3co.71wvk.AgcB3jPF0cQoCkBdgKw8PRFE_jGDSUAjQjXV26tHTWnraeOL08aKBXkl9_zdF7_zCAdKVhk7fv4kQK2foON4mzB2DtIfcCKpm6fS7xnJfKfB5BN6pTwmuF7GzCFi6cozXBlVgsKP3PpqHTPa.DXTlRMVoU_ROXfrOr582Iy4HMIF9BTz.M_Rm3QjTFNkLSBTpmWz41SvdVtFihpmdNeWAXasqHhZbLER6.GJzSuTJiPad1ixo5fklge.5VcFDx5rfBgUwUoBnGgkFRKzzq3vX3_RhmFyZ._zOd7djRewMz9SKdT1Mpy6r9HxCkw4GQvdLIPjKSOQc2R4epvS9KYC8dx6IUt_jOUgaU8Bmk8qesyumfl_P2_rp.CooSiZUCdzUQveBn3rEiydIBRLeAzfR4V33S39wmYu_PR4sMItuFrSSQJJym4yGtqVc69yhf2TlJ8krzt87HcFkXhSGoGnbvloV1a6P544J3HAbtDNqkO7CxKK2PFKq5tPl4Mqoj9fkC3ia6sbuPhdSMrV_FfFViOHtp8E29pxQixB0IcliPOKWcbNf1ZPc5Zf9vM9buDkwwDacIbxRbH.FLye5jMyt1wK4Hcc19BqQEYqCK6_fj2As3Id56b_lVGhhShAdDEHK67fBZ5RS.BSX_AEh0zDbUp6ylQyg8b7SqMVnE8iI6UzqNc.lAiaWa4e.SeVjBmgYM4Db2fDsNNi8OUFleptIUHBBT5UXHtCmkrStpuPaCP._FG_kK9gQZCDgdriV7c5NDmcDS7bMVdZ6FpRy4gNeONHn4.trvdXARdKdbudtnefuWVAsvYQhS5Y.eG_4PXrKyqBhS2N7vTs",mdrd: "M1JOOIb.KqdC5i97ZOWz6mIdtKkD5yum588l.4pIm0c-1745408496-1.2.1.1-oqt2PU7C0VeriEstYPL8bQcNROeO9ZoPfzhZtq9Z.mjOuvKqIYYn_AYlJDxhkOV69NYoXhIR3j8AVsA2r_YodE8OpxiqxPMkqSFOXrncon9WnDuaw4hxIeHwB9X8bTHL1Csfkm12QBKQMr.RX80EIXN7SKGtsuP7x1vmIl4NjYjIuduya1Th8Mu37X68ReyIKOXVeLRzw5z9a4.6NFZJyVSvxmA8fv27MXmhX_KunDpl5l3.GuQeO_IvnRpxl.g0Fpm_vd3OTRMQQ2qx2rpgiSwMsSCdQQ3dbfInH34KBzAz6zX8AEBIN2qqX__fKqivAIeibw0avbiMJGQivbtK37qJUqN9EoWtsX.qzmv80x.xVWXvz3P0lQcjwe6hDN48Jv851e8XST6sP.TKV149wDbXBgUK4KWpGregeBnWaLssOeabgdvcTyK80PBspiXl2If.E9CFFx8P3EJ15iPR5r319tcBVlrzPyJZp.iX.mlYe.2Ex8_ANC3rcCQ.gVLuQfFH0ZjYbJtSMtm6qCWYcDpU_6SBrKoIQsLoszKYVLup_ASlHdOEw4b3LulE0O1ZXz34.dh0VoTKyaxu9tCK7Xo11U5lyk36CAyFwvq4.p8PYz9B8IG_cpjwYCr47kTV7eiX2XjV5k45BEY0z1OS801UQtG1HZhtur0VbPuRKbyRAABdsZv_i4GpllP8siMKOpxhocBu730EtM270VoAf45Tjpzu86i50WWJk_RJ562kCfcGPd4Bv4eCM_wB8iOlypXhw2DUMzfJtK4E_eTzajM4P4tXIJi3N5cuCeaBI.UdUtMt2eA28zPnujRhYk4ovnn1mko8oD_gMqT5Exqih.xutn6R0Fp8QzL2IOhjdDFQuejLmnM14itm833bV.7rLv_YdnN6VoFfm6ao55ktqpWMFWLJJBVmYoakTdoQX0wRDHyPXzLm_XxBL6Ad07Tz9e0r82Ubm5Nm2R4_uc_wbof2YeGtvrKDH_LVj3QVMyufpKP.2tq1yyopjcs9GBbMfWN8lEdNvQeVfZtTRF.0v1rJzSggZ4urCfG4D.g5MXCubbh12_7TvfWVfDEwzQmOundK4Yf2fEFG0T2YGaB5_hxlmHEsyvloNQq3gvIZHKyV7shEcR_3rXTsy89IWQmg.h1ZvW08PSMs9H79oUs21pPdfkIaIyK.Mn2z4iY1lLq74K3GRr3bVC7R_uFBx3H5dejIY0iQC6MtwlgpMezL4u4zRny_62b8fEpeWGbZQyQ_ZmVH4q9Ra21Rf2HiBL8xUyKNvqfNDE_A1i3Q7lgTfpgCPlsM5DWgWgXBIVT0YE2endfDWkUSh2H84Xal.DP4QihFLROfp10B7luvLckm.lJO8zDZGbZTP2OQQe4tdpF7.yPg9cPK_Tusq2TvGS3gtYpix1cknaVv1qQVVFOWcC78gC6vs2NYbYKmkXeA13ZVnhL1jH0nYMgsl0Lh4HRCzEjcTe9.pSmtSeezl6ZB48le4o1Kf3fNMOocVi5iuXos328JHncx4R1nmMWfs6Qu7JKkSoxTbszD6Qub9JjKloPg9D25Ly9C.D5_5m8M5TawNMDwC58wR6MiZJivoqdC3O3lqSuSrOiAe7hlxz.Z59iW.VTQPZDGaGg.DmO54.cKpTeJGJ.TcfAtamMgOvh_CJQvMdT3wsi0cBMPirch7sIMTg8OUbQeE5gmUsqNAoz1436VQLyw_buqnr2tJJc_8zNxJcWJ69bjKwsnKMA4lJkIStQidCnsuiQYH4lw5.nrGoUUmUn1cXJFukgJD4bDxEwU5cQuLuO4A7nt10gLDD7TWOJWwWDmCmuxYgV4Fg_IgwSBeaTlMQdiMLokW76ZPSpb0K0l2i6pqv4_mx0Y7F9uwzIKWPTrBbfZHvQVKmZITbRUTB2w1S6J1kkwIPLOIn.Q3opdZIuVJPbRKqzs9SF4OidIu9XVx9URG1_tJpy8ttZ9nS.K_iryroSdyAKsAy.PrZ27yhyVLBtf1dnvU3WVsPIn_18NPtiV68R5iTSkfT5djfgT.CUPEOffI8BkT8JgKuV_dhHtAmuUDxIZKQ7250A5.SolRy10CEEKAE_CI1duCSqkJczTyVTqaJ3uBP5a509sazpEc9Zf4gCWMwY4k_JRbIU1Bld82NfH2iOQk9av5QZcHz_5xB7fpMey8Z4rp2Tfr2i7K3bbeEtxPLiF_oSfw5SzepBV11tIr6ifryJ96DChhyBVsJ2oOfXqCMex3xS9LqMgzDheWaR1nvhDODwZhf96RHwH2fY5sjYGJhdzgpZA6025czqvc1kbFpPu4Wwnkog6PcUvCTsTRjKu3KDlh98wtKkPRal3Z0nY3VlV_8yFaw9FD.ndVvaT"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d17c118d4c99e';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=www.aruba.it&hide=on&__cf_chl_rt_tk=Bg1Qdysvx1mWNGcIeJdwc6NeB4yTyLTKifk1jFC1U6c-1745408496-1.0.1.1-SBzxrFzd676G3xRKE85_fu7a4N3lLkhEnU3Yv1dO1os" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:41:36 UTC] [PROXY] Attivazione fallback per securityheaders
+[23-Apr-2025 11:41:36 UTC] [SECURITY ERROR] Errore chiamata Security Headers API: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d17c118d4c99e',cH: '9EiPx1FoBDZ2zJs0f_hBiYEMQo52_6jwmNbRcu_hX9M-1745408496-1.2.1.1-oJS9CkYfZU2Fkc1c5ZBXdWYosXMIpehPsKcPEqmZFDaKDdeYK0FAjx.RVECTw6Vt',cUPMDTk: "\/api\/v1\/analyze?domain=www.aruba.it&hide=on&__cf_chl_tk=Bg1Qdysvx1mWNGcIeJdwc6NeB4yTyLTKifk1jFC1U6c-1745408496-1.0.1.1-SBzxrFzd676G3xRKE85_fu7a4N3lLkhEnU3Yv1dO1os",cFPWv: 'g',cITimeS: '1745408496',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=www.aruba.it&hide=on&__cf_chl_f_tk=Bg1Qdysvx1mWNGcIeJdwc6NeB4yTyLTKifk1jFC1U6c-1745408496-1.0.1.1-SBzxrFzd676G3xRKE85_fu7a4N3lLkhEnU3Yv1dO1os",md: "YaQzX73hEX8TmGAc4xsBSNLczbCtzN7P4lYJNaivOMk-1745408496-1.2.1.1-TCfUxDWLAI85uJZ7gajnfBfb0Y7M0vGvrVsVdLQOYhRIInHD5ta8DyOzbXRAvsbSFDVvj1e2lOBBkWq1ULtIDG1JsDlbYW8JmZV_JhqQpwKypdJActqszbziSzku_GoehE5ki55Z1m6U8Ld4jT86GSRsshIjOO6rnBQxxcyuOzct6MlWzfRUz5we9PN_1aFJRfF1vHj.WGPjZIJeJCXpU3co.71wvk.AgcB3jPF0cQoCkBdgKw8PRFE_jGDSUAjQjXV26tHTWnraeOL08aKBXkl9_zdF7_zCAdKVhk7fv4kQK2foON4mzB2DtIfcCKpm6fS7xnJfKfB5BN6pTwmuF7GzCFi6cozXBlVgsKP3PpqHTPa.DXTlRMVoU_ROXfrOr582Iy4HMIF9BTz.M_Rm3QjTFNkLSBTpmWz41SvdVtFihpmdNeWAXasqHhZbLER6.GJzSuTJiPad1ixo5fklge.5VcFDx5rfBgUwUoBnGgkFRKzzq3vX3_RhmFyZ._zOd7djRewMz9SKdT1Mpy6r9HxCkw4GQvdLIPjKSOQc2R4epvS9KYC8dx6IUt_jOUgaU8Bmk8qesyumfl_P2_rp.CooSiZUCdzUQveBn3rEiydIBRLeAzfR4V33S39wmYu_PR4sMItuFrSSQJJym4yGtqVc69yhf2TlJ8krzt87HcFkXhSGoGnbvloV1a6P544J3HAbtDNqkO7CxKK2PFKq5tPl4Mqoj9fkC3ia6sbuPhdSMrV_FfFViOHtp8E29pxQixB0IcliPOKWcbNf1ZPc5Zf9vM9buDkwwDacIbxRbH.FLye5jMyt1wK4Hcc19BqQEYqCK6_fj2As3Id56b_lVGhhShAdDEHK67fBZ5RS.BSX_AEh0zDbUp6ylQyg8b7SqMVnE8iI6UzqNc.lAiaWa4e.SeVjBmgYM4Db2fDsNNi8OUFleptIUHBBT5UXHtCmkrStpuPaCP._FG_kK9gQZCDgdriV7c5NDmcDS7bMVdZ6FpRy4gNeONHn4.trvdXARdKdbudtnefuWVAsvYQhS5Y.eG_4PXrKyqBhS2N7vTs",mdrd: "M1JOOIb.KqdC5i97ZOWz6mIdtKkD5yum588l.4pIm0c-1745408496-1.2.1.1-oqt2PU7C0VeriEstYPL8bQcNROeO9ZoPfzhZtq9Z.mjOuvKqIYYn_AYlJDxhkOV69NYoXhIR3j8AVsA2r_YodE8OpxiqxPMkqSFOXrncon9WnDuaw4hxIeHwB9X8bTHL1Csfkm12QBKQMr.RX80EIXN7SKGtsuP7x1vmIl4NjYjIuduya1Th8Mu37X68ReyIKOXVeLRzw5z9a4.6NFZJyVSvxmA8fv27MXmhX_KunDpl5l3.GuQeO_IvnRpxl.g0Fpm_vd3OTRMQQ2qx2rpgiSwMsSCdQQ3dbfInH34KBzAz6zX8AEBIN2qqX__fKqivAIeibw0avbiMJGQivbtK37qJUqN9EoWtsX.qzmv80x.xVWXvz3P0lQcjwe6hDN48Jv851e8XST6sP.TKV149wDbXBgUK4KWpGregeBnWaLssOeabgdvcTyK80PBspiXl2If.E9CFFx8P3EJ15iPR5r319tcBVlrzPyJZp.iX.mlYe.2Ex8_ANC3rcCQ.gVLuQfFH0ZjYbJtSMtm6qCWYcDpU_6SBrKoIQsLoszKYVLup_ASlHdOEw4b3LulE0O1ZXz34.dh0VoTKyaxu9tCK7Xo11U5lyk36CAyFwvq4.p8PYz9B8IG_cpjwYCr47kTV7eiX2XjV5k45BEY0z1OS801UQtG1HZhtur0VbPuRKbyRAABdsZv_i4GpllP8siMKOpxhocBu730EtM270VoAf45Tjpzu86i50WWJk_RJ562kCfcGPd4Bv4eCM_wB8iOlypXhw2DUMzfJtK4E_eTzajM4P4tXIJi3N5cuCeaBI.UdUtMt2eA28zPnujRhYk4ovnn1mko8oD_gMqT5Exqih.xutn6R0Fp8QzL2IOhjdDFQuejLmnM14itm833bV.7rLv_YdnN6VoFfm6ao55ktqpWMFWLJJBVmYoakTdoQX0wRDHyPXzLm_XxBL6Ad07Tz9e0r82Ubm5Nm2R4_uc_wbof2YeGtvrKDH_LVj3QVMyufpKP.2tq1yyopjcs9GBbMfWN8lEdNvQeVfZtTRF.0v1rJzSggZ4urCfG4D.g5MXCubbh12_7TvfWVfDEwzQmOundK4Yf2fEFG0T2YGaB5_hxlmHEsyvloNQq3gvIZHKyV7shEcR_3rXTsy89IWQmg.h1ZvW08PSMs9H79oUs21pPdfkIaIyK.Mn2z4iY1lLq74K3GRr3bVC7R_uFBx3H5dejIY0iQC6MtwlgpMezL4u4zRny_62b8fEpeWGbZQyQ_ZmVH4q9Ra21Rf2HiBL8xUyKNvqfNDE_A1i3Q7lgTfpgCPlsM5DWgWgXBIVT0YE2endfDWkUSh2H84Xal.DP4QihFLROfp10B7luvLckm.lJO8zDZGbZTP2OQQe4tdpF7.yPg9cPK_Tusq2TvGS3gtYpix1cknaVv1qQVVFOWcC78gC6vs2NYbYKmkXeA13ZVnhL1jH0nYMgsl0Lh4HRCzEjcTe9.pSmtSeezl6ZB48le4o1Kf3fNMOocVi5iuXos328JHncx4R1nmMWfs6Qu7JKkSoxTbszD6Qub9JjKloPg9D25Ly9C.D5_5m8M5TawNMDwC58wR6MiZJivoqdC3O3lqSuSrOiAe7hlxz.Z59iW.VTQPZDGaGg.DmO54.cKpTeJGJ.TcfAtamMgOvh_CJQvMdT3wsi0cBMPirch7sIMTg8OUbQeE5gmUsqNAoz1436VQLyw_buqnr2tJJc_8zNxJcWJ69bjKwsnKMA4lJkIStQidCnsuiQYH4lw5.nrGoUUmUn1cXJFukgJD4bDxEwU5cQuLuO4A7nt10gLDD7TWOJWwWDmCmuxYgV4Fg_IgwSBeaTlMQdiMLokW76ZPSpb0K0l2i6pqv4_mx0Y7F9uwzIKWPTrBbfZHvQVKmZITbRUTB2w1S6J1kkwIPLOIn.Q3opdZIuVJPbRKqzs9SF4OidIu9XVx9URG1_tJpy8ttZ9nS.K_iryroSdyAKsAy.PrZ27yhyVLBtf1dnvU3WVsPIn_18NPtiV68R5iTSkfT5djfgT.CUPEOffI8BkT8JgKuV_dhHtAmuUDxIZKQ7250A5.SolRy10CEEKAE_CI1duCSqkJczTyVTqaJ3uBP5a509sazpEc9Zf4gCWMwY4k_JRbIU1Bld82NfH2iOQk9av5QZcHz_5xB7fpMey8Z4rp2Tfr2i7K3bbeEtxPLiF_oSfw5SzepBV11tIr6ifryJ96DChhyBVsJ2oOfXqCMex3xS9LqMgzDheWaR1nvhDODwZhf96RHwH2fY5sjYGJhdzgpZA6025czqvc1kbFpPu4Wwnkog6PcUvCTsTRjKu3KDlh98wtKkPRal3Z0nY3VlV_8yFaw9FD.ndVvaT"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d17c118d4c99e';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=www.aruba.it&hide=on&__cf_chl_rt_tk=Bg1Qdysvx1mWNGcIeJdwc6NeB4yTyLTKifk1jFC1U6c-1745408496-1.0.1.1-SBzxrFzd676G3xRKE85_fu7a4N3lLkhEnU3Yv1dO1os" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:41:36 UTC] [ANALYZER] SecurityAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:41:36 UTC] [ANALYZER RESULTS] SecurityAnalyzer - Risultati: Array
+(
+    [0] => securityHeaders
+    [1] => ssl
+    [2] => vulnerabilities
+    [3] => cookies
+    [4] => authForms
+    [5] => sensitiveInfo
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS] Completata analisi 'security' per sito 1 in 512ms
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS RESULT] Sito 1 'security' score: 86.92
+[23-Apr-2025 11:41:36 UTC] [ANALYSIS] Analisi 'security' per sito 2: https://www.wordpress.com
+[23-Apr-2025 11:41:36 UTC] [ANALYZER] SecurityAnalyzer - Inizio analisi per URL: https://www.wordpress.com
+[23-Apr-2025 11:41:37 UTC] [ANALYZER] SecurityAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:41:37 UTC] [SECURITY] Avvio integrazione dati esterni da Security Headers API per URL: https://www.wordpress.com
+[23-Apr-2025 11:41:37 UTC] [SECURITY] Esecuzione chiamata a Security Headers API per www.wordpress.com
+[23-Apr-2025 11:41:37 UTC] [PROXY] URL costruito per securityheaders: https://securityheaders.com/api/v1/analyze?domain=www.wordpress.com&hide=on
+[23-Apr-2025 11:41:37 UTC] [PROXY] Esecuzione richiesta GET a https://securityheaders.com/api/v1/analyze?domain=www.wordpress.com&hide=on per servizio: securityheaders
+[23-Apr-2025 11:41:37 UTC] [PROXY ERROR] securityheaders: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d17c79dd259b3',cH: 'za2b0m.ASemmSeAnO3PKJDElj8j2SJwmgndOEbNNINA-1745408497-1.2.1.1-V86afR8E2bmVYl1VPBeZxavb2cH.nDv1Kfa5mmgToK.9UQP0fLAb1cWgClBHdSeW',cUPMDTk: "\/api\/v1\/analyze?domain=www.wordpress.com&hide=on&__cf_chl_tk=Avp0dRlxwIZCiB64yMidcBW6.FPCW4qH8N42mumv_0w-1745408497-1.0.1.1-jnNJ.bYcK_dl3FSSNYWegPOuIYVNum99z7TJNJ2MHIM",cFPWv: 'g',cITimeS: '1745408497',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=www.wordpress.com&hide=on&__cf_chl_f_tk=Avp0dRlxwIZCiB64yMidcBW6.FPCW4qH8N42mumv_0w-1745408497-1.0.1.1-jnNJ.bYcK_dl3FSSNYWegPOuIYVNum99z7TJNJ2MHIM",md: "r430LE4WiFNdxsSrQCiVGXnpiK8xIhqe2NT9xMH9qFg-1745408497-1.2.1.1-vHw6mtcbjeLR1sjsJbgeTfPYFtJYiODGuVwT7Vyv0DAjmO7eOv1wSwkGjsIs.v3QqUyXojFAePOIx_PfroLIxaBVDAmgEvCRFxEWdo5qaNx1uvhCUQFyoemL.Su.K1_1bt3gBaLIySiZarngGXv_pqoYHnJp7WhFgMnldjJYP2XSaJNF_AND17hdRRkloQEWRWiV_yDUNcl3INHL4NV9p5q3MLICuAMO9KNRzVgl70Bg5rxBU9Tfk5lsLGG3PAwxSCDBDih8l3yeBAhEFowV34m_Z1T7wqXMYmlxj_1hTO3Wn.2wPXZ8pOFZHA97iJqexRzhNxWe_Pi3aCi59h8ycmjlYIOTdWs1vwujfOwVEpSLJjHfhOJeQLrRkUgBKOAudC_iq9F_KgWdr9GGbPdZ2tGPlhkX0dP1nxtePRQUlaFxuBFPCbpUqN3qRzAiYYrfYW6jihva7MiQBuVvwq5ipMMzZeu9JKneA9hS2vwT8If3VPbxCZ6M404oesNZ_M2cuE3iRYqnQ9qpstgbXtJA2Ot0xO_OWP.U68PzQUtwCMumtMNEBpTgPbBfn4KgXDX5X6FVNNvQpMgDtcH4ZxPR2Kg0w3Q8sNFmSHglMtGhGsSLbgtr0acQ.4321Ze7Hy.VarhoKE9s9Unpm1nkRcRudsT7IoSoj.rPSeuHZwi.LyfikYIYljWVV95rX.B1.8FImyqja1jkMi3r8gcFT1kDV0ShLA09bn99sCxM6h8461oVio3uG83TpE2ClkJUaJOySvMeD5jI81qmY.BQ1stJW2Wk9E6DfHFBJDWismGhjK4rMIwrvVhPtU41ZTGSWxaN4fdWXrH86LuFRuc8VAzBOX945jFWnPUY3JVYToffNi2tg_L1lR75l8rlaG3aAKMz7IhWiSG5uDPaOIP0U1i7YTBN8t7nd5cWoHRxoSSydsrO15As2VJI6ANuuNjPIgIVtDjUO3fkxMCMnazGEla2sW2xOPA.rCDi9sXIz3SpVeWlOBwzYpOKtqa6g5aTghozILmyomWcLFy3nhq.q8wtFtkEhEsKqWc2WxdE9ofmUOu1M2W8oXMPvYI5MOak7T8O",mdrd: "UTxSv3EUFVgn6vbUZawmzkvQzA2mWhkixHy9SdWXdPM-1745408497-1.2.1.1-noSN6QZrzk_tK5Pe2RXAkgvzYmhBnLeZstOzbI.MtSdrj8Gdsg0qZUTd_R5q33GSVIQ0coPBXvvMZpsxqrNcy2u_HyTzqYCEoDQhKjceE3BYgTqX5wQf0JWMWU._pbCr9dVMEXKWSuW1TwY3x_nAzmTrlA33P0GCt1M70SWNUvZSJMECKXAymXfXeGE55.86vNBN7IMpw.R9wkju9cR4QHF8AJ0kOI8wUGHLngqM4R0M8TEhxJ.MTDeTzfEjLQuUTYIODT69BoiIm.tBPTH.gE6yOh4gtTyl8AMT50h1mwZMCqj8_th2fOAlXtX.6FtuxcMtVOggC.5O1i9wJJWfNAFr58NFwOqF5LL6QecEIW06EuvTfy7BR2RfILdwSaAhF7D7HkKN0l9icN8jZW3Klz0ROqGlGkUPKYj0r5m2l.StZKao2cW4AsXTidPSlSBwBI9Ec7R5S9hfwfiz2HciLPM7aKExnDS.em44b0Abh.Yy62pmyRxOaxClRKJEvRcKaCNf1QrzDgEF1A2NqNpp_QQztOrVAZonk8ZZ3UqpYAegD47RJ5HGH2f0e3FFXa9vSpMQBZJKsuQUGJz57.RIlF9dmVnwtbaB1BYF5gzC2DZh5ZfME0wYZzolIOldcrn13WbOs3et4TsKyuQyRFIeMbkN_LTWv8wLbQR5vXlAs3vJEf2aJfQ5lOBAyssCwB9CTV2MasHP3W3MtqvgRqJyGEnrVuqQlshRiVnymcCmzsbA74TOhjcLy.WWlRnClTWSpj3366ciNL8SrbQKEpFX0orZyY3M4v3PJdIpY8YbYVSRMkyiYaSzlzP0bAaDg0EGUpTF1WzR_GNtZK0kMLmsvc2rM7HDJHmsLPDIK.M7Y24rVH3oXBNgsHuFGlJGGB681UzeXatSO1Egk8MsCS3y2G93Gx2Y_1Pr0WPp00B81lENNuAJx08m839vMEgrlcQz67cjZL19YN1nLoJh9ZUKKh5RIcBpEm.4BrSxiGbMSjdy31L0SzydhYdwJ2fRNnMf_2cHwSzZrVsGJopvqNrnt1qAgpOUR.LnQB4Ekcc9nDtPUnSyYmc.vjG3bvP_Iw9Lgo_hvOKb93O1s7aGDqIaSTgJTw_d9evy9OIpLfa3UpQAbdNVRvO1qDTNQEbKOYY6Sk23DlDx.uQRSXzexVz3QjvkC_DJQ7rbC1eStAQGXEH5DSk_KBfzOBexx.rHSTEDufncf2BJdNLSA4BVlA0iVnCHcjhBbQs.jp4.zPJHZAPLl.CM6xbdNC4vfN2sZ6XYuNUgZ89CTz82hCTJ0GxE_tpSmkwYpsH_aIW5WfnLYfY7xJePlAlKRDvEfcHF3WUZIP_Ij5v_BqsuAGEpE1mNCUEeyUXvBUBiYQrOHpUHGN2zxu3g21yuAALcHWGWGMQCngt6f4O9X3Op1N.HwGezHU.VVD7WXaJ6iNmSz0WKSNgbLOgKomnRr4Al5YK0_ZUQOJw0yJd2daX0Dzs_MWe4l3tuO.pAKaYAnSkNhJm1CwQ3ul0z_OoppeoplqFboAnLjHjAc2CDWuZK8kE6jZblNkF473BWhwpYR9wCGejXq5d8coXiB5R_jVGp_8SUvq6acn_gQmS_Zs7diNnxvMYvjtXHN3rYQT07MsJM6ISA62r4ehCR6EbfuhUS1k7YltxAGUbF1gBpr6YfkVouR2zi91z7Nw4UV0aNiCJp4Ry6UyZc4a9wiEFXt.eKvt7xARl1ezV9lHv3DnqJXH1C5l1b3l.8yM0Ah4AN87mldERMdj76HjtiVoDBXw6xfjDAYHy0tth05hEIH3kO3OgwY7QjlOl5WfSsQeBCXBPnC4m7ofrRRAgEGC33GgD.Ks3adAhlnJpQpOnk3SH3hcBo2irlGtzYvdmDwvspMN0sTMUGBLText6jlvccj4ZZ2WKd.OQj9makbWL6zTCX8eHL7lQ_XizSjigmItIpXzFF5tAGIp3bOKthq4gEZ9RwtJz7ooqmf2DhhXWMXKOs8TOGO49vExlJQOLnGReYXU6NUGoz26myR1wTOb0R8CACzeUiiV2xq6Pi.cb3J_FKnihqR_qO327_9a.yW7.1hI6_1jmnaKXucUJ6zuQMmW8VoWSdOmq5gAoqluG_8V87iFbmJZkBaRrCl9SLU1FIgwsjovLSOBk0vvm5txhjRUdUw7D7GPSAKut81WJhbq_O_AD.DvS03g8RxYl.vtIzRX.3s6smZgPkdkDvvVKkW0QJkQpP69hIbxr4USHXBtVkGDP4zKEBkpYGwLgou_PfgcC5so1T1DH6CHlE5m5SY9Ab9jqETACjMIWNyd8hXgLevU0oUydBZu_DigWXXnrWJrSsZC7inmk"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d17c79dd259b3';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=www.wordpress.com&hide=on&__cf_chl_rt_tk=Avp0dRlxwIZCiB64yMidcBW6.FPCW4qH8N42mumv_0w-1745408497-1.0.1.1-jnNJ.bYcK_dl3FSSNYWegPOuIYVNum99z7TJNJ2MHIM" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:41:37 UTC] [PROXY] Attivazione fallback per securityheaders
+[23-Apr-2025 11:41:37 UTC] [SECURITY ERROR] Errore chiamata Security Headers API: HTTP Error: 403 - Response: <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;max-width:60rem;padding-left:1.5rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{font-size:1.5rem;font-weight:500;line-height:2.25rem}@media (width <= 720px){.h2{font-size:1.25rem;line-height:1.5rem}}#challenge-error-text{background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+);background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme:dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt={cvId: '3',cZone: "securityheaders.com",cType: 'managed',cRay: '934d17c79dd259b3',cH: 'za2b0m.ASemmSeAnO3PKJDElj8j2SJwmgndOEbNNINA-1745408497-1.2.1.1-V86afR8E2bmVYl1VPBeZxavb2cH.nDv1Kfa5mmgToK.9UQP0fLAb1cWgClBHdSeW',cUPMDTk: "\/api\/v1\/analyze?domain=www.wordpress.com&hide=on&__cf_chl_tk=Avp0dRlxwIZCiB64yMidcBW6.FPCW4qH8N42mumv_0w-1745408497-1.0.1.1-jnNJ.bYcK_dl3FSSNYWegPOuIYVNum99z7TJNJ2MHIM",cFPWv: 'g',cITimeS: '1745408497',cTplC: 0,cTplV: 5,cTplB: 'cf',cK: "unsupported_browser_beacon",fa: "\/api\/v1\/analyze?domain=www.wordpress.com&hide=on&__cf_chl_f_tk=Avp0dRlxwIZCiB64yMidcBW6.FPCW4qH8N42mumv_0w-1745408497-1.0.1.1-jnNJ.bYcK_dl3FSSNYWegPOuIYVNum99z7TJNJ2MHIM",md: "r430LE4WiFNdxsSrQCiVGXnpiK8xIhqe2NT9xMH9qFg-1745408497-1.2.1.1-vHw6mtcbjeLR1sjsJbgeTfPYFtJYiODGuVwT7Vyv0DAjmO7eOv1wSwkGjsIs.v3QqUyXojFAePOIx_PfroLIxaBVDAmgEvCRFxEWdo5qaNx1uvhCUQFyoemL.Su.K1_1bt3gBaLIySiZarngGXv_pqoYHnJp7WhFgMnldjJYP2XSaJNF_AND17hdRRkloQEWRWiV_yDUNcl3INHL4NV9p5q3MLICuAMO9KNRzVgl70Bg5rxBU9Tfk5lsLGG3PAwxSCDBDih8l3yeBAhEFowV34m_Z1T7wqXMYmlxj_1hTO3Wn.2wPXZ8pOFZHA97iJqexRzhNxWe_Pi3aCi59h8ycmjlYIOTdWs1vwujfOwVEpSLJjHfhOJeQLrRkUgBKOAudC_iq9F_KgWdr9GGbPdZ2tGPlhkX0dP1nxtePRQUlaFxuBFPCbpUqN3qRzAiYYrfYW6jihva7MiQBuVvwq5ipMMzZeu9JKneA9hS2vwT8If3VPbxCZ6M404oesNZ_M2cuE3iRYqnQ9qpstgbXtJA2Ot0xO_OWP.U68PzQUtwCMumtMNEBpTgPbBfn4KgXDX5X6FVNNvQpMgDtcH4ZxPR2Kg0w3Q8sNFmSHglMtGhGsSLbgtr0acQ.4321Ze7Hy.VarhoKE9s9Unpm1nkRcRudsT7IoSoj.rPSeuHZwi.LyfikYIYljWVV95rX.B1.8FImyqja1jkMi3r8gcFT1kDV0ShLA09bn99sCxM6h8461oVio3uG83TpE2ClkJUaJOySvMeD5jI81qmY.BQ1stJW2Wk9E6DfHFBJDWismGhjK4rMIwrvVhPtU41ZTGSWxaN4fdWXrH86LuFRuc8VAzBOX945jFWnPUY3JVYToffNi2tg_L1lR75l8rlaG3aAKMz7IhWiSG5uDPaOIP0U1i7YTBN8t7nd5cWoHRxoSSydsrO15As2VJI6ANuuNjPIgIVtDjUO3fkxMCMnazGEla2sW2xOPA.rCDi9sXIz3SpVeWlOBwzYpOKtqa6g5aTghozILmyomWcLFy3nhq.q8wtFtkEhEsKqWc2WxdE9ofmUOu1M2W8oXMPvYI5MOak7T8O",mdrd: "UTxSv3EUFVgn6vbUZawmzkvQzA2mWhkixHy9SdWXdPM-1745408497-1.2.1.1-noSN6QZrzk_tK5Pe2RXAkgvzYmhBnLeZstOzbI.MtSdrj8Gdsg0qZUTd_R5q33GSVIQ0coPBXvvMZpsxqrNcy2u_HyTzqYCEoDQhKjceE3BYgTqX5wQf0JWMWU._pbCr9dVMEXKWSuW1TwY3x_nAzmTrlA33P0GCt1M70SWNUvZSJMECKXAymXfXeGE55.86vNBN7IMpw.R9wkju9cR4QHF8AJ0kOI8wUGHLngqM4R0M8TEhxJ.MTDeTzfEjLQuUTYIODT69BoiIm.tBPTH.gE6yOh4gtTyl8AMT50h1mwZMCqj8_th2fOAlXtX.6FtuxcMtVOggC.5O1i9wJJWfNAFr58NFwOqF5LL6QecEIW06EuvTfy7BR2RfILdwSaAhF7D7HkKN0l9icN8jZW3Klz0ROqGlGkUPKYj0r5m2l.StZKao2cW4AsXTidPSlSBwBI9Ec7R5S9hfwfiz2HciLPM7aKExnDS.em44b0Abh.Yy62pmyRxOaxClRKJEvRcKaCNf1QrzDgEF1A2NqNpp_QQztOrVAZonk8ZZ3UqpYAegD47RJ5HGH2f0e3FFXa9vSpMQBZJKsuQUGJz57.RIlF9dmVnwtbaB1BYF5gzC2DZh5ZfME0wYZzolIOldcrn13WbOs3et4TsKyuQyRFIeMbkN_LTWv8wLbQR5vXlAs3vJEf2aJfQ5lOBAyssCwB9CTV2MasHP3W3MtqvgRqJyGEnrVuqQlshRiVnymcCmzsbA74TOhjcLy.WWlRnClTWSpj3366ciNL8SrbQKEpFX0orZyY3M4v3PJdIpY8YbYVSRMkyiYaSzlzP0bAaDg0EGUpTF1WzR_GNtZK0kMLmsvc2rM7HDJHmsLPDIK.M7Y24rVH3oXBNgsHuFGlJGGB681UzeXatSO1Egk8MsCS3y2G93Gx2Y_1Pr0WPp00B81lENNuAJx08m839vMEgrlcQz67cjZL19YN1nLoJh9ZUKKh5RIcBpEm.4BrSxiGbMSjdy31L0SzydhYdwJ2fRNnMf_2cHwSzZrVsGJopvqNrnt1qAgpOUR.LnQB4Ekcc9nDtPUnSyYmc.vjG3bvP_Iw9Lgo_hvOKb93O1s7aGDqIaSTgJTw_d9evy9OIpLfa3UpQAbdNVRvO1qDTNQEbKOYY6Sk23DlDx.uQRSXzexVz3QjvkC_DJQ7rbC1eStAQGXEH5DSk_KBfzOBexx.rHSTEDufncf2BJdNLSA4BVlA0iVnCHcjhBbQs.jp4.zPJHZAPLl.CM6xbdNC4vfN2sZ6XYuNUgZ89CTz82hCTJ0GxE_tpSmkwYpsH_aIW5WfnLYfY7xJePlAlKRDvEfcHF3WUZIP_Ij5v_BqsuAGEpE1mNCUEeyUXvBUBiYQrOHpUHGN2zxu3g21yuAALcHWGWGMQCngt6f4O9X3Op1N.HwGezHU.VVD7WXaJ6iNmSz0WKSNgbLOgKomnRr4Al5YK0_ZUQOJw0yJd2daX0Dzs_MWe4l3tuO.pAKaYAnSkNhJm1CwQ3ul0z_OoppeoplqFboAnLjHjAc2CDWuZK8kE6jZblNkF473BWhwpYR9wCGejXq5d8coXiB5R_jVGp_8SUvq6acn_gQmS_Zs7diNnxvMYvjtXHN3rYQT07MsJM6ISA62r4ehCR6EbfuhUS1k7YltxAGUbF1gBpr6YfkVouR2zi91z7Nw4UV0aNiCJp4Ry6UyZc4a9wiEFXt.eKvt7xARl1ezV9lHv3DnqJXH1C5l1b3l.8yM0Ah4AN87mldERMdj76HjtiVoDBXw6xfjDAYHy0tth05hEIH3kO3OgwY7QjlOl5WfSsQeBCXBPnC4m7ofrRRAgEGC33GgD.Ks3adAhlnJpQpOnk3SH3hcBo2irlGtzYvdmDwvspMN0sTMUGBLText6jlvccj4ZZ2WKd.OQj9makbWL6zTCX8eHL7lQ_XizSjigmItIpXzFF5tAGIp3bOKthq4gEZ9RwtJz7ooqmf2DhhXWMXKOs8TOGO49vExlJQOLnGReYXU6NUGoz26myR1wTOb0R8CACzeUiiV2xq6Pi.cb3J_FKnihqR_qO327_9a.yW7.1hI6_1jmnaKXucUJ6zuQMmW8VoWSdOmq5gAoqluG_8V87iFbmJZkBaRrCl9SLU1FIgwsjovLSOBk0vvm5txhjRUdUw7D7GPSAKut81WJhbq_O_AD.DvS03g8RxYl.vtIzRX.3s6smZgPkdkDvvVKkW0QJkQpP69hIbxr4USHXBtVkGDP4zKEBkpYGwLgou_PfgcC5so1T1DH6CHlE5m5SY9Ab9jqETACjMIWNyd8hXgLevU0oUydBZu_DigWXXnrWJrSsZC7inmk"};var cpo = document.createElement('script');cpo.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=934d17c79dd259b3';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null, "\/api\/v1\/analyze?domain=www.wordpress.com&hide=on&__cf_chl_rt_tk=Avp0dRlxwIZCiB64yMidcBW6.FPCW4qH8N42mumv_0w-1745408497-1.0.1.1-jnNJ.bYcK_dl3FSSNYWegPOuIYVNum99z7TJNJ2MHIM" + window._cf_chl_opt.cOgUHash);cpo.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(cpo);}());</script></body></html>
+[23-Apr-2025 11:41:37 UTC] [ANALYZER] SecurityAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:41:37 UTC] [ANALYZER RESULTS] SecurityAnalyzer - Risultati: Array
+(
+    [0] => securityHeaders
+    [1] => ssl
+    [2] => vulnerabilities
+    [3] => cookies
+    [4] => authForms
+    [5] => sensitiveInfo
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:41:37 UTC] [ANALYSIS] Completata analisi 'security' per sito 2 in 1041ms
+[23-Apr-2025 11:41:37 UTC] [ANALYSIS RESULT] Sito 2 'security' score: 75.26
+[23-Apr-2025 11:41:37 UTC] [ANALYSIS] Esecuzione analisi tipo 'performance'
+[23-Apr-2025 11:41:37 UTC] [ANALYSIS] Analisi 'performance' per sito 1: https://www.aruba.it
+[23-Apr-2025 11:41:37 UTC] [ANALYZER] PerformanceAnalyzer - Inizio analisi per URL: https://www.aruba.it
+[23-Apr-2025 11:41:38 UTC] [ANALYZER] PerformanceAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:41:38 UTC] [PAGESPEED] Avvio analisi PageSpeed per URL: https://www.aruba.it
+[23-Apr-2025 11:41:38 UTC] [PAGESPEED] Esecuzione chiamata API per URL: https://www.aruba.it
+[23-Apr-2025 11:41:38 UTC] [PROXY] Aggiunta API key a URL per pagespeed, param: key
+[23-Apr-2025 11:41:38 UTC] [PROXY] URL costruito per pagespeed: https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&locale=it_IT&url=https%3A%2F%2Fwww.aruba.it&key=HIDDEN
+[23-Apr-2025 11:41:38 UTC] [PROXY] Esecuzione richiesta GET a https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&locale=it_IT&url=https%3A%2F%2Fwww.aruba.it&key=AIzaSyAfLTZsAP43GvqSdECw-3T2Hk3LMdCkc3Y per servizio: pagespeed
+[23-Apr-2025 11:42:06 UTC] [PROXY] Richiesta completata con successo per pagespeed
+[23-Apr-2025 11:42:06 UTC] [PROXY] Risultato memorizzato in cache per pagespeed
+[23-Apr-2025 11:42:06 UTC] [PAGESPEED] API chiamata con successo
+[23-Apr-2025 11:42:06 UTC] [ANALYZER] PerformanceAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:42:06 UTC] [ANALYZER RESULTS] PerformanceAnalyzer - Risultati: Array
+(
+    [0] => localMetrics
+    [1] => pageSpeed
+    [2] => resourceHints
+    [3] => renderBlocking
+    [4] => imageOptimization
+    [5] => caching
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:42:06 UTC] [ANALYSIS] Completata analisi 'performance' per sito 1 in 28601ms
+[23-Apr-2025 11:42:06 UTC] [ANALYSIS RESULT] Sito 1 'performance' score: 23.1
+[23-Apr-2025 11:42:06 UTC] [ANALYSIS] Analisi 'performance' per sito 2: https://www.wordpress.com
+[23-Apr-2025 11:42:06 UTC] [ANALYZER] PerformanceAnalyzer - Inizio analisi per URL: https://www.wordpress.com
+[23-Apr-2025 11:42:07 UTC] [ANALYZER] PerformanceAnalyzer - Esecuzione analisi specifica
+[23-Apr-2025 11:42:07 UTC] [PAGESPEED] Avvio analisi PageSpeed per URL: https://www.wordpress.com
+[23-Apr-2025 11:42:07 UTC] [PAGESPEED] Esecuzione chiamata API per URL: https://www.wordpress.com
+[23-Apr-2025 11:42:07 UTC] [PROXY] Aggiunta API key a URL per pagespeed, param: key
+[23-Apr-2025 11:42:07 UTC] [PROXY] URL costruito per pagespeed: https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&locale=it_IT&url=https%3A%2F%2Fwww.wordpress.com&key=HIDDEN
+[23-Apr-2025 11:42:07 UTC] [PROXY] Esecuzione richiesta GET a https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&locale=it_IT&url=https%3A%2F%2Fwww.wordpress.com&key=AIzaSyAfLTZsAP43GvqSdECw-3T2Hk3LMdCkc3Y per servizio: pagespeed
+[23-Apr-2025 11:43:20 UTC] [PROXY ERROR] pagespeed: HTTP Request Error: Operation timed out after 60002 milliseconds with 0 bytes received
+[23-Apr-2025 11:43:20 UTC] [PROXY] Attivazione fallback per pagespeed
+[23-Apr-2025 11:43:20 UTC] [PAGESPEED ERROR] HTTP Request Error: Operation timed out after 60002 milliseconds with 0 bytes received
+[23-Apr-2025 11:43:21 UTC] [ANALYZER] PerformanceAnalyzer - Analisi completata con successo
+[23-Apr-2025 11:43:21 UTC] [ANALYZER RESULTS] PerformanceAnalyzer - Risultati: Array
+(
+    [0] => localMetrics
+    [1] => pageSpeed
+    [2] => resourceHints
+    [3] => renderBlocking
+    [4] => imageOptimization
+    [5] => caching
+    [6] => totalScore
+)
+
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS] Completata analisi 'performance' per sito 2 in 74589ms
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT] Sito 2 'performance' score: 55.05
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS] Elaborazione e confronto dei risultati
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS] Calcolo punteggi finali
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT] Punteggio finale sito 1: 56.28
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT] Punteggio finale sito 2: 64.06
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT] Vincitore: www.wordpress.com
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT] Livello vittoria: leggera
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT STRUCTURE] Struttura dati risultato finale: Array
+(
+    [0] => url1
+    [1] => url2
+    [2] => site1
+    [3] => site2
+    [4] => comparison
+    [5] => metadata
+    [6] => winner
+    [7] => advantage
+    [8] => winMargin
+    [9] => victoryLevel
+    [10] => strengthAnalysis
+)
+
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT STRUCTURE] Struttura site1: Array
+(
+    [0] => metrics
+    [1] => categories
+    [2] => performance
+    [3] => seo
+    [4] => security
+    [5] => technical
+    [6] => performanceScore
+    [7] => seoScore
+    [8] => securityScore
+    [9] => technicalScore
+    [10] => totalScore
+)
+
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS RESULT STRUCTURE] Struttura site2: Array
+(
+    [0] => metrics
+    [1] => categories
+    [2] => performance
+    [3] => seo
+    [4] => security
+    [5] => technical
+    [6] => performanceScore
+    [7] => seoScore
+    [8] => securityScore
+    [9] => technicalScore
+    [10] => totalScore
+)
+
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS API USAGE] seo ha dati da API esterne per il sito 1
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS API USAGE] seo ha dati da API esterne per il sito 2
+[23-Apr-2025 11:43:21 UTC] [ANALYSIS] Analisi completata con successo. API utilizzate: seo
+[23-Apr-2025 11:43:21 UTC] Analisi completata per ID analysis_6808d1ec3aee5

@@ -1,0 +1,331 @@
+\chapter{Sicurezza}
+
+\section{Panoramica della Sicurezza}
+La sicurezza è un aspetto fondamentale del sistema Site War, implementata a diversi livelli per proteggere sia i dati degli utenti che le risorse del sistema. Questo capitolo descrive in dettaglio le misure di sicurezza adottate, le potenziali vulnerabilità e le strategie di mitigazione implementate.
+
+L'approccio alla sicurezza del sistema segue il principio di "Security by Design", integrando considerazioni sulla sicurezza fin dalle prime fasi di progettazione dell'architettura. Questo approccio proattivo permette di identificare e mitigare potenziali rischi prima che possano essere sfruttati.
+
+\section{Modello di Sicurezza}
+Il modello di sicurezza di Site War è strutturato in diversi livelli, ciascuno con specifiche misure di protezione:
+
+```mermaid
+flowchart TD
+    subgraph SecurityArchitecture["Security Architecture"]
+        ClientSideSecurity["Client-side Security"]
+        APILayerSecurity["API Layer Security"]
+        ServerSideSecurity["Server-side Security"]
+    end
+    
+    ClientSideSecurity --> InputValidation["Input Valid.\nXSS Prevention\nCSP Implement.\nObfuscation"]
+    APILayerSecurity --> RequestValidation["Request Valid.\nCSRF Protection\nRate Limiting\nAuthentication"]
+    ServerSideSecurity --> APIKeyProtection["API Key Protect\nInput Sanitiz.\nError Handling\nHTTPS Enforce."]
+```
+
+\subsection{Principi di Sicurezza}
+Il sistema Site War si basa sui seguenti principi di sicurezza:
+
+\begin{itemize}
+    \item \textbf{Defense in Depth}: Implementazione di multiple barriere di protezione
+    \item \textbf{Principle of Least Privilege}: Concessione dei minimi privilegi necessari
+    \item \textbf{Secure by Default}: Configurazioni sicure predefinite
+    \item \textbf{Fail Securely}: In caso di errore, il sistema deve fallire in modo sicuro
+    \item \textbf{Security Through Transparency}: Trasparenza nelle pratiche di sicurezza
+\end{itemize}
+
+\section{Sicurezza Client-Side}
+
+\subsection{Validazione degli Input}
+Tutti gli input dell'utente sono validati sia lato client che lato server:
+
+\begin{itemize}
+    \item \textbf{Validazione Sintattica}: Verifica del formato e della lunghezza
+    \item \textbf{Validazione Semantica}: Verifica della coerenza e della logica
+    \item \textbf{Validazione Contestuale}: Verifica basata sul contesto di utilizzo
+    \item \textbf{Sanitizzazione}: Rimozione o escape di caratteri pericolosi
+\end{itemize}
+
+\subsection{Protezione da Cross-Site Scripting (XSS)}
+\begin{itemize}
+    \item \textbf{Output Encoding}: Codifica dell'output per prevenire l'esecuzione di script
+    \item \textbf{Content Security Policy (CSP)}: Restrizione delle fonti di contenuto eseguibile
+    \item \textbf{HTTP-only Cookies}: Prevenzione dell'accesso ai cookie tramite JavaScript
+    \item \textbf{X-XSS-Protection}: Header HTTP per abilitare la protezione XSS dei browser
+\end{itemize}
+
+\subsection{Obfuscation del Codice JavaScript}
+\begin{itemize}
+    \item \textbf{Minificazione}: Rimozione di spazi, commenti e altri elementi non necessari
+    \item \textbf{Compressione}: Riduzione delle dimensioni del codice
+    \item \textbf{Offuscamento}: Trasformazione del codice per renderlo meno leggibile
+    \item \textbf{Protezione Algoritmi}: Nascondere la logica di business critica
+\end{itemize}
+
+\section{Sicurezza API Layer}
+
+\subsection{Autenticazione e Autorizzazione}
+\begin{itemize}
+    \item \textbf{Validazione della Richiesta}: Verifica dell'integrità e della validità della richiesta
+    \item \textbf{Origin Validation}: Verifica dell'origine della richiesta
+    \item \textbf{Rate Limiting}: Limitazione del numero di richieste per prevenire abusi
+    \item \textbf{API Key Validation}: Verifica delle chiavi API per le richieste autenticate
+\end{itemize}
+
+\subsection{Protezione da Cross-Site Request Forgery (CSRF)}
+\begin{itemize}
+    \item \textbf{CSRF Tokens}: Utilizzo di token anti-CSRF per le richieste sensibili
+    \item \textbf{Same-Site Cookies}: Utilizzo di cookie same-site per limitare le richieste cross-site
+    \item \textbf{Referrer Policy}: Controllo delle informazioni di referrer inviate nelle richieste
+\end{itemize}
+
+\subsection{Sicurezza delle Comunicazioni}
+\begin{itemize}
+    \item \textbf{HTTPS}: Utilizzo di HTTPS per tutte le comunicazioni
+    \item \textbf{HTTP Strict Transport Security (HSTS)}: Forzatura dell'uso di HTTPS
+    \item \textbf{Certificate Pinning}: Verifica del certificato SSL/TLS
+    \item \textbf{TLS 1.3}: Utilizzo della versione più recente e sicura di TLS
+\end{itemize}
+
+\section{Sicurezza Server-Side}
+
+\subsection{Protezione delle Chiavi API}
+Le chiavi API utilizzate per accedere ai servizi esterni sono protette con le seguenti misure:
+
+\begin{itemize}
+    \item \textbf{Storage Sicuro}: Le chiavi sono memorizzate in file di configurazione protetti
+    \item \textbf{Path Traversal Protection}: Prevenzione dell'accesso a file di configurazione
+    \item \textbf{Proxy Service}: Le richieste API vengono inoltrate tramite un servizio proxy
+    \item \textbf{Key Rotation}: Rotazione periodica delle chiavi API
+\end{itemize}
+
+\subsection{Protezione da Injection}
+\begin{itemize}
+    \item \textbf{Prepared Statements}: Utilizzo di statement preparati per le query al database
+    \item \textbf{Input Sanitization}: Sanitizzazione degli input per prevenire injection
+    \item \textbf{Parameter Validation}: Validazione dei parametri delle richieste
+    \item \textbf{Safe API}: Utilizzo di API sicure che prevengono l'injection
+\end{itemize}
+
+\subsection{Sicurezza dei File}
+\begin{itemize}
+    \item \textbf{File Type Validation}: Validazione del tipo di file
+    \item \textbf{File Size Limits}: Limitazione della dimensione dei file
+    \item \textbf{File Storage Isolation}: Isolamento dello storage dei file
+    \item \textbf{File Access Control}: Controllo dell'accesso ai file
+\end{itemize}
+
+\section{Protezione della Privacy dei Dati}
+
+\subsection{Minimizzazione dei Dati}
+\begin{itemize}
+    \item \textbf{Raccolta Minimale}: Raccolta solo dei dati necessari
+    \item \textbf{Eliminazione Tempestiva}: Eliminazione dei dati non più necessari
+    \item \textbf{Storage Temporaneo}: Utilizzo di storage temporaneo per dati transitori
+\end{itemize}
+
+\subsection{Conformità GDPR}
+\begin{itemize}
+    \item \textbf{Consenso Esplicito}: Ottenere il consenso esplicito dell'utente
+    \item \textbf{Diritto all'Oblio}: Possibilità di cancellare i propri dati
+    \item \textbf{Portabilità dei Dati}: Possibilità di esportare i propri dati
+    \item \textbf{Privacy by Design}: Privacy integrata nella progettazione
+\end{itemize}
+
+\section{Analisi delle Minacce}
+
+\subsection{Modello STRIDE}
+L'analisi delle minacce è stata condotta utilizzando il modello STRIDE:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tipo di Minaccia} & \textbf{Descrizione} & \textbf{Contromisure} \\
+\hline
+Spoofing & Impersonare un'altra entità & Validazione delle richieste \\
+\hline
+Tampering & Modificare dati & Controlli di integrità, HTTPS \\
+\hline
+Repudiation & Negare un'azione & Logging, audit trail \\
+\hline
+Information Disclosure & Accesso non autorizzato a dati & Encryption, controllo accessi \\
+\hline
+Denial of Service & Interruzione del servizio & Rate limiting, failover \\
+\hline
+Elevation of Privilege & Ottenere privilegi non autorizzati & Principle of least privilege \\
+\hline
+\end{tabular}
+\caption{Analisi delle minacce con modello STRIDE}
+\label{table:stride-threats}
+\end{table}
+
+\subsection{Attack Vectors}
+\begin{itemize}
+    \item \textbf{Client-Side Attacks}: XSS, CSRF, Clickjacking
+    \item \textbf{Network Attacks}: Man-in-the-Middle, DNS Spoofing
+    \item \textbf{Server-Side Attacks}: Injection, Path Traversal
+    \item \textbf{API Abuse}: Rate Limiting Bypass, API Key Theft
+\end{itemize}
+
+\section{Security Headers}
+La seguente configurazione di security headers è implementata per migliorare la sicurezza del browser:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Header} & \textbf{Valore/Scopo} \\
+\hline
+Content-Security-Policy & Definisce le fonti affidabili per l'esecuzione di script, stili, ecc. \\
+\hline
+X-Content-Type-Options & nosniff; Previene il MIME type sniffing \\
+\hline
+X-Frame-Options & DENY; Previene il clickjacking \\
+\hline
+X-XSS-Protection & 1; mode=block; Abilita la protezione XSS del browser \\
+\hline
+Strict-Transport-Security & max-age=31536000; Forza l'uso di HTTPS \\
+\hline
+Referrer-Policy & strict-origin-when-cross-origin; Controlla le informazioni di referrer \\
+\hline
+Feature-Policy & Limita l'accesso a funzionalità del browser \\
+\hline
+\end{tabular}
+\caption{Security Headers}
+\label{table:security-headers}
+\end{table}
+
+\section{Rate Limiting e Protezione da DoS}
+
+\subsection{Strategia di Rate Limiting}
+Per prevenire abusi e attacchi di tipo Denial of Service, il sistema implementa una strategia di rate limiting:
+
+\begin{itemize}
+    \item \textbf{IP-based Rate Limiting}: Limitazione del numero di richieste per IP
+    \item \textbf{API-based Rate Limiting}: Limitazione del numero di richieste per API
+    \item \textbf{Graduated Rate Limiting}: Limitazione crescente in base all'utilizzo
+    \item \textbf{Token Bucket Algorithm}: Algoritmo flessibile per il rate limiting
+\end{itemize}
+
+\subsection{Protezione da DoS/DDoS}
+\begin{itemize}
+    \item \textbf{Traffic Filtering}: Filtraggio del traffico sospetto
+    \item \textbf{Resource Allocation}: Allocazione delle risorse in base alla priorità
+    \item \textbf{Connection Throttling}: Limitazione delle connessioni simultanee
+    \item \textbf{CDN}: Utilizzo di CDN per assorbire il traffico
+\end{itemize}
+
+\section{Secure Coding Practices}
+
+\subsection{Linee Guida per la Sicurezza del Codice}
+\begin{itemize}
+    \item \textbf{Input Validation}: Validare tutti gli input dell'utente
+    \item \textbf{Output Encoding}: Codificare tutto l'output in base al contesto
+    \item \textbf{Error Handling}: Gestire gli errori in modo sicuro
+    \item \textbf{Authentication}: Implementare meccanismi di autenticazione robusti
+    \item \textbf{Session Management}: Gestire le sessioni in modo sicuro
+    \item \textbf{Access Control}: Implementare controlli di accesso adeguati
+\end{itemize}
+
+\subsection{Code Review di Sicurezza}
+\begin{itemize}
+    \item \textbf{Security Code Review}: Revisione del codice specifica per la sicurezza
+    \item \textbf{Static Analysis}: Analisi statica del codice
+    \item \textbf{Dynamic Analysis}: Analisi dinamica dell'applicazione
+    \item \textbf{Peer Review}: Revisione del codice da parte di altri sviluppatori
+\end{itemize}
+
+\section{Incident Response}
+
+\subsection{Piano di Risposta agli Incidenti}
+In caso di incidente di sicurezza, il sistema prevede un piano di risposta strutturato:
+
+\begin{enumerate}
+    \item \textbf{Rilevamento}: Identificazione dell'incidente
+    \item \textbf{Contenimento}: Limitazione dell'impatto dell'incidente
+    \item \textbf{Eradicazione}: Rimozione della causa dell'incidente
+    \item \textbf{Ripristino}: Ripristino del normale funzionamento
+    \item \textbf{Analisi Post-Incidente}: Analisi delle cause e delle lezioni apprese
+    \item \textbf{Miglioramento}: Implementazione di miglioramenti per prevenire incidenti simili
+\end{enumerate}
+
+\subsection{Reporting e Comunicazione}
+\begin{itemize}
+    \item \textbf{Internal Reporting}: Reportistica interna sugli incidenti
+    \item \textbf{External Reporting}: Comunicazione con gli utenti e le autorità
+    \item \textbf{Disclosure Policy}: Politica di divulgazione degli incidenti
+    \item \textbf{Communication Templates}: Template per la comunicazione in caso di incidente
+\end{itemize}
+
+\section{Testing di Sicurezza}
+
+\subsection{Metodologie di Test}
+\begin{itemize}
+    \item \textbf{SAST (Static Application Security Testing)}: Analisi statica del codice
+    \item \textbf{DAST (Dynamic Application Security Testing)}: Analisi dinamica dell'applicazione
+    \item \textbf{Penetration Testing}: Test di penetrazione manuali
+    \item \textbf{Vulnerability Scanning}: Scansione automatica delle vulnerabilità
+    \item \textbf{Security Code Review}: Revisione manuale del codice per problemi di sicurezza
+\end{itemize}
+
+\subsection{Strumenti di Test}
+\begin{itemize}
+    \item \textbf{OWASP ZAP}: Per il test automatico delle vulnerabilità web
+    \item \textbf{Burp Suite}: Per il test manuale delle vulnerabilità web
+    \item \textbf{SonarQube}: Per l'analisi statica del codice
+    \item \textbf{Nmap}: Per la scansione delle porte e dei servizi
+    \item \textbf{Metasploit}: Per il test di penetrazione avanzato
+\end{itemize}
+
+\section{Gestione delle Dipendenze}
+
+\subsection{Sicurezza delle Dipendenze}
+\begin{itemize}
+    \item \textbf{Dependency Scanning}: Scansione delle dipendenze per vulnerabilità note
+    \item \textbf{Version Pinning}: Fissare le versioni delle dipendenze
+    \item \textbf{Regular Updates}: Aggiornamenti regolari delle dipendenze
+    \item \textbf{Minimal Dependencies}: Utilizzo del minimo numero di dipendenze necessarie
+\end{itemize}
+
+\subsection{Supply Chain Security}
+\begin{itemize}
+    \item \textbf{Vendor Verification}: Verifica dei fornitori di software
+    \item \textbf{Integrity Verification}: Verifica dell'integrità dei pacchetti
+    \item \textbf{Provenance Tracking}: Tracciamento della provenienza del software
+    \item \textbf{Build Reproducibility}: Riproducibilità del processo di build
+\end{itemize}
+
+\section{Monitoraggio e Logging di Sicurezza}
+
+\subsection{Event Logging}
+\begin{itemize}
+    \item \textbf{Security Events}: Registrazione degli eventi di sicurezza
+    \item \textbf{Access Logging}: Registrazione degli accessi
+    \item \textbf{Change Logging}: Registrazione delle modifiche
+    \item \textbf{Error Logging}: Registrazione degli errori
+\end{itemize}
+
+\subsection{Log Management}
+\begin{itemize}
+    \item \textbf{Log Rotation}: Rotazione dei log per gestire lo spazio
+    \item \textbf{Log Retention}: Conservazione dei log per il periodo necessario
+    \item \textbf{Log Protection}: Protezione dei log da manipolazioni
+    \item \textbf{Log Analysis}: Analisi dei log per identificare pattern sospetti
+\end{itemize}
+
+\section{Compliance e Standard di Sicurezza}
+
+\subsection{Compliance Framework}
+\begin{itemize}
+    \item \textbf{GDPR}: Regolamento generale sulla protezione dei dati
+    \item \textbf{PCI DSS}: Standard di sicurezza per i dati delle carte di pagamento
+    \item \textbf{ISO 27001}: Standard per la gestione della sicurezza delle informazioni
+    \item \textbf{OWASP Top 10}: Le 10 vulnerabilità web più critiche
+\end{itemize}
+
+\subsection{Security Assessment}
+\begin{itemize}
+    \item \textbf{Regular Audits}: Audit regolari della sicurezza
+    \item \textbf{Compliance Checks}: Verifiche di conformità
+    \item \textbf{Risk Assessment}: Valutazione dei rischi
+    \item \textbf{Gap Analysis}: Analisi delle lacune di sicurezza
+\end{itemize}

@@ -1,0 +1,245 @@
+/**
+ * Site War - Main CSS
+ * Stili principali per l'applicazione Site War
+ */
+
+/* ===== Variabili e Base ===== */
+:root {
+    --primary-color: #4a6bff;
+    --secondary-color: #ff5e5e;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --site1-color: #4a6bff;
+    --site2-color: #ff5e5e;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+main {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* ===== Header ===== */
+.site-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.site-header h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.site-header p {
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+/* ===== Form di input ===== */
+#input-section {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.battle-vs {
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+/* ===== Area Battaglia ===== */
+#battle-section {
+    border-radius: 10px;
+    min-height: 400px;
+}
+
+.site-container {
+    padding: 1rem;
+}
+
+.site-placeholder {
+    background-color: #f1f3f5;
+    border: 2px solid #dee2e6;
+    padding: 2rem;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#site1-container .site-placeholder {
+    border-color: var(--site1-color);
+}
+
+#site2-container .site-placeholder {
+    border-color: var(--site2-color);
+}
+
+.site-name {
+    font-weight: 600;
+}
+
+.battle-animation-container {
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+/* ===== Risultati ===== */
+#results-section {
+    border-radius: 10px;
+}
+
+#winner-announcement {
+    background-color: #e8f5e9;
+    border-left: 5px solid var(--success-color);
+    font-weight: 500;
+}
+
+.winner-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Tab dei risultati ===== */
+.nav-tabs .nav-link {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.tab-content {
+    background-color: white;
+}
+
+/* ===== Grafici e tabelle ===== */
+canvas {
+    max-width: 100%;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .battle-vs {
+        margin: 1rem 0;
+    }
+    
+    .site-placeholder {
+        height: 180px;
+    }
+    
+    .battle-animation-container {
+        height: 100px;
+        margin: 1rem 0;
+    }
+}
+
+/* ===== Utility Classes ===== */
+.text-site1 {
+    color: var(--site1-color);
+}
+
+.text-site2 {
+    color: var(--site2-color);
+}
+
+.bg-site1 {
+    background-color: var(--site1-color);
+}
+
+.bg-site2 {
+    background-color: var(--site2-color);
+}
+
+.winner-badge {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--warning-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #212529;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.victory-level {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Diff calculation */
+.diff-positive {
+    color: var(--success-color);
+}
+
+.diff-negative {
+    color: var(--danger-color);
+}
+
+.diff-neutral {
+    color: #6c757d;
+}
+
+/* Partial results badge */
+.partial-results-badge {
+    background-color: var(--warning-color);
+    color: #212529;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Code and pre for raw data */
+pre {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    color: #212529;
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}

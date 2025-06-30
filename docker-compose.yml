@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  site-war:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: site-war
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/logs:/var/log/apache2
+    restart: unless-stopped
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_MAX_EXECUTION_TIME=60
+    networks:
+      - site-war-network
+
+networks:
+  site-war-network:
+    driver: bridge
