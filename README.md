@@ -173,4 +173,4 @@ Questo progetto è rilasciato sotto licenza MIT.
 
 ---
 
-Sviluppato con ❤️ per rendere il web testing tecnico più coinvolgente e interattivo.
+Ciao
